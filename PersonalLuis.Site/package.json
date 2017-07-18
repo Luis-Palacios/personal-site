@@ -25,11 +25,13 @@
   "homepage": "https://github.com/Luis-Palacios/personal-site#readme",
   "devDependencies": {
     "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
     "style-loader": "^0.18.2",
     "webpack": "^3.3.0"
   },
   "dependencies": {
     "cross-env": "^5.0.1",
+    "materialize-css": "^0.99.0",
     "normalize.css": "^7.0.0"
   }
 }
