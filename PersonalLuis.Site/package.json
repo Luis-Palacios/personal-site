@@ -1,0 +1,35 @@
+{
+  "name": "personal-luis-site",
+  "version": "0.0.1",
+  "description": "My personal site and blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luis-Palacios/personal-site.git"
+  },
+  "keywords": [
+    "Luis",
+    "Palacios",
+    "Site",
+    "Blog"
+  ],
+  "author": "Luis Palacios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luis-Palacios/personal-site/issues"
+  },
+  "homepage": "https://github.com/Luis-Palacios/personal-site#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.3.0"
+  },
+  "dependencies": {
+    "cross-env": "^5.0.1",
+    "normalize.css": "^7.0.0"
+  }
+}
