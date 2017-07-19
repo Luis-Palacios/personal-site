@@ -301,12 +301,11 @@ $(document).ready(() => {
       return publicFuns;
     }
 
-    function menuFunction(options) {
+    $.fn.menu = function (options) {
       const $element = this.first();
       const menuFuns = new Menu($element, options);
       return menuFuns;
-    }
-    $.fn.menu = menuFunction;
+    };
   }());
 
 
@@ -387,13 +386,15 @@ $(window).load(() => {
   // skills animation
   $('#skillSlider').waypoint({
     handler() {
-      $(this).find('.singel-hr-inner').each(() => {
+      $(this).find('.singel-hr-inner').each(function () {
         const height = $(this).data('height');
         $(this).css('height', height);
       });
     },
     offset: '60%',
   });
+
+
   // Wow init
   new WOW({
     offset: 200,
