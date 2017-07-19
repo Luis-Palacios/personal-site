@@ -1,58 +1,58 @@
-let scrollDirection,
-  $ = window.jQuery;
+import 'wowjs';
+
+const WOW = window.WOW;
+const $ = window.jQuery;
 
 // for scrolling to targeted sections
 
-(function ($) {
-  $.fn.scrollingTo = function (opts) {
-    const defaults = {
-      animationTime: 1000,
-      easing: '',
-      topSpace: 0,
-      callbackBeforeTransition() { },
-      callbackAfterTransition() { },
-    };
+$.fn.scrollingTo = (opts) => {
+  const defaults = {
+    animationTime: 1000,
+    easing: '',
+    topSpace: 0,
+    callbackBeforeTransition() { },
+    callbackAfterTransition() { },
+  };
 
-    const config = $.extend({}, defaults, opts);
+  const config = $.extend({}, defaults, opts);
 
-    $(this).on('click', function (e) {
-      const eventVal = e;
-      e.preventDefault();
+  $(this).on('click', (e) => {
+    const eventVal = e;
+    e.preventDefault();
 
-      const $section = $(document).find($(this).data('section'));
-      if ($section.length < 1) {
-        return false;
-      }
+    const $section = $(document).find($(this).data('section'));
+    if ($section.length < 1) {
+      return false;
+    }
 
-      if ($('html, body').is(':animated')) {
-        $('html, body').stop(true, true);
-      }
+    if ($('html, body').is(':animated')) {
+      $('html, body').stop(true, true);
+    }
 
-      const scrollPos = $section.offset().top;
+    const scrollPos = $section.offset().top;
 
-      if ($(window).scrollTop() === (scrollPos + config.topSpace)) {
-        return false;
-      }
+    if ($(window).scrollTop() === (scrollPos + config.topSpace)) {
+      return false;
+    }
 
-      config.callbackBeforeTransition(eventVal, $section);
+    config.callbackBeforeTransition(eventVal, $section);
 
-      const newScrollPos = (scrollPos - config.topSpace);
+    const newScrollPos = (scrollPos - config.topSpace);
 
-      $('html, body').animate({
-        scrollTop: (`${newScrollPos}px`),
-      }, config.animationTime, config.easing, () => {
-        config.callbackAfterTransition(eventVal, $section);
-      });
-
-      return $(this);
+    $('html, body').animate({
+      scrollTop: (`${newScrollPos}px`),
+    }, config.animationTime, config.easing, () => {
+      config.callbackAfterTransition(eventVal, $section);
     });
 
-    $(this).data('scrollOps', config);
     return $(this);
-  };
-}(jQuery));
+  });
 
-$(document).ready(function ($) {
+  $(this).data('scrollOps', config);
+  return $(this);
+};
+
+$(document).ready(() => {
   const sklSlider = $('#skillSlider');
 
   sklSlider.owlCarousel({
@@ -72,7 +72,7 @@ $(document).ready(function ($) {
   const sklData = sklSlider.data('owlCarousel');
   const sklTgt = $('.skl-ctrl').find('.go');
 
-  sklTgt.on('click', function (e) {
+  sklTgt.on('click', (e) => {
     e.preventDefault();
     if ($(this).hasClass('go-left')) {
       sklData.prev();
@@ -96,7 +96,7 @@ $(document).ready(function ($) {
 
 
   const exTgt = $('.exp-ctrl').find('.go');
-  exTgt.on('click', function (e) {
+  exTgt.on('click', (e) => {
     e.preventDefault();
     if ($(this).hasClass('go-left')) {
       exData.prev();
@@ -120,7 +120,7 @@ $(document).ready(function ($) {
 
 
   const edTgt = $('.edu-ctrl').find('.go');
-  edTgt.on('click', function (e) {
+  edTgt.on('click', (e) => {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -145,7 +145,7 @@ $(document).ready(function ($) {
 
 
   const tmTgt = $('.tmu-ctrl').find('.go');
-  tmTgt.on('click', function (e) {
+  tmTgt.on('click', (e) => {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -173,7 +173,7 @@ $(document).ready(function ($) {
   const tmoTgt = $('.tmo-ctrl').find('.go');
 
 
-  tmoTgt.on('click', function (e) {
+  tmoTgt.on('click', (e) => {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -217,12 +217,6 @@ $(document).ready(function ($) {
     },
   });
 
-  // Animate scrolling on hire me button
-  $('.hire-me-btn').on('click', (e) => {
-    e.preventDefault();
-    $('html, body').animate({ scrollTop: $('#contact').offset().top }, 500);
-  });
-
   // Menu animations plugin
   (function () {
     function Menu($element, options) {
@@ -256,7 +250,7 @@ $(document).ready(function ($) {
             $(window).unbind('scroll', handler);
           }
 
-          handler = function (e) {
+          handler = (e) => {
             if (e.currentTarget.scrollY > lastScrollTop) {
               direction = 'down';
             } else {
@@ -286,7 +280,7 @@ $(document).ready(function ($) {
             $(window).unbind('scroll', handler);
           }
 
-          handler = function () {
+          handler = () => {
             // check have we display small menu or normal menu ?
             coreFuns.displayMenu();
           };
@@ -296,7 +290,7 @@ $(document).ready(function ($) {
           config.onNormalMenu();
         },
         mobile_intelligent_menu() {
-          if (jQuery.browser.mobile === true) {
+          if ($.browser.mobile === true) {
             this.intelligent_menu();
           } else {
             this.fixed_menu();
@@ -307,11 +301,12 @@ $(document).ready(function ($) {
       return publicFuns;
     }
 
-    $.fn.menu = function (options) {
+    function menuFunction(options) {
       const $element = this.first();
       const menuFuns = new Menu($element, options);
       return menuFuns;
-    };
+    }
+    $.fn.menu = menuFunction;
   }());
 
 
@@ -342,26 +337,19 @@ $(document).ready(function ($) {
     if (sections.length > 0) {
       sections.waypoint({
         handler(event, direction) {
-          let activeSection, active_section_index, prev_section_index;
-          activeSection = $(this);
-          active_section_index = getActiveSectionLength($(this), sections);
-          prev_section_index = (active_section_index - 1);
+          let activeSection = $(this);
+          const activeSectionIndex = getActiveSectionLength($(this), sections);
+          const prevSectionIndex = (activeSectionIndex - 1);
 
           if (direction === 'up') {
-            scrollDirection = 'up';
-            if (prev_section_index < 0) {
-              activeSection = activeSection;
-            } else {
-              activeSection = sections.eq(prev_section_index);
+            if (!prevSectionIndex < 0) {
+              activeSection = sections.eq(prevSectionIndex);
             }
-          } else {
-            scrollDirection = 'Down';
           }
 
-
-          if (activeSection.attr('id') != 'home') {
-            const active_link = $('.menu-smooth-scroll[href="#' + activeSection.attr('id') + '"]');
-            active_link.parent('li').addClass('current').siblings().removeClass('current');
+          if (activeSection.attr('id') !== 'home') {
+            const activeLink = $(`.menu-smooth-scroll[href="#${activeSection.attr('id')}"]`);
+            activeLink.parent('li').addClass('current').siblings().removeClass('current');
           } else {
             $('.menu-smooth-scroll').parent('li').removeClass('current');
           }
@@ -370,168 +358,18 @@ $(document).ready(function ($) {
       });
     }
   }());
-
-  // Map
-  const mapStyle = [
-    {
-      featureType: 'landscape',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 50,
-        },
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-    {
-      featureType: 'poi',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 40,
-        },
-        {
-          visibility: 'simplified',
-        },
-      ],
-    },
-    {
-      featureType: 'road.highway',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          visibility: 'simplified',
-        },
-      ],
-    },
-    {
-      featureType: 'road.arterial',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 20,
-        },
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-    {
-      featureType: 'road.local',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 30,
-        },
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-    {
-      featureType: 'transit',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          visibility: 'simplified',
-        },
-      ],
-    },
-    {
-      featureType: 'administrative.province',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'labels',
-      stylers: [
-        {
-          visibility: 'on',
-        },
-        {
-          lightness: -0,
-        },
-        {
-          saturation: -0,
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'geometry',
-      stylers: [
-        {
-          hue: '#00baff',
-        },
-        {
-          lightness: -10,
-        },
-        {
-          saturation: -95,
-        },
-      ],
-    },
-  ];
-
-  let $mapWrapper = $('#map'), draggableOp;
-
-  if (jQuery.browser.mobile === true) {
-    draggableOp = false;
-  } else {
-    draggableOp = true;
-  }
-
-  if ($mapWrapper.length > 0) {
-    const map = new GMaps({
-      div: '#map',
-      lat: 23.79473005386213,
-      lng: 90.41430473327637,
-      scrollwheel: false,
-      draggable: draggableOp,
-      zoom: 16,
-      disableDefaultUI: true,
-      styles: mapStyle,
-    });
-
-    map.addMarker({
-      lat: 23.79473005386213,
-      lng: 90.41430473327637,
-      icon: 'images/marker-icon.png',
-      infoWindow: {
-        content: '<p>BD InfoSys Ltd, Dhaka, Bangladesh</p>',
-      },
-    });
-  }
-}(jQuery));
+});
 
 $(window).load(() => {
   // section calling
   $('.section-call-to-btn.call-to-home').waypoint({
-    handler(event, direction) {
+    handler() {
       const $this = $(this);
-      $this.fadeIn(0).removeClass('btn-hidden');
-      var showHandler = setTimeout(() => {
+      const showHandler = setTimeout(() => {
         $this.addClass('btn-show').removeClass('btn-up');
         clearTimeout(showHandler);
       }, 1500);
+      $this.fadeIn(0).removeClass('btn-hidden');
     },
     offset: '90%',
   });
@@ -539,183 +377,26 @@ $(window).load(() => {
 
   $('.section-call-to-btn.call-to-about').delay(1000).fadeIn(0, function () {
     const $this = $(this);
-    $this.removeClass('btn-hidden');
-    var showHandler = setTimeout(() => {
+    const showHandler = setTimeout(() => {
       $this.addClass('btn-show').removeClass('btn-up');
       clearTimeout(showHandler);
     }, 1600);
+    $this.removeClass('btn-hidden');
   });
-
-  // portfolio Mesonary
-  if ($('#protfolio-msnry').length > 0) {
-    // init Isotope
-    let loading = 0;
-    const portfolioMsnry = $('#protfolio-msnry').isotope({
-      itemSelector: '.single-port-item',
-      layoutMode: 'fitRows',
-    });
-
-
-    $('#portfolio-msnry-sort a').on('click', function (e) {
-      e.preventDefault();
-
-      if ($(this).parent('li').hasClass('active')) {
-        return false;
-      } else {
-        $(this).parent('li').addClass('active').siblings('li')
-          .removeClass('active');
-      }
-
-      const $this = $(this);
-      const filterValue = $this.data('target');
-
-      // set filter for Isotope
-      portfolioMsnry.isotope({ filter: filterValue });
-
-      return $(this);
-    });
-
-    $('#portfolio-item-loader').on('click', function (e) {
-      e.preventDefault();
-      const $this = $(this);
-
-      for (let i = 0; i < 3; i++) {
-        $.get('portfolioitems.html', (data, status) => {
-          let lists, numb, target = $('#portfolio-msnry-sort li.active a').data('target');
-
-          lists = (target != '*') ? $(data).find('li' + target) : $(data).find('li');
-
-          if (lists.length > 0) {
-            numb = Math.floor(Math.random() * lists.length);
-            portfolioMsnry.isotope('insert', lists.eq(numb));
-
-            loading++;
-            (loading == 9) ? $this.remove() : '';
-          }
-        });
-      }
-    });
-
-    let portfolioModal = $('#portfolioModal'),
-      portImgArea = portfolioModal.find('.model-img'),
-      portTitle = portfolioModal.find('.modal-content .title'),
-      portContent = portfolioModal.find('.modal-content .m-content'),
-      portLink = portfolioModal.find('.modal-footer .modal-action');
-
-    $('#protfolio-msnry').delegate('a.modal-trigger', 'click', function (e) {
-      e.preventDefault();
-      const $this = $(this);
-      portfolioModal.openModal({
-        dismissible: true,
-        opacity: '.4',
-        in_duration: 400,
-        out_duration: 400,
-        ready() {
-          let imgSrc = $this.data('image-source'),
-            title = $this.data('title'),
-            content = $this.data('content'),
-            demoLink = $this.data('demo-link');
-
-
-          if (imgSrc) {
-            portImgArea.html('<img src="' + imgSrc + '" alt="Portfolio Image" />');
-          };
-
-
-          portTitle.text(title);
-          portContent.text(content);
-          portLink.attr('href', demoLink);
-        },
-      });
-    });
-  }
 
   // skills animation
   $('#skillSlider').waypoint({
-    handler(event, direction) {
-      $(this).find('.singel-hr-inner').each(function () {
+    handler() {
+      $(this).find('.singel-hr-inner').each(() => {
         const height = $(this).data('height');
         $(this).css('height', height);
       });
     },
     offset: '60%',
   });
-
-
   // Wow init
   new WOW({
     offset: 200,
     mobile: false,
   }).init();
-});
-
-/* =========== count up statistic ==========*/
-const $countNumb = $('.countNumb');
-
-if ($countNumb.length > 0) {
-  $countNumb.counterUp({
-    delay: 15,
-    time: 1700,
-  });
-}
-
-$('#contactForm').on('submit', function (e) {
-  e.preventDefault();
-  let $this = $(this),
-    data = $(this).serialize(),
-    name = $this.find('#contact_name'),
-    email = $this.find('#email'),
-    message = $this.find('#textarea1'),
-    loader = $this.find('.form-loader-area'),
-    submitBtn = $this.find('button, input[type="submit"]');
-
-  loader.show();
-  submitBtn.attr('disabled', 'disabled');
-
-  function success(response) {
-    swal('Thanks!', 'Your message has been sent successfully!', 'success');
-    $this.find('input, textarea').val('');
-  }
-
-  function error(response) {
-    $this.find('input.invalid, textarea.invalid').removeClass('invalid');
-    if (response.name) {
-      name.removeClass('valid').addClass('invalid');
-    }
-
-    if (response.email) {
-      email.removeClass('valid').addClass('invalid');
-    }
-
-    if (response.message) {
-      message.removeClass('valid').addClass('invalid');
-    }
-  }
-
-  $.ajax({
-    type: 'POST',
-    url: 'inc/sendEmail.php',
-    data,
-  }).done((res) => {
-    const response = JSON.parse(res);
-
-    if (response.OK) {
-      success(response);
-    } else {
-      error(response);
-    }
-
-    var hand = setTimeout(() => {
-      loader.hide();
-      submitBtn.removeAttr('disabled');
-      clearTimeout(hand);
-    }, 1000);
-  }).fail(() => {
-    sweetAlert('Oops...', 'Something went wrong, Try again later!', 'error');
-    var hand = setTimeout(function () {
-      loader.hide();
-      submitBtn.removeAttr('disabled');
-      clearTimeout(hand);
-    }, 1000);
-  });
 });
