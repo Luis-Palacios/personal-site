@@ -14,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
     <environment include="Development">
+        <script src="https://use.fontawesome.com/735204ed59.js"></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/dist/all.css" />
     </environment>
-    <script src="https://use.fontawesome.com/735204ed59.js"></script>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
@@ -26,46 +26,101 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Luis Palacios</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - Luis Palacios</p>
-        </footer>
-    </div>
+    <!-- Main Container -->
+    <main id="app" class="main-section">
+        <header id="navigation" class="root-sec white nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nav-inner">
+                            <nav class="primary-nav">
+                                <div class="clearfix nav-wrapper">
+                                    <a href="#home" class="left brand-logo menu-smooth-scroll" data-section="#home">
+                                        <img src="images/logo.png" alt="">
+                                    </a>
+                                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                                    <ul class="right static-menu">
+                                        <li class="search-form-li">
+                                            <a id="initSearchIcon" class=""><i class="mdi-action-search"></i> </a>
+                                            <div class="search-form-wrap hide">
+                                                <form action="#" class="">
+                                                    <input type="search" class="search">
+                                                    <button type="submit">
+                                                        <i class="mdi-action-search"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-button blog-submenu-init" href="#!" data-activates="dropdown1">
+                                                <i class="mdi-navigation-more-vert right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="inline-menu side-nav" id="mobile-demo">
 
+                                        <!-- Mini Profile // only visible in Tab and Mobile -->
+                                        <li class="mobile-profile">
+                                            <div class="profile-inner">
+                                                <div class="pp-container">
+                                                    <img src="images/person.png" alt="">
+                                                </div>
+                                                <h3>John Doe</h3>
+                                                <h5>Creative UI/UX Expert</h5>
+                                            </div>
+                                        </li><!-- mini profile end-->
+
+                                        <li>
+                                            <a href="#about" data-section="#about" class="menu-smooth-scroll"><i class="fa fa-user fa-fw"></i>About Me</a>
+                                        </li>
+                                        <li>
+                                            <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="fa fa-file-text fa-fw"></i>Resume</a>
+                                        </li>
+                                        <li>
+                                            <a href="#portfolio" data-section="#portfolio" class="menu-smooth-scroll"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
+                                        </li>
+                                        <li>
+                                            <a href="#team" data-section="#team" class="menu-smooth-scroll"><i class="fa fa-users fa-fw"></i>Team</a>
+                                        </li>
+                                        <li>
+                                            <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
+                                        </li>
+                                        <li>
+                                            <a href="#blog" data-section="#blog" class="menu-smooth-scroll"><i class="fa fa-pencil fa-fw"></i>Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="#contact" data-section="#contact" class="menu-smooth-scroll"><i class="fa fa-paper-plane fa-fw"></i>Contact</a>
+                                        </li>
+                                    </ul>
+                                    <ul id="dropdown1" class="inline-menu submenu-ul dropdown-content">
+                                        <li>Home</li>
+                                        <li>
+                                            <a href="blog.html">All Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-with-sidebar.html">Blog with Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="single.html">Single Blog</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .container end -->
+        </header>
+        @RenderBody()
+    </main>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
