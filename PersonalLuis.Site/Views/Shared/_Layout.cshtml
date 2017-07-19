@@ -26,6 +26,15 @@
     </environment>
 </head>
 <body>
+    <!-- Preloader --> 
+    <div id="preloader">
+      <div class="loader">
+            <svg class="circle-loader" height="50" width="50">
+              <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+            </svg>
+        </div>    
+    </div>
+    <!--preloader end-->
     <!-- Main Container -->
     <main id="app" class="main-section">
         <header id="navigation" class="root-sec white nav">
@@ -65,8 +74,8 @@
                                                 <div class="pp-container">
                                                     <img src="images/person.png" alt="">
                                                 </div>
-                                                <h3>John Doe</h3>
-                                                <h5>Creative UI/UX Expert</h5>
+                                                <h3>Luis Palacios</h3>
+                                                <h5>Full Stack Developer</h5>
                                             </div>
                                         </li><!-- mini profile end-->
 
@@ -77,19 +86,13 @@
                                             <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="fa fa-file-text fa-fw"></i>Resume</a>
                                         </li>
                                         <li>
-                                            <a href="#portfolio" data-section="#portfolio" class="menu-smooth-scroll"><i class="fa fa-briefcase fa-fw"></i>Portfolio</a>
-                                        </li>
-                                        <li>
                                             <a href="#team" data-section="#team" class="menu-smooth-scroll"><i class="fa fa-users fa-fw"></i>Team</a>
-                                        </li>
-                                        <li>
-                                            <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
                                         </li>
                                         <li>
                                             <a href="#blog" data-section="#blog" class="menu-smooth-scroll"><i class="fa fa-pencil fa-fw"></i>Blog</a>
                                         </li>
                                         <li>
-                                            <a href="#contact" data-section="#contact" class="menu-smooth-scroll"><i class="fa fa-paper-plane fa-fw"></i>Contact</a>
+                                            <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
                                         </li>
                                     </ul>
                                     <ul id="dropdown1" class="inline-menu submenu-ul dropdown-content">
@@ -113,7 +116,38 @@
             </div>
             <!-- .container end -->
         </header>
+        
         @RenderBody()
+        
+        <!-- Footer Section end -->
+        <footer id="footer" class="root-sec white root-sec footer-wrap">
+            <div class="container">
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="clearfix footer-inner">
+                    <ul class="left social-icons">
+                        <li><a href="#" class="tooltips tooltipped facebook" data-position="top" data-delay="50" data-tooltip="Facebook"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#" class="tooltips tooltipped linkedin" data-position="top" data-delay="50" data-tooltip="Linkdin"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="#" class="tooltips tooltipped twitter" data-position="top" data-delay="50" data-tooltip="Twitter"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#" class="tooltips tooltipped google-plus" data-position="top" data-delay="50" data-tooltip="Google Plus"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#" class="tooltips tooltipped dribbble" data-position="top" data-delay="50" data-tooltip="Dribbble"><i class="fa fa-dribbble"></i></a>
+                        </li>
+                        <li><a href="#" class="tooltips tooltipped behance" data-position="top" data-delay="50" data-tooltip="Behance"><i class="fa fa-behance"></i></a>
+                        </li>
+                    </ul> <!-- ./social icons end -->
+                    <div class="right copyright">
+                        <p>MaterialX &copy; All Rights Reserved</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div> <!-- ./container end-->
+        </footer>
+    <!-- #footer end -->
     </main>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <environment include="Development">

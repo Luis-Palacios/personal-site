@@ -1,44 +1,63 @@
 ﻿const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProvidePlugin = require('webpack-provide-global-plugin');
 
 module.exports = {
-    entry: './wwwroot/index.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'wwwroot', 'dist')
+  entry: './wwwroot/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'wwwroot', 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader',
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
+      {
+        test: [
+          require.resolve('jquery.nicescroll'),
+          require.resolve('jquery-hammerjs'),
+          require.resolve('isotope-layout'),
+        ],
+        use: ['imports-loader?define=>false'],
+      },
+      {
+        test: [
+          require.resolve('wowjs'),
+        ],
+        use: ['imports-loader?this=>window'],
+      },
+    ],
+  },
+  plugins: [
+    new ExtractTextPlugin('all.css'),
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+    }),
+  ],
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery',
+      masonry: 'masonry-layout',
+      isotope: 'isotope-layout',
     },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader'
-                })
-            },
-            //{
-            //    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            //    use: ['url-loader?limit=10000&mimetype=application/font-woff']
-            //},
-            //{
-            //    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            //    use: ['file-loader']
-            //},
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            }
-        ]
-    },
-    plugins: [
-        new ExtractTextPlugin("all.css"),
-    ]
+  },
 };

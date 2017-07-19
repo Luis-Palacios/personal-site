@@ -1,15 +1,23 @@
 ﻿import 'normalize.css';
-import '../wwwroot/css/materialize/css/materialize.min.css';
 import 'animate.css';
+import 'jquery.nicescroll';
+import 'jquery.easing';
+import 'wowjs';
+
+import '../wwwroot/legacy-libs/owl-carousel/owl.carousel.css';
+import '../wwwroot/legacy-libs/owl-carousel/owl.carousel';
+
+import '../wwwroot/legacy-libs/materialize/css/materialize.min.css';
 import '../node_modules/sweetalert/dist/sweetalert.css';
 
 import './css/site.css';
 import './css/responsive.css';
 import './css/theme.css';
 
-import $ from 'jquery';
-import 'jquery.easing';
+import '../wwwroot/legacy-libs/detectmobilebrowser';
+import '../wwwroot/legacy-libs/waypoints';
 
+import '../wwwroot/legacy-libs/materialize/js/materialize.min';
 
-
-console.log("The bundle was loaded");
+import '../wwwroot/app/common';
+import '../wwwroot/app/home';
