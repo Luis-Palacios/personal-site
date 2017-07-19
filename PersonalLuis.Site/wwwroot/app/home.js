@@ -3,56 +3,56 @@ import 'wowjs';
 const WOW = window.WOW;
 const $ = window.jQuery;
 
-// for scrolling to targeted sections
+(function () {
+  $.fn.scrollingTo = function (opts) {
+    const defaults = {
+      animationTime: 1000,
+      easing: '',
+      topSpace: 0,
+      callbackBeforeTransition() { },
+      callbackAfterTransition() { },
+    };
 
-$.fn.scrollingTo = (opts) => {
-  const defaults = {
-    animationTime: 1000,
-    easing: '',
-    topSpace: 0,
-    callbackBeforeTransition() { },
-    callbackAfterTransition() { },
-  };
+    const config = $.extend({}, defaults, opts);
 
-  const config = $.extend({}, defaults, opts);
+    $(this).on('click', function (e) {
+      const eventVal = e;
+      e.preventDefault();
 
-  $(this).on('click', (e) => {
-    const eventVal = e;
-    e.preventDefault();
+      const $section = $(document).find($(this).data('section'));
+      if ($section.length < 1) {
+        return false;
+      }
 
-    const $section = $(document).find($(this).data('section'));
-    if ($section.length < 1) {
-      return false;
-    }
+      if ($('html, body').is(':animated')) {
+        $('html, body').stop(true, true);
+      }
 
-    if ($('html, body').is(':animated')) {
-      $('html, body').stop(true, true);
-    }
+      const scrollPos = $section.offset().top;
 
-    const scrollPos = $section.offset().top;
+      if ($(window).scrollTop() === (scrollPos + config.topSpace)) {
+        return false;
+      }
 
-    if ($(window).scrollTop() === (scrollPos + config.topSpace)) {
-      return false;
-    }
+      config.callbackBeforeTransition(eventVal, $section);
 
-    config.callbackBeforeTransition(eventVal, $section);
+      const newScrollPos = (scrollPos - config.topSpace);
 
-    const newScrollPos = (scrollPos - config.topSpace);
+      $('html, body').animate({
+        scrollTop: (`${newScrollPos}px`),
+      }, config.animationTime, config.easing, () => {
+        config.callbackAfterTransition(eventVal, $section);
+      });
 
-    $('html, body').animate({
-      scrollTop: (`${newScrollPos}px`),
-    }, config.animationTime, config.easing, () => {
-      config.callbackAfterTransition(eventVal, $section);
+      return $(this);
     });
 
+    $(this).data('scrollOps', config);
     return $(this);
-  });
+  };
+}());
 
-  $(this).data('scrollOps', config);
-  return $(this);
-};
-
-$(document).ready(() => {
+$(document).ready(function () {
   const sklSlider = $('#skillSlider');
 
   sklSlider.owlCarousel({
@@ -71,8 +71,7 @@ $(document).ready(() => {
 
   const sklData = sklSlider.data('owlCarousel');
   const sklTgt = $('.skl-ctrl').find('.go');
-
-  sklTgt.on('click', (e) => {
+  sklTgt.on('click', function (e) {
     e.preventDefault();
     if ($(this).hasClass('go-left')) {
       sklData.prev();
@@ -96,7 +95,7 @@ $(document).ready(() => {
 
 
   const exTgt = $('.exp-ctrl').find('.go');
-  exTgt.on('click', (e) => {
+  exTgt.on('click', function (e) {
     e.preventDefault();
     if ($(this).hasClass('go-left')) {
       exData.prev();
@@ -120,7 +119,7 @@ $(document).ready(() => {
 
 
   const edTgt = $('.edu-ctrl').find('.go');
-  edTgt.on('click', (e) => {
+  edTgt.on('click', function (e) {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -145,7 +144,7 @@ $(document).ready(() => {
 
 
   const tmTgt = $('.tmu-ctrl').find('.go');
-  tmTgt.on('click', (e) => {
+  tmTgt.on('click', function (e) {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -173,7 +172,7 @@ $(document).ready(() => {
   const tmoTgt = $('.tmo-ctrl').find('.go');
 
 
-  tmoTgt.on('click', (e) => {
+  tmoTgt.on('click', function (e) {
     e.preventDefault();
 
     if ($(this).hasClass('go-left')) {
@@ -250,7 +249,7 @@ $(document).ready(() => {
             $(window).unbind('scroll', handler);
           }
 
-          handler = (e) => {
+          handler = function (e) {
             if (e.currentTarget.scrollY > lastScrollTop) {
               direction = 'down';
             } else {
@@ -280,7 +279,7 @@ $(document).ready(() => {
             $(window).unbind('scroll', handler);
           }
 
-          handler = () => {
+          handler = function () {
             // check have we display small menu or normal menu ?
             coreFuns.displayMenu();
           };
@@ -324,8 +323,20 @@ $(document).ready(() => {
   // menuFun.fixed_menu(); // Always fixed
   // menuFun.mobile_intelligent_menu(); // Hide on Mobile Devices
 
-  // window scroll Sections scrolling
 
+  $('#switch input').on('change', function () {
+    const menuId = this.id;
+
+    if (menuId === 'menu1') {
+      menuFun.fixed_menu();
+    } else if (menuId === 'menu2') {
+      menuFun.intelligent_menu();
+    } else {
+      menuFun.mobile_intelligent_menu();
+    }
+  });
+
+  // window scroll Sections scrolling
   (function () {
     const sections = $('.scroll-section');
 
@@ -341,7 +352,8 @@ $(document).ready(() => {
           const prevSectionIndex = (activeSectionIndex - 1);
 
           if (direction === 'up') {
-            if (!prevSectionIndex < 0) {
+            if (!(prevSectionIndex < 0)) {
+              // activeSection = activeSection;
               activeSection = sections.eq(prevSectionIndex);
             }
           }
@@ -357,7 +369,7 @@ $(document).ready(() => {
       });
     }
   }());
-});
+}());
 
 $(window).load(() => {
   // section calling

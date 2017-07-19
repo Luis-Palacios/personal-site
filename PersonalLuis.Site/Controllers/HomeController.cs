@@ -5,14 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PersonalLuis.Site.Models;
+using PersonalLuis.Site.Models.ViewModels;
+using PersonalLuis.Site.Services.Interfaces;
 
 namespace PersonalLuis.Site.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IGeneralInfoService generalInfoService;
+        public HomeController(IGeneralInfoService generalInfoService)
+        {
+            this.generalInfoService = generalInfoService;
+        }
         public IActionResult Index()
         {
-            return View();
+            HomeVm homeVm = new HomeVm();
+            homeVm.GeneralInfo = this.generalInfoService.GetGeneralInfo(); 
+            homeVm.Languages = this.generalInfoService.GetLanguages();
+            homeVm.SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks();
+            return View(homeVm);
         }
 
         public IActionResult About()

@@ -1,6 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using PersonalLuis.Site.Models.Enums;
+@model HomeVm
 
 <!-- About Section start -->
 <section id="about" class="scroll-section root-sec padd-tb-60 grey lighten-5 about-wrap">
@@ -11,8 +10,7 @@
         <div class="col-sm-12 col-md-4">
           <div class="person-about">
             <h3 class="about-subtitle">My Story</h3>
-            <p>Hello, I’m a UI/UX Designer &amp; Front End Developer from Victoria, Australia. I hold a master degree of Web Design from the World University. <br />
-            And scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p>@Html.Raw(Model.GeneralInfo.History)</p>
             <a class="waves-effect waves-light btn-large brand-bg white-text"><i class="mdi-content-archive left"></i> Download Resume</a>
           </div>
         </div>
@@ -20,7 +18,7 @@
 
         <div class="col-sm-6 col-md-4">
           <div class="person-img wow fadeIn">
-            <img class="z-depth-1" src="images/person.png" alt="">
+            <img class="z-depth-1" src="@Model.GeneralInfo.PictureUrl" alt="luis-palacios">
           </div>
         </div>
         <!-- about me image -->
@@ -28,30 +26,46 @@
         <div class="col-sm-6 col-md-4">
           <div class="person-info">
             <h3 class="about-subtitle">Personal Information</h3>
-            <h5><span>Name :</span> Luis Palacios</h5>
-            <h5><span>Age :</span> 28 Years</h5>
+            <h5><span>Name :</span> @Model.GeneralInfo.Name</h5>
+            <h5><span>Age :</span> @Model.GeneralInfo.Age</h5>
             <h5><span>Phone :</span> +0123456789</h5>
-            <h5><span>Email :</span> lrpalaciosdev@gmail.com</h5>
-            <h5><span>Address :</span> Managua, Nicaragua</h5>
+            <h5><span>Email :</span> @Model.GeneralInfo.Email</h5>
+            <h5><span>Address :</span> @Model.GeneralInfo.Address</h5>
           </div>
 
           <div class="about-social">
             <ul>
-              <li>
-                <a href="#" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
-                </li>
-              <li>
-                <a href="#" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-floating waves-effect waves-light white"><i class="fa fa-pinterest"></i></a>
-              </li>
+              @foreach(var socialMediaUrl in @Model.SocialMediaUrls)
+              {
+                switch(socialMediaUrl.SocialMediaType)
+                {
+                  case SocialMediaType.Facebook:
+                  <li>
+                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
+                  </li>
+                  break;
+                  case SocialMediaType.Twitter:
+                  <li>
+                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
+                  </li>
+                  break;
+                  case SocialMediaType.GooglePlus:
+                  <li>
+                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
+                  </li>
+                  break;
+                  case SocialMediaType.LinkedIn:
+                  <li>
+                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
+                  </li>
+                  break;
+                  case SocialMediaType.Github:
+                  <li>
+                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-github"></i></a>
+                  </li>
+                  break;
+                }
+              }
             </ul>
           </div>
         </div>
@@ -73,8 +87,8 @@
         <div class="clearfix skill-inner">
           <div class="col-sm-12 col-md-3">
             <div class="skill-left">
-              <h2 class="title">Skills</h2>
-              <p class="regular-text">Man behind the gun, any sophisticated weapons. Human remains that taking the role. We are experienced in utilizing all resources.</p>
+              <h2 class="title">Languages</h2>
+              <p class="regular-text">These are some of the main Languages I've used for software development</p>
             </div>
           </div>
 
@@ -84,189 +98,24 @@
               <div id="skillSlider" class="clearfix skill-graph">
 
                 <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="100%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">Photoshop</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
+                @foreach(var skill in @Model.Languages)
+                {
+                  <div class="single-skill">
+                    <div class="after-li">
+                      <div class="singel-hr">
+                        <div class="singel-hr-inner" data-height="@skill.Level%">
+                          <div class="skill-visiable">
+                            <span class="skill-title">@skill.Language</span>
+                            <div class="hr-wrap">
+                              <div class="hrc"></div>
+                            </div>
                           </div>
                         </div>
+                        <span class="skill-count">@skill.Level%</span>
                       </div>
-                      <span class="skill-count">100%</span>
                     </div>
                   </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="60%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">JavaScript</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">60%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="85%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">Illustrator</span>
-                          <div class="hr-wrap">
-
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">85%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="65%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">HTML</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">65%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="60%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">JavaScript</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">60%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="35%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">CSS</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">35%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="85%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">Illustrator</span>
-                          <div class="hr-wrap">
-
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">85%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="60%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">Wordpress</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">60%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="85%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">Illustrator</span>
-                          <div class="hr-wrap">
-
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">85%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
-                <div class="single-skill">
-                  <div class="after-li">
-                    <div class="singel-hr">
-                      <div class="singel-hr-inner" data-height="60%">
-                        <div class="skill-visiable">
-                          <span class="skill-title">JavaScript</span>
-                          <div class="hr-wrap">
-                            <div class="hrc"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <span class="skill-count">60%</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- /single skill-->
-
-                <!-- single skill -->
+                }
               </div>
             </div>
           </div>

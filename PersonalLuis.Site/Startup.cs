@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalLuis.Site.Services;
+using PersonalLuis.Site.Services.Interfaces;
 
 namespace PersonalLuis.Site
 {
@@ -23,6 +25,7 @@ namespace PersonalLuis.Site
         {
 
             services.AddMvc();
+            services.AddSingleton<IGeneralInfoService, GeneralInfoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
