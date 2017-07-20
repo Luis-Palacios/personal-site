@@ -13,9 +13,12 @@ namespace PersonalLuis.Site.Controllers
     public class HomeController : Controller
     {
         private readonly IGeneralInfoService generalInfoService;
-        public HomeController(IGeneralInfoService generalInfoService)
+        private readonly IBlogService blogService;
+
+        public HomeController(IGeneralInfoService generalInfoService, IBlogService blogService)
         {
             this.generalInfoService = generalInfoService;
+            this.blogService = blogService;
         }
         public IActionResult Index()
         {
@@ -27,6 +30,7 @@ namespace PersonalLuis.Site.Controllers
             homeVm.Companies = this.generalInfoService.GetCompanies();
             homeVm.Contacts = this.generalInfoService.GetContacts();
             homeVm.Recommentations = this.generalInfoService.GetRecommendations();
+            homeVm.FeaturedPosts = this.blogService.GetFeaturedPosts();
             return View(homeVm);
         }
 

@@ -26,6 +26,7 @@ namespace PersonalLuis.Site
 
             services.AddMvc();
             services.AddSingleton<IGeneralInfoService, GeneralInfoService>();
+            services.AddSingleton<IBlogService, BlogService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

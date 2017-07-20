@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using PersonalLuis.Site.Models.Personal;
+using PersonalLuis.Site.Models.Blog;
 
 namespace PersonalLuis.Site.Models.ViewModels
 {
@@ -13,6 +14,7 @@ namespace PersonalLuis.Site.Models.ViewModels
             Companies = new List<Company>();
             Contacts = new List<Contact>();
             Recommentations = new List<Recommendation>();
+            FeaturedPosts = new List<Post>();
         }
 
         public GeneralInfo GeneralInfo { get; set; }
@@ -22,5 +24,6 @@ namespace PersonalLuis.Site.Models.ViewModels
         public IEnumerable<Company> Companies { get; set; }
         public IEnumerable<Contact> Contacts { get; set; }
         public IEnumerable<Recommendation> Recommentations { get; set; }
+        public IEnumerable<Post> FeaturedPosts { get; set; }
     }
 }
