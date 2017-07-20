@@ -10,7 +10,7 @@ namespace PersonalLuis.Site.Services
     {
         public IEnumerable<Company> GetCompanies()
         {
-           return new List<Company>
+            return new List<Company>
            {
              new Company
              {
@@ -79,7 +79,7 @@ namespace PersonalLuis.Site.Services
                     Name="Node.js",
                     Order = 2,
                     Url="https://nodejs.org/",
-                    PictureUrl="/images/devtools/Node.js_logo.svg",
+                    PictureUrl="/images/devtools/Node.js_logo.png",
                     ShortDescription=@"Node.js® is a JavaScript runtime built on <a href='https://developers.google.com/v8/'>Chrome's V8 JavaScript engine</a>.
                                        Node.js uses an event-driven, non-blocking I/O model that makes it
                                        lightweight and efficient. Node.js' package ecosystem, <a href='https://www.npmjs.com/'>npm</a>, is the largest ecosystem of open
@@ -144,8 +144,13 @@ namespace PersonalLuis.Site.Services
                 BirthDate = new DateTime(1989, 4, 22),
                 Email = "lrpalaciosdev@gmail.com",
                 PictureUrl = "/images/luis-palacios.png",
-                History = @"Hello, I’m a Full Stack Developer &amp; Computer Engineer from Managua, Nicaragua. I hold a bachelor degree of computer science from National University of Engineering. <br />
-                            And scrambled it to make a type specimen book. It has survived not only five centuries"
+                History = @"Back in 1996 when I was seven years old, I learned how to start Prince of Persia game in a computer with MS-DOS and from then 
+                            I knew that my history with the tech world had just begun.
+                            <br />
+                            <br />
+                            I have faced multiple challenges that my career presents, but they have reassured me that I have chosen the right path for me, 
+                            whether it is maintaining a huge poorly designed and poorly coded application, architecting a new software project or 
+                            keeping my skills up to date with the latest frameworks, languages, libraries and tools. "
             };
         }
 

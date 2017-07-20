@@ -27,9 +27,11 @@
                         <h3 class="about-subtitle">Personal Information</h3>
                         <h5><span>Name :</span> @Model.GeneralInfo.Name</h5>
                         <h5><span>Age :</span> @Model.GeneralInfo.Age</h5>
-                        <h5><span>Phone :</span> +0123456789</h5>
                         <h5><span>Email :</span> @Model.GeneralInfo.Email</h5>
                         <h5><span>Address :</span> @Model.GeneralInfo.Address</h5>
+                        <h5><span>Education :</span> Bachelor in Computer Science</h5>
+                        <h5><span>Position :</span> Full Stack Developer</h5>
+                        <h5><span>Experience :</span> 6 years</h5>
                     </div>
 
                     <div class="about-social">
@@ -145,27 +147,29 @@
                                 <div class="overflow-hidden">
                                     <div class="row">
                                         <div id="educationSlider" class="clearfix card-element-wrapper">
-                                            @foreach (var devtool in Model.DevTools)
+                                            @foreach (var devtool in Model.DevTools.Select((value, i) => new { Value = value, i }))
                                             {
-                                                <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                <div class="col-sm-4 single-card-box wow fadeInUpSmall" 
+                                                     data-wow-duration=".7s" 
+                                                     data-wow-delay=".@(devtool.i*2)s">
                                                     <div class="card">
                                                         <div class="card-image waves-effect waves-block waves-light">
                                                             <div class="card-img-wrap">
-                                                                <img class="activator" src="@devtool.PictureUrl" alt="@devtool.Name">
+                                                                <img class="activator" src="@devtool.Value.PictureUrl" alt="@devtool.Value.Name">
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
-                                                            <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-more-vert right"></i></span>
-                                                            <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                                                            <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
+                                                            <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
                                                         </div>
                                                         <!-- Reveal content-->
                                                         <div class="card-reveal">
                                                             <div class="rev-title-wrap">
-                                                                <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-close right"></i></span>
-                                                                <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                                                                <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                                <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
                                                             </div>
                                                             <p class="rev-content">
-                                                                @Html.Raw(devtool.ShortDescription)
+                                                                @Html.Raw(devtool.Value.ShortDescription)
                                                             </p>
                                                         </div>
                                                     </div>
@@ -202,24 +206,27 @@
                                 <div class="overflow-hidden">
                                     <div class="row">
                                         <div id="experienceSlider" class="clearfix card-element-wrapper">
-                                            @foreach (var company in Model.Companies)
+                                            @foreach (var company in Model.Companies.Select((value, i) => new { Value=value, i}))
                                             {
-                                                <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" 
+                                                     data-wow-duration=".7s"
+                                                     data-wow-delay=".@(company.i*2)s"
+                                                     >
                                                     <div class="card">
                                                         <div class="card-image waves-effect waves-block waves-light">
-                                                            <h2 class="left-align card-title-top">@company.StartDate - @company.EndDate</h2>
+                                                            <h2 class="left-align card-title-top">@company.Value.StartDate - @company.Value.EndDate</h2>
                                                             <div class="valign-wrapper card-img-wrap">
-                                                                <img class="activator" src="@company.PictureUrl" alt="@company.Name">
+                                                                <img class="activator" src="@company.Value.PictureUrl" alt="@company.Value.Name">
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
-                                                            <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-more-vert right"></i></span>
-                                                            <p>@company.Name</p>
+                                                            <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-more-vert right"></i></span>
+                                                            <p>@company.Value.Name</p>
                                                         </div>
                                                         <div class="card-reveal">
                                                             <div class="rev-title-wrap">
-                                                                <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-close right"></i></span>
-                                                                <p>@company.Name</p>
+                                                                <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-close right"></i></span>
+                                                                <p>@company.Value.Name</p>
                                                             </div>
                                                             <p class="rev-content">
                                                                 Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing.
@@ -246,8 +253,8 @@
 </section>
 
 <!-- #resume Section end -->
-<!-- Team Section end -->
-<section id="team" class="scroll-section root-sec brand-bg padd-tb-120 team-wrap">
+<!-- Network Section end -->
+<section id="network" class="scroll-section root-sec brand-bg padd-tb-120 team-wrap">
     <div class="container">
         <div class="row">
             <div class="clearfix team-inner">
@@ -264,26 +271,29 @@
                             <div class="overflow-hidden">
                                 <div class="row">
                                     <div id="teamSlider" class="clearfix card-element-wrapper">
-                                        @foreach (var contact in Model.Contacts)
+                                        @foreach (var contact in Model.Contacts.Select((value, i) => new { Value=value, i }))
                                         {
-                                            <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                            <div class="col-sm-4 single-card-box wow fadeInUpSmall" 
+                                                 data-wow-duration=".7s"
+                                                 data-wow-delay=".@(contact.i*2)s"
+                                                 >
                                                 <div class="card">
                                                     <div class="card-image waves-effect waves-block waves-light">
                                                         <div class="card-img-wrap">
-                                                            <img class="activator" src="@contact.PictureUrl" alt="@contact.Name">
+                                                            <img class="activator" src="@contact.Value.PictureUrl" alt="@contact.Value.Name">
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
-                                                        <span class="card-title activator brand-text">@contact.Name<i class="mdi-navigation-more-vert right"></i></span>
-                                                        <p>@contact.Position</p>
+                                                        <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
+                                                        <p>@contact.Value.Position</p>
                                                     </div>
                                                     <div class="card-reveal">
                                                         <div class="rev-title-wrap">
-                                                            <span class="card-title activator brand-text">@contact.Name<i class="mdi-navigation-close right"></i></span>
-                                                            <p>@contact.Position</p>
+                                                            <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                            <p>@contact.Value.Position</p>
                                                         </div>
                                                         <p class="rev-content">
-                                                            @contact.ShortDescription
+                                                            @contact.Value.ShortDescription
                                                         </p>
                                                     </div>
                                                 </div>
@@ -304,7 +314,7 @@
 
     </div> <!-- .container -->
 </section>
-<!-- #team Section end -->
+<!-- #network Section end -->
 <!-- Blog Section end -->
 <section id="blog" class="scroll-section root-sec grey lighten-5 padd-tb-120 blog-wrap">
     <div class="container">
@@ -319,20 +329,22 @@
                             </div>
                         </div>
                         <div class="clearfix card-element-wrapper" id="blog-posts">
-                            @foreach (var post in Model.FeaturedPosts)
+                            @foreach (var post in Model.FeaturedPosts.Select((value, i) => new { Value=value, i }))
                             {
                                 <article class="col-sm-6 col-md-4 single-card-box single-post">
-                                    <div class="card wow fadeInUpSmall" data-wow-duration=".7s">
+                                    <div class="card wow fadeInUpSmall" 
+                                         data-wow-duration=".7s"
+                                         data-wow-delay=".@(post.i*2)s">
                                         <div class="card-image">
                                             <div class="card-img-wrap">
                                                 <div class="blog-post-thumb waves-effect waves-block waves-light">
                                                     <a href="single.html">
-                                                        <img class="activator" src="@post.BanerThumbnailUrl" alt="@post.Slug">
+                                                        <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
                                                     </a>
                                                 </div>
                                                 <div class="post-body">
-                                                    <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">@post.Title</h2></a>
-                                                    <p class="post-content">@post.Content</p>
+                                                    <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">@post.Value.Title</h2></a>
+                                                    <p class="post-content">@post.Value.Content</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -373,19 +385,22 @@
                             <div class="overflow-hidden">
                                 <div class="row">
                                     <div id="testimonialSlider" class="clearfix card-element-wrapper">
-                                        @foreach (var recommendation in Model.Recommentations)
+                                        @foreach (var recommendation in Model.Recommentations.Select((value, i) => new { Value=value, i}))
                                         {
-                                            <div class="col-sm-6 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                            <div class="col-sm-6 single-card-box wow fadeInUpSmall" 
+                                                 data-wow-duration=".7s"
+                                                 data-wow-delay=".@(recommendation.i*2)s"
+                                                 >
                                                 <div class="card">
                                                     <div class="card-image waves-effect waves-block waves-light">
                                                         <div class="card-img-wrap">
-                                                            <img class="activator" src="@recommendation.PictureUrl" alt="@recommendation.Name">
-                                                            <p class="saying-about">@recommendation.Testimonial</p>
+                                                            <img class="activator" src="@recommendation.Value.PictureUrl" alt="@recommendation.Value.Name">
+                                                            <p class="saying-about">@recommendation.Value.Testimonial</p>
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
-                                                        <span class="card-title activator brand-text">@recommendation.Name -</span>
-                                                        <a href="#">@recommendation.Position, @recommendation.Company</a>
+                                                        <span class="card-title activator brand-text">@recommendation.Value.Name -</span>
+                                                        <a href="#">@recommendation.Value.Position, @recommendation.Value.Company</a>
                                                     </div>
                                                 </div>
                                             </div>
