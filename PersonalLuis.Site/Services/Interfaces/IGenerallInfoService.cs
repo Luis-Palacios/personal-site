@@ -10,5 +10,9 @@ namespace PersonalLuis.Site.Services.Interfaces
          IEnumerable<LanguageLevel> GetLanguages();
 
          IEnumerable<SocialMediaInfo> GetSocialMediaLinks();
+
+         IEnumerable<DevTool> GetDevTools();
+
+         IEnumerable<Company> GetCompanies();
     }
 }

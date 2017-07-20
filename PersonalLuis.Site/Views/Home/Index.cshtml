@@ -81,54 +81,116 @@
 <!-- Resume Section start -->
 <section id="resume" class="scroll-section ">
   <section id="skill" class="root-sec white skill-wrap">
-  <div class="sec-overlay">
-    <div class="container">
-      <div class="row">
-        <div class="clearfix skill-inner">
-          <div class="col-sm-12 col-md-3">
-            <div class="skill-left">
-              <h2 class="title">Languages</h2>
-              <p class="regular-text">These are some of the main Languages I've used for software development</p>
+    <div class="sec-overlay">
+      <div class="container">
+        <div class="row">
+          <div class="clearfix skill-inner">
+            <div class="col-sm-12 col-md-3">
+              <div class="skill-left">
+                <h2 class="title">Languages</h2>
+                <p class="regular-text">These are some of the main Languages I've used for software development</p>
+              </div>
             </div>
-          </div>
 
-          <!-- skills container -->
-          <div class="col-sm-12 col-md-6 col-md-offset-1">
-            <div class="skill-right">
-              <div id="skillSlider" class="clearfix skill-graph">
+            <!-- skills container -->
+            <div class="col-sm-12 col-md-6 col-md-offset-1">
+              <div class="skill-right">
+                <div id="skillSlider" class="clearfix skill-graph">
 
-                <!-- single skill -->
-                @foreach(var skill in @Model.Languages)
-                {
-                  <div class="single-skill">
-                    <div class="after-li">
-                      <div class="singel-hr">
-                        <div class="singel-hr-inner" data-height="@skill.Level%">
-                          <div class="skill-visiable">
-                            <span class="skill-title">@skill.Language</span>
-                            <div class="hr-wrap">
-                              <div class="hrc"></div>
+                  <!-- single skill -->
+                  @foreach(var skill in @Model.Languages)
+                  {
+                    <div class="single-skill">
+                      <div class="after-li">
+                        <div class="singel-hr">
+                          <div class="singel-hr-inner" data-height="@skill.Level%">
+                            <div class="skill-visiable">
+                              <span class="skill-title">@skill.Language</span>
+                              <div class="hr-wrap">
+                                <div class="hrc"></div>
+                              </div>
                             </div>
                           </div>
+                          <span class="skill-count">@skill.Level%</span>
                         </div>
-                        <span class="skill-count">@skill.Level%</span>
                       </div>
                     </div>
+                  }
+                </div>
+              </div>
+            </div>
+            <!-- /skills container -->
+          </div>
+        </div>
+        <div class="btn-wrapp skl-ctrl">
+          <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-left"><i class="mdi-navigation-chevron-left "></i></a>
+          <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-right"><i class="mdi-navigation-chevron-right "></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- .container end -->
+  </section>
+
+ <section id="education" class="root-sec grey lighten-5 padd-tb-120 education-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="education-inner">
+          <div class="col-sm-12 col-md-10 card-box-wrap">
+            <div class="row">
+              <div class="clearfix section-head education-text">
+                <div class="col-sm-12">
+                  <h2 class="title">Frameworks &amp; Tools</h2>
+                  <p class="regular-text">
+                    These are some of the frameworks, tools, and libraries that I've learned and used for software development. 
+                    Some of them I've loved, some of them... let's say not so much but here they are.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="overflow-hidden">
+                  <div class="row">
+                    <div id="educationSlider" class="clearfix card-element-wrapper">
+                      @foreach(var devtool in Model.DevTools)
+                      {
+                      <!-- single education -->
+                        <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                          <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                              <div class="card-img-wrap">
+                                <img class="activator" src="@devtool.PictureUrl" alt="@devtool.Name">
+                              </div>
+                            </div>
+                            <div class="card-content">
+                              <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-more-vert right"></i></span>
+                              <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                            </div>
+                            <!-- Reveal content-->
+                            <div class="card-reveal">
+                              <div class="rev-title-wrap">
+                                <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-close right"></i></span>
+                                <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                              </div>
+                              <p class="rev-content">
+                                @Html.Raw(devtool.ShortDescription) 
+                              </p>
+                            </div>
+                          </div>
+                        </div> 
+                      <!-- single education end -->
+                      }
+                    </div>
                   </div>
-                }
+                </div>
               </div>
             </div>
           </div>
-          <!-- /skills container -->
+          <div class="btn-wrapp edu-ctrl">
+            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-left"><i class="mdi-navigation-chevron-left"></i></a>
+            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-right"><i class="mdi-navigation-chevron-right"></i></a>
+          </div>
         </div>
       </div>
-      <div class="btn-wrapp skl-ctrl">
-        <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-left"><i class="mdi-navigation-chevron-left "></i></a>
-        <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-right"><i class="mdi-navigation-chevron-right "></i></a>
-      </div>
     </div>
-  </div>
-    <!-- .container end -->
   </section>
 
   <section id="experience" class="root-sec padd-tb-120 brand-bg experience-wrap">
@@ -147,22 +209,24 @@
                 <div class="overflow-hidden">
                   <div class="row">
                     <div id="experienceSlider" class="clearfix card-element-wrapper">
+                      @foreach(var company in Model.Companies)
+                      {
                       <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
                         <div class="card">
                           <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">January 2014 - Present</h2>
+                            <h2 class="left-align card-title-top">@company.StartDate - @company.EndDate</h2>
                             <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
+                              <img class="activator" src="@company.PictureUrl" alt="@company.Name">
                             </div>
                           </div>
                           <div class="card-content">
-                            <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Apple.inc</p>
+                            <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-more-vert right"></i></span>
+                            <p>@company.Name</p>
                           </div>
                           <div class="card-reveal">
                             <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-close right"></i></span>
-                              <p>Apple.inc</p>
+                              <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-close right"></i></span>
+                              <p>@company.Name</p>
                             </div>
                             <p class="rev-content">
                               Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
@@ -170,98 +234,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">January 2014 - Present</h2>
-                            <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Android One</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-close right"></i></span>
-                              <p>Android One</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">January 2014 - Present</h2>
-                            <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Android One</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-close right"></i></span>
-                              <p>Android One</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 cold-xs-12 single-card-box">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">January 2014 - Present</h2>
-                            <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Windows Phone</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-close right"></i></span>
-                              <p>Windows Phone</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4 cold-xs-12 single-card-box">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">January 2014 - Present</h2>
-                            <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Windows Phone</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">UX/UI Designer<i class="mdi-navigation-close right"></i></span>
-                              <p>Windows Phone</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      }
                     </div>
                   </div>
                 </div>
@@ -277,138 +250,8 @@
     </div>
   </section>
 
-  <section id="education" class="root-sec grey lighten-5 padd-tb-120 education-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="education-inner">
-          <div class="col-sm-12 col-md-10 card-box-wrap">
-            <div class="row">
-              <div class="clearfix section-head education-text">
-                <div class="col-sm-12">
-                  <h2 class="title">education</h2>
-                  <p class="regular-text">Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="overflow-hidden">
-                  <div class="row">
-                    <div id="educationSlider" class="clearfix card-element-wrapper">
-
-                    <!-- single education -->
-                      <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">20011 - 2012</h2>
-                            <div class="card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">Masters of Science<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Oxford University</p>
-                          </div>
-                          <!-- Reveal content-->
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">Masters of Science<i class="mdi-navigation-close right"></i></span>
-                              <p>Oxford University</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div> <!-- single education end -->
-
-                      <!-- single education -->
-                      <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">2005 - 2007</h2>
-                            <div class="card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">Bachelor of Science<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Oxford University</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">Bachelor of Science<i class="mdi-navigation-close right"></i></span>
-                              <p>Oxford University</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div> <!-- single education -->
-
-                    <!-- single education -->
-                      <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">2005 - 2007</h2>
-                            <div class="card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">A Level<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Oxford College</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">A Level<i class="mdi-navigation-close right"></i></span>
-                              <p>Oxford College</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div> <!-- single education -->
-
-                    <!-- single education -->
-                      <div class="col-sm-4 single-card-box">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">1995 - 2005</h2>
-                            <div class="card-img-wrap">
-                              <img class="activator" src="http://placehold.it/400x300" alt="">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">O Level<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>Oxford School</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">O Level<i class="mdi-navigation-close right"></i></span>
-                              <p>Oxford School</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
-                        </div>
-                      </div> <!-- single education -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="btn-wrapp edu-ctrl">
-            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-left"><i class="mdi-navigation-chevron-left"></i></a>
-            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-right"><i class="mdi-navigation-chevron-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </section>
+
 <!-- #resume Section end -->
 
 <!-- Team Section end -->

@@ -23,6 +23,8 @@ namespace PersonalLuis.Site.Controllers
             homeVm.GeneralInfo = this.generalInfoService.GetGeneralInfo(); 
             homeVm.Languages = this.generalInfoService.GetLanguages();
             homeVm.SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks();
+            homeVm.DevTools = this.generalInfoService.GetDevTools();
+            homeVm.Companies = this.generalInfoService.GetCompanies();
             return View(homeVm);
         }
 
