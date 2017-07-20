@@ -33,6 +33,33 @@ namespace PersonalLuis.Site.Services
            };
         }
 
+        public IEnumerable<Contact> GetContacts()
+        {
+            return new List<Contact>
+            {
+                new Contact
+                {
+                    Name = "Vanessa Lacayo",
+                    PersonalUrl="https://www.linkedin.com/in/vanessalacayo/",
+                    PictureUrl="/images/contacts/vanessa-lacayo.jpg",
+                    Position="Front-end Developer",
+                    ShortDescription=@"I'm a very detailed front-end developer with a very high level of html and css (sass, less)
+                                        which leads me to produce very clean and maintainable code with great html semantics. I also know Vue.js
+                                        and I've worked with django, laravel, and recently working with wordpress",
+                },
+                new Contact
+                {
+                    Name = "Wuelber Castillo",
+                    PersonalUrl="https://www.linkedin.com/in/wuelber-castillo-821a93115/",
+                    PictureUrl="/images/contacts/wuelber-castillo.jpg",
+                    Position="Web Developer",
+                    ShortDescription=@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec metus tincidunt, fermentum urna sit amet, 
+                                       ultricies orci. In hac habitasse platea dictumst. Ut malesuada lorem nibh, eu mollis quam feugiat non. Donec finibus 
+                                       aliquet tellus sit amet ornare. Sed a tempor est.",
+                }
+            };
+        }
+
         public IEnumerable<DevTool> GetDevTools()
         {
             return new List<DevTool>
@@ -171,6 +198,32 @@ namespace PersonalLuis.Site.Services
                     Language = "C",
                     Level = 60
                 }
+            };
+        }
+
+        public IEnumerable<Recommendation> GetRecommendations()
+        {
+            return new List<Recommendation>
+            {
+                new Recommendation
+                {
+                    Company="BLAU Consulting Group",
+                    Name="Carlos Avendano",
+                    Position="CEO",
+                    PictureUrl="/images/recommendations/carlos-avendano.jpg",
+                    Url="https://www.linkedin.com/in/caavendano/",
+                    Testimonial=@"Luis, proved to be a professional with technical and human characteristics to carry out the assigned tasks,
+                                  he was very useful for the team because of his gift to easily learn new technologies and put them into practice while teaching the rest of the team"
+                },
+                new Recommendation
+                {
+                    Company="MPESO",
+                    Name="Harvin Toledo",
+                    Position="System Analyst",
+                    PictureUrl="/images/recommendations/harvin-toledo.jpg",
+                    Url="https://www.linkedin.com/in/harvin-toledo-1227bb58/",
+                    Testimonial="Luis Palacios is a very intelligent person he is predisposed and proactive to engage in any task assigned to him. I'm sure He will do a quality job for any company."
+                },
             };
         }
 

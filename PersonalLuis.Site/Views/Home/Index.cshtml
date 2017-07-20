@@ -1,612 +1,445 @@
 ﻿@using PersonalLuis.Site.Models.Enums;
 @model HomeVm
-
 <!-- About Section start -->
 <section id="about" class="scroll-section root-sec padd-tb-60 grey lighten-5 about-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="clearfix about-inner">
-
-        <div class="col-sm-12 col-md-4">
-          <div class="person-about">
-            <h3 class="about-subtitle">My Story</h3>
-            <p>@Html.Raw(Model.GeneralInfo.History)</p>
-            <a class="waves-effect waves-light btn-large brand-bg white-text"><i class="mdi-content-archive left"></i> Download Resume</a>
-          </div>
-        </div>
-        <!-- about me description -->
-
-        <div class="col-sm-6 col-md-4">
-          <div class="person-img wow fadeIn">
-            <img class="z-depth-1" src="@Model.GeneralInfo.PictureUrl" alt="luis-palacios">
-          </div>
-        </div>
-        <!-- about me image -->
-
-        <div class="col-sm-6 col-md-4">
-          <div class="person-info">
-            <h3 class="about-subtitle">Personal Information</h3>
-            <h5><span>Name :</span> @Model.GeneralInfo.Name</h5>
-            <h5><span>Age :</span> @Model.GeneralInfo.Age</h5>
-            <h5><span>Phone :</span> +0123456789</h5>
-            <h5><span>Email :</span> @Model.GeneralInfo.Email</h5>
-            <h5><span>Address :</span> @Model.GeneralInfo.Address</h5>
-          </div>
-
-          <div class="about-social">
-            <ul>
-              @foreach(var socialMediaUrl in @Model.SocialMediaUrls)
-              {
-                switch(socialMediaUrl.SocialMediaType)
-                {
-                  case SocialMediaType.Facebook:
-                  <li>
-                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
-                  </li>
-                  break;
-                  case SocialMediaType.Twitter:
-                  <li>
-                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
-                  </li>
-                  break;
-                  case SocialMediaType.GooglePlus:
-                  <li>
-                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
-                  </li>
-                  break;
-                  case SocialMediaType.LinkedIn:
-                  <li>
-                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
-                  </li>
-                  break;
-                  case SocialMediaType.Github:
-                  <li>
-                    <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-github"></i></a>
-                  </li>
-                  break;
-                }
-              }
-            </ul>
-          </div>
-        </div>
-        <!-- about me info -->
-
-      </div>
-    </div>
-  </div>
-  <!-- .container end -->
-</section>
-<!-- #about Section end -->
-
-<!-- Resume Section start -->
-<section id="resume" class="scroll-section ">
-  <section id="skill" class="root-sec white skill-wrap">
-    <div class="sec-overlay">
-      <div class="container">
+    <div class="container">
         <div class="row">
-          <div class="clearfix skill-inner">
-            <div class="col-sm-12 col-md-3">
-              <div class="skill-left">
-                <h2 class="title">Languages</h2>
-                <p class="regular-text">These are some of the main Languages I've used for software development</p>
-              </div>
-            </div>
+            <div class="clearfix about-inner">
 
-            <!-- skills container -->
-            <div class="col-sm-12 col-md-6 col-md-offset-1">
-              <div class="skill-right">
-                <div id="skillSlider" class="clearfix skill-graph">
-
-                  <!-- single skill -->
-                  @foreach(var skill in @Model.Languages)
-                  {
-                    <div class="single-skill">
-                      <div class="after-li">
-                        <div class="singel-hr">
-                          <div class="singel-hr-inner" data-height="@skill.Level%">
-                            <div class="skill-visiable">
-                              <span class="skill-title">@skill.Language</span>
-                              <div class="hr-wrap">
-                                <div class="hrc"></div>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="skill-count">@skill.Level%</span>
-                        </div>
-                      </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="person-about">
+                        <h3 class="about-subtitle">My Story</h3>
+                        <p>@Html.Raw(Model.GeneralInfo.History)</p>
+                        <a class="waves-effect waves-light btn-large brand-bg white-text"><i class="mdi-content-archive left"></i> Download Resume</a>
                     </div>
-                  }
                 </div>
-              </div>
+                <!-- about me description -->
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="person-img wow fadeIn">
+                        <img class="z-depth-1" src="@Model.GeneralInfo.PictureUrl" alt="luis-palacios">
+                    </div>
+                </div>
+                <!-- about me image -->
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="person-info">
+                        <h3 class="about-subtitle">Personal Information</h3>
+                        <h5><span>Name :</span> @Model.GeneralInfo.Name</h5>
+                        <h5><span>Age :</span> @Model.GeneralInfo.Age</h5>
+                        <h5><span>Phone :</span> +0123456789</h5>
+                        <h5><span>Email :</span> @Model.GeneralInfo.Email</h5>
+                        <h5><span>Address :</span> @Model.GeneralInfo.Address</h5>
+                    </div>
+
+                    <div class="about-social">
+                        <ul>
+                            @foreach (var socialMediaUrl in @Model.SocialMediaUrls)
+                            {
+                                switch (socialMediaUrl.SocialMediaType)
+                                {
+                                    case SocialMediaType.Facebook:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.Twitter:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.GooglePlus:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.LinkedIn:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.Github:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-github"></i></a>
+                                        </li>
+                                        break;
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <!-- about me info -->
+
             </div>
-            <!-- /skills container -->
-          </div>
         </div>
-        <div class="btn-wrapp skl-ctrl">
-          <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-left"><i class="mdi-navigation-chevron-left "></i></a>
-          <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-right"><i class="mdi-navigation-chevron-right "></i></a>
-        </div>
-      </div>
     </div>
     <!-- .container end -->
-  </section>
-
- <section id="education" class="root-sec grey lighten-5 padd-tb-120 education-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="education-inner">
-          <div class="col-sm-12 col-md-10 card-box-wrap">
-            <div class="row">
-              <div class="clearfix section-head education-text">
-                <div class="col-sm-12">
-                  <h2 class="title">Frameworks &amp; Tools</h2>
-                  <p class="regular-text">
-                    These are some of the frameworks, tools, and libraries that I've learned and used for software development. 
-                    Some of them I've loved, some of them... let's say not so much but here they are.
-                  </p>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="overflow-hidden">
-                  <div class="row">
-                    <div id="educationSlider" class="clearfix card-element-wrapper">
-                      @foreach(var devtool in Model.DevTools)
-                      {
-                      <!-- single education -->
-                        <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
-                          <div class="card">
-                            <div class="card-image waves-effect waves-block waves-light">
-                              <div class="card-img-wrap">
-                                <img class="activator" src="@devtool.PictureUrl" alt="@devtool.Name">
-                              </div>
+</section>
+<!-- #about Section end -->
+<!-- Resume Section start -->
+<section id="resume" class="scroll-section ">
+    <section id="skill" class="root-sec white skill-wrap">
+        <div class="sec-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix skill-inner">
+                        <div class="col-sm-12 col-md-3">
+                            <div class="skill-left">
+                                <h2 class="title">Languages</h2>
+                                <p class="regular-text">These are some of the main Languages I've used for software development</p>
                             </div>
-                            <div class="card-content">
-                              <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-more-vert right"></i></span>
-                              <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
-                            </div>
-                            <!-- Reveal content-->
-                            <div class="card-reveal">
-                              <div class="rev-title-wrap">
-                                <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-close right"></i></span>
-                                <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
-                              </div>
-                              <p class="rev-content">
-                                @Html.Raw(devtool.ShortDescription) 
-                              </p>
-                            </div>
-                          </div>
-                        </div> 
-                      <!-- single education end -->
-                      }
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="btn-wrapp edu-ctrl">
-            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-left"><i class="mdi-navigation-chevron-left"></i></a>
-            <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-right"><i class="mdi-navigation-chevron-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="root-sec padd-tb-120 brand-bg experience-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="experience-inner">
-          <div class="col-sm-12 col-md-10 card-box-wrap">
-            <div class="row">
-              <div class="clearfix section-head experience-text">
-                <div class="col-sm-12">
-                  <h2 class="title">Experience</h2>
-                  <p class="regular-text">Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="overflow-hidden">
-                  <div class="row">
-                    <div id="experienceSlider" class="clearfix card-element-wrapper">
-                      @foreach(var company in Model.Companies)
-                      {
-                      <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
-                        <div class="card">
-                          <div class="card-image waves-effect waves-block waves-light">
-                            <h2 class="left-align card-title-top">@company.StartDate - @company.EndDate</h2>
-                            <div class="valign-wrapper card-img-wrap">
-                              <img class="activator" src="@company.PictureUrl" alt="@company.Name">
-                            </div>
-                          </div>
-                          <div class="card-content">
-                            <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-more-vert right"></i></span>
-                            <p>@company.Name</p>
-                          </div>
-                          <div class="card-reveal">
-                            <div class="rev-title-wrap">
-                              <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-close right"></i></span>
-                              <p>@company.Name</p>
-                            </div>
-                            <p class="rev-content">
-                              Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                            </p>
-                          </div>
                         </div>
-                      </div>
-                      }
+
+                        <!-- skills container -->
+                        <div class="col-sm-12 col-md-6 col-md-offset-1">
+                            <div class="skill-right">
+                                <div id="skillSlider" class="clearfix skill-graph">
+                                    @foreach (var skill in @Model.Languages)
+                                    {
+                                        <div class="single-skill">
+                                            <div class="after-li">
+                                                <div class="singel-hr">
+                                                    <div class="singel-hr-inner" data-height="@skill.Level%">
+                                                        <div class="skill-visiable">
+                                                            <span class="skill-title">@skill.Language</span>
+                                                            <div class="hr-wrap">
+                                                                <div class="hrc"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="skill-count">@skill.Level%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                <div class="btn-wrapp skl-ctrl">
+                    <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-left"><i class="mdi-navigation-chevron-left "></i></a>
+                    <a class="btn-floating waves-effect waves-light btn-large brand-bg white-text go go-right"><i class="mdi-navigation-chevron-right "></i></a>
+                </div>
             </div>
-          </div>
-          <div class="btn-wrapp exp-ctrl">
-            <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
-            <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <!-- .container end -->
+    </section>
+
+    <section id="education" class="root-sec grey lighten-5 padd-tb-120 education-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="education-inner">
+                    <div class="col-sm-12 col-md-10 card-box-wrap">
+                        <div class="row">
+                            <div class="clearfix section-head education-text">
+                                <div class="col-sm-12">
+                                    <h2 class="title">Frameworks &amp; Tools</h2>
+                                    <p class="regular-text">
+                                        These are some of the frameworks, tools, and libraries that I've learned and used for software development.
+                                        Some of them I've loved, some of them... let's say not so much but here they are.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="overflow-hidden">
+                                    <div class="row">
+                                        <div id="educationSlider" class="clearfix card-element-wrapper">
+                                            @foreach (var devtool in Model.DevTools)
+                                            {
+                                                <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                    <div class="card">
+                                                        <div class="card-image waves-effect waves-block waves-light">
+                                                            <div class="card-img-wrap">
+                                                                <img class="activator" src="@devtool.PictureUrl" alt="@devtool.Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-more-vert right"></i></span>
+                                                            <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                                                        </div>
+                                                        <!-- Reveal content-->
+                                                        <div class="card-reveal">
+                                                            <div class="rev-title-wrap">
+                                                                <span class="card-title activator brand-text">@devtool.Name<i class="mdi-navigation-close right"></i></span>
+                                                                <p><a href="@devtool.Url" target="_blank">Official Page</a></p>
+                                                            </div>
+                                                            <p class="rev-content">
+                                                                @Html.Raw(devtool.ShortDescription)
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrapp edu-ctrl">
+                        <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-left"><i class="mdi-navigation-chevron-left"></i></a>
+                        <a class="btn-floating waves-effect waves-light btn-large brand-bg go go-right"><i class="mdi-navigation-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="root-sec padd-tb-120 brand-bg experience-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="experience-inner">
+                    <div class="col-sm-12 col-md-10 card-box-wrap">
+                        <div class="row">
+                            <div class="clearfix section-head experience-text">
+                                <div class="col-sm-12">
+                                    <h2 class="title">Experience</h2>
+                                    <p class="regular-text">Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="overflow-hidden">
+                                    <div class="row">
+                                        <div id="experienceSlider" class="clearfix card-element-wrapper">
+                                            @foreach (var company in Model.Companies)
+                                            {
+                                                <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                    <div class="card">
+                                                        <div class="card-image waves-effect waves-block waves-light">
+                                                            <h2 class="left-align card-title-top">@company.StartDate - @company.EndDate</h2>
+                                                            <div class="valign-wrapper card-img-wrap">
+                                                                <img class="activator" src="@company.PictureUrl" alt="@company.Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-more-vert right"></i></span>
+                                                            <p>@company.Name</p>
+                                                        </div>
+                                                        <div class="card-reveal">
+                                                            <div class="rev-title-wrap">
+                                                                <span class="card-title activator brand-text">@company.Position<i class="mdi-navigation-close right"></i></span>
+                                                                <p>@company.Name</p>
+                                                            </div>
+                                                            <p class="rev-content">
+                                                                Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrapp exp-ctrl">
+                        <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
+                        <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </section>
 
 <!-- #resume Section end -->
-
 <!-- Team Section end -->
 <section id="team" class="scroll-section root-sec brand-bg padd-tb-120 team-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="clearfix team-inner">
-        <div class="col-sm-12 col-md-10 card-box-wrap">
-          <div class="row">
-            <div class="clearfix section-head team-text">
-              <div class="col-sm-12">
-                <h2 class="title">our team</h2>
-                <p class="regular-text">Our Team combines a unique combination of creativity, experience, knowledge but most of all a shared 'can do' attitude to help clients get the very best support, advice and project management to achieve business goals.</p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="overflow-hidden">
-                <div class="row">
-                  <div id="teamSlider" class="clearfix card-element-wrapper">
-                    <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
+    <div class="container">
+        <div class="row">
+            <div class="clearfix team-inner">
+                <div class="col-sm-12 col-md-10 card-box-wrap">
+                    <div class="row">
+                        <div class="clearfix section-head team-text">
+                            <div class="col-sm-12">
+                                <h2 class="title">our team</h2>
+                                <p class="regular-text">Our Team combines a unique combination of creativity, experience, knowledge but most of all a shared 'can do' attitude to help clients get the very best support, advice and project management to achieve business goals.</p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Doe<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>UX UI Designer</p>
+                        <div class="col-lg-12">
+                            <div class="overflow-hidden">
+                                <div class="row">
+                                    <div id="teamSlider" class="clearfix card-element-wrapper">
+                                        @foreach (var contact in Model.Contacts)
+                                        {
+                                            <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                <div class="card">
+                                                    <div class="card-image waves-effect waves-block waves-light">
+                                                        <div class="card-img-wrap">
+                                                            <img class="activator" src="@contact.PictureUrl" alt="@contact.Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <span class="card-title activator brand-text">@contact.Name<i class="mdi-navigation-more-vert right"></i></span>
+                                                        <p>@contact.Position</p>
+                                                    </div>
+                                                    <div class="card-reveal">
+                                                        <div class="rev-title-wrap">
+                                                            <span class="card-title activator brand-text">@contact.Name<i class="mdi-navigation-close right"></i></span>
+                                                            <p>@contact.Position</p>
+                                                        </div>
+                                                        <p class="rev-content">
+                                                            @contact.ShortDescription
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- single team member -->
+                                        }
+                                    </div> <!-- #teamSlider end -->
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Jonh Doe<i class="mdi-navigation-close right"></i></span>
-                            <p>UX UI Designer</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                    <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>Front End Developer</p>
-                        </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-close right"></i></span>
-                            <p>Front End Developer</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                    <div class="col-sm-4 single-card-box wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration=".7s">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>Front End Developer</p>
-                        </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-close right"></i></span>
-                            <p>Front End Developer</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                    <div class="col-sm-4 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>Front End Developer</p>
-                        </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Letizia Toye<i class="mdi-navigation-close right"></i></span>
-                            <p>Front End Developer</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                    <div class="col-sm-4 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Tandi Battle<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>Team Manager</p>
-                        </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Tandi Battle<i class="mdi-navigation-close right"></i></span>
-                            <p>Team Manager</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                    <div class="col-sm-4 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="http://placehold.it/300x280" alt="">
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Tandi Battle<i class="mdi-navigation-more-vert right"></i></span>
-                          <p>Team Manager</p>
-                        </div>
-                        <div class="card-reveal">
-                          <div class="rev-title-wrap">
-                            <span class="card-title activator brand-text">Tandi Battle<i class="mdi-navigation-close right"></i></span>
-                            <p>Team Manager</p>
-                          </div>
-                          <p class="rev-content">
-                            Collaboratively initiate collaborative schemas for high-quality communities. Objectively create sticky relationships via team building outsourcing. 
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- single team member -->
-                  </div> <!-- #teamSlider end -->
+                    </div>
                 </div>
-              </div>
+                <div class="btn-wrapp tmu-ctrl">
+                    <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
+                    <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="btn-wrapp tmu-ctrl">
-          <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
-          <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
-        </div>
-      </div>
-    </div>
 
-  </div> <!-- .container -->
+    </div> <!-- .container -->
 </section>
 <!-- #team Section end -->
-
 <!-- Blog Section end -->
 <section id="blog" class="scroll-section root-sec grey lighten-5 padd-tb-120 blog-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="blog-inner">
-        <div class="col-sm-12 card-box-wrap">
-          <div class="row">
-            <div class="clearfix section-head blog-text">
-              <div class="col-sm-10">
-                <h2 class="title">Blog</h2>
-                <p class="regular-text">A Web page that serves as a publicly accessible personal journal for an individual. Typically updated daily, blogs often reflect the personality of the author.</p>
-              </div>
-            </div>
-            <div class="clearfix card-element-wrapper" id="blog-posts">
-              <article class="col-sm-6 col-md-4 single-card-box single-post">
-                <div class="card wow fadeInUpSmall" data-wow-duration=".7s">
-                  <div class="card-image">
-                    <div class="card-img-wrap">
-                      <div class="blog-post-thumb waves-effect waves-block waves-light">
-                        <a href="single.html"><img class="activator" src="http://placehold.it/350x200" alt="">
-                        </a>
-                      </div>
-                      <div class="post-body">
-                        <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">Awesome Post Title</h2></a>
-                        <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
-                      </div>
+    <div class="container">
+        <div class="row">
+            <div class="blog-inner">
+                <div class="col-sm-12 card-box-wrap">
+                    <div class="row">
+                        <div class="clearfix section-head blog-text">
+                            <div class="col-sm-10">
+                                <h2 class="title">Blog</h2>
+                                <p class="regular-text">A Web page that serves as a publicly accessible personal journal for an individual. Typically updated daily, blogs often reflect the personality of the author.</p>
+                            </div>
+                        </div>
+                        <div class="clearfix card-element-wrapper" id="blog-posts">
+                            <article class="col-sm-6 col-md-4 single-card-box single-post">
+                                <div class="card wow fadeInUpSmall" data-wow-duration=".7s">
+                                    <div class="card-image">
+                                        <div class="card-img-wrap">
+                                            <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                                <a href="single.html">
+                                                    <img class="activator" src="http://placehold.it/350x200" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="post-body">
+                                                <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">Awesome Post Title</h2></a>
+                                                <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix card-content">
+                                        <a href="#" class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>
+                                        <a href="single.html" class="brand-text right waves-effect">Read More</a>
+                                    </div>
+                                </div>
+                            </article> <!-- ./single blog post end -->
+                            <article class="col-sm-6 col-md-4  single-card-box single-post">
+                                <div class="card wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
+                                    <div class="card-image">
+                                        <div class="card-img-wrap">
+                                            <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                                <a href="single.html">
+                                                    <img class="activator" src="http://placehold.it/350x200" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="post-body">
+                                                <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">An Image Post</h2></a>
+                                                <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix card-content">
+                                        <a href="#" class="left js-favorite active" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">23</span></a>
+                                        <a href="single.html" class="brand-text right waves-effect">Read More</a>
+                                    </div>
+                                </div>
+                            </article> <!-- ./single blog post end -->
+                            <article class="col-sm-6 col-md-4 single-card-box single-post">
+                                <div class="card wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration=".7s">
+                                    <div class="card-image">
+                                        <div class="card-img-wrap">
+                                            <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                                <a href="single.html">
+                                                    <img class="activator" src="http://placehold.it/350x200" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="post-body">
+                                                <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">Another Image Post</h2></a>
+                                                <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix card-content">
+                                        <a href="#" class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">17</span></a>
+                                        <a href="single.html" class="brand-text right waves-effect">Read More</a>
+                                    </div>
+                                </div>
+                            </article> <!-- ./single blog post end -->
+                        </div>
+                        <div class="clearfix left-align">
+                            <div class="col-sm-12">
+                                <a href="blog.html" class="waves-effect waves-light btn-large load-more">See More</a>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="clearfix card-content">
-                    <a href="#" class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>
-                    <a href="single.html" class="brand-text right waves-effect">Read More</a>
-                  </div>
                 </div>
-              </article> <!-- ./single blog post end -->
-              <article class="col-sm-6 col-md-4  single-card-box single-post">
-                <div class="card wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
-                  <div class="card-image">
-                    <div class="card-img-wrap">
-                      <div class="blog-post-thumb waves-effect waves-block waves-light">
-                        <a href="single.html"><img class="activator" src="http://placehold.it/350x200" alt="">
-                        </a>
-                      </div>
-                      <div class="post-body">
-                        <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">An Image Post</h2></a>
-                        <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="clearfix card-content">
-                    <a href="#" class="left js-favorite active" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">23</span></a>
-                    <a href="single.html" class="brand-text right waves-effect">Read More</a>
-                  </div>
-                </div>
-              </article> <!-- ./single blog post end -->
-              <article class="col-sm-6 col-md-4 single-card-box single-post">
-                <div class="card wow fadeInUpSmall" data-wow-delay=".4s" data-wow-duration=".7s">
-                  <div class="card-image">
-                    <div class="card-img-wrap">
-                      <div class="blog-post-thumb waves-effect waves-block waves-light">
-                        <a href="single.html"><img class="activator" src="http://placehold.it/350x200" alt="">
-                        </a>
-                      </div>
-                      <div class="post-body">
-                        <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">Another Image Post</h2></a>
-                        <p class="post-content">In consectetuer turpis ut velit. Sed lectus. Ut varius tincidunt libero. Vivamus euismod mauris. Vestibulum fringilla pede sit amet augue. Ut varius tincidunt libero. Pellentesque dapibus hendrerit tortor. </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="clearfix card-content">
-                    <a href="#" class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">17</span></a>
-                    <a href="single.html" class="brand-text right waves-effect">Read More</a>
-                  </div>
-                </div>
-              </article> <!-- ./single blog post end -->
             </div>
-            <div class="clearfix left-align">
-              <div class="col-sm-12">
-                <a href="blog.html" class="waves-effect waves-light btn-large load-more">See More</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div> <!-- ./container -->
+    </div> <!-- ./container -->
 </section>
 <!-- #blog Section end -->
-
 <!-- Testimonial Section end -->
 <section id="testimonial" class="scroll-section root-sec brand-bg padd-tb-120 testimonial-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="testimonial-inner">
-        <div class="col-sm-12 col-md-10 card-box-wrap">
-          <div class="row">
-            <div class="clearfix section-head testimonial-text">
-              <div class="col-sm-12">
-                <h2 class="title">testimonial</h2>
-                <p class="regular-text">Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="overflow-hidden">
-                <div class="row">
-                  <div id="testimonialSlider" class="clearfix card-element-wrapper">
-                    <div class="col-sm-6 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="images/avatar.png" alt="">
-                            <p class="saying-about">Amazing theme, amazing code and especially amazing support! I Really love your work.</p>
-                          </div>
+    <div class="container">
+        <div class="row">
+            <div class="testimonial-inner">
+                <div class="col-sm-12 col-md-10 card-box-wrap">
+                    <div class="row">
+                        <div class="clearfix section-head testimonial-text">
+                            <div class="col-sm-12">
+                                <h2 class="title">testimonial</h2>
+                                <p class="regular-text">Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est. Aenean posuere tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Smith -</span>
-                          <a href="#">CEO, Apple Inc</a>
+                        <div class="col-lg-12">
+                            <div class="overflow-hidden">
+                                <div class="row">
+                                    <div id="testimonialSlider" class="clearfix card-element-wrapper">
+                                        @foreach (var recommendation in Model.Recommentations)
+                                        {
+                                            <div class="col-sm-6 single-card-box wow fadeInUpSmall" data-wow-duration=".7s">
+                                                <div class="card">
+                                                    <div class="card-image waves-effect waves-block waves-light">
+                                                        <div class="card-img-wrap">
+                                                            <img class="activator" src="@recommendation.PictureUrl" alt="@recommendation.Name">
+                                                            <p class="saying-about">@recommendation.Testimonial</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <span class="card-title activator brand-text">@recommendation.Name -</span>
+                                                        <a href="#">@recommendation.Position, @recommendation.Company</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div> <!-- #testimonialSlider end -->
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                    </div> <!-- ./single testimonial box -->
-                    <div class="col-sm-6 single-card-box wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration=".7s">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="images/avatar.png" alt="">
-                            <p class="saying-about">Amazing theme, amazing code and especially amazing support! I Really love your work.</p>
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Smith -</span>
-                          <a href="#">CEO, Apple Inc</a>
-                        </div>
-                      </div>
-                    </div> <!-- ./single testimonial box -->
-                    <div class="col-sm-6 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="images/avatar.png" alt="">
-                            <p class="saying-about">Amazing theme, amazing code and especially amazing support ! I Really love your work.</p>
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Smith -</span>
-                          <a href="#">CEO, Apple Inc</a>
-                        </div>
-                      </div>
-                    </div> <!-- ./single testimonial box -->
-                    <div class="col-sm-6 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="images/avatar.png" alt="">
-                            <p class="saying-about">Amazing theme, amazing code and especially amazing support ! I Really love your work.</p>
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Smith -</span>
-                          <a href="#">CEO, Apple Inc</a>
-                        </div>
-                      </div>
-                    </div> <!-- ./single testimonial box -->
-                    <div class="col-sm-6 single-card-box">
-                      <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                          <div class="card-img-wrap">
-                            <img class="activator" src="images/avatar.png" alt="">
-                            <p class="saying-about">Amazing theme, amazing code and especially amazing support ! I Really love your work.</p>
-                          </div>
-                        </div>
-                        <div class="card-content">
-                          <span class="card-title activator brand-text">Jonh Smith -</span>
-                          <a href="#">CEO, Apple Inc</a>
-                        </div>
-                      </div>
-                    </div> <!-- ./single testimonial box -->
-                  </div> <!-- #testimonialSlider end -->
+                    </div>
                 </div>
-              </div>
+                <div class="btn-wrapp tmo-ctrl">
+                    <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
+                    <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="btn-wrapp tmo-ctrl">
-          <a class="btn-floating waves-effect waves-light btn-large white go go-left"><i class="mdi-navigation-chevron-left brand-text"></i></a>
-          <a class="btn-floating waves-effect waves-light btn-large white go go-right"><i class="mdi-navigation-chevron-right brand-text"></i></a>
-        </div>
-      </div>
-    </div>
-  </div> <!-- ./container end -->
+    </div> <!-- ./container end -->
 </section>
 <!-- #testimonial Section end -->

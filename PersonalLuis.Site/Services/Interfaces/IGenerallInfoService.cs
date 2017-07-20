@@ -5,14 +5,18 @@ namespace PersonalLuis.Site.Services.Interfaces
 {
     public interface IGeneralInfoService
     {
-         GeneralInfo GetGeneralInfo();
+        GeneralInfo GetGeneralInfo();
 
-         IEnumerable<LanguageLevel> GetLanguages();
+        IEnumerable<LanguageLevel> GetLanguages();
 
-         IEnumerable<SocialMediaInfo> GetSocialMediaLinks();
+        IEnumerable<SocialMediaInfo> GetSocialMediaLinks();
 
-         IEnumerable<DevTool> GetDevTools();
+        IEnumerable<DevTool> GetDevTools();
 
-         IEnumerable<Company> GetCompanies();
+        IEnumerable<Company> GetCompanies();
+
+        IEnumerable<Contact> GetContacts();
+
+        IEnumerable<Recommendation> GetRecommendations();
     }
 }

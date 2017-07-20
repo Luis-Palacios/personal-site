@@ -25,6 +25,8 @@ namespace PersonalLuis.Site.Controllers
             homeVm.SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks();
             homeVm.DevTools = this.generalInfoService.GetDevTools();
             homeVm.Companies = this.generalInfoService.GetCompanies();
+            homeVm.Contacts = this.generalInfoService.GetContacts();
+            homeVm.Recommentations = this.generalInfoService.GetRecommendations();
             return View(homeVm);
         }
 
