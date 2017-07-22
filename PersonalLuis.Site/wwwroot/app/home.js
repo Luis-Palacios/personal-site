@@ -1,4 +1,7 @@
+import '../../node_modules/sweetalert/dist/sweetalert.css';
 import 'wowjs';
+import swal from 'sweetalert';
+import Masonry from 'masonry-layout';
 
 const WOW = window.WOW;
 const $ = window.jQuery;
@@ -54,7 +57,7 @@ const $ = window.jQuery;
 
 $(document).ready(function () {
   const sklSlider = $('#skillSlider');
-
+  
   sklSlider.owlCarousel({
     slideSpeed: 400,
     itemsCustom: [
@@ -316,7 +319,16 @@ $(document).ready(function () {
 
   window.menuFun = menuFun;
 
+  $('.blog-link').on('click', function () {
+      swal('Ops!', 'I am glad you want to check the blog, I will have it ready as soon as I can please be patient', "info");
+  });
 
+  var elem = document.querySelector('#blog-posts');
+  var msnry = new Masonry(elem, {
+      // options
+      itemSelector: '.single-post',
+      columnWidth: 10
+  });
   /* Choose your navigation style */
 
   menuFun.intelligent_menu(); // Hide intelligently

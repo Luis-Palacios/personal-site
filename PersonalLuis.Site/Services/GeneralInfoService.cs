@@ -19,7 +19,8 @@ namespace PersonalLuis.Site.Services
                  WebPageUrl="https://rain.agency/",
                  StartDate="July 2017",
                  EndDate="Present",
-                 Position="Software Developer"
+                 Position="Software Developer",
+                 Description="Just getting started!"
              },
             new Company
              {
@@ -28,7 +29,34 @@ namespace PersonalLuis.Site.Services
                  WebPageUrl="http://ooqia.com/",
                  StartDate="May 2016",
                  EndDate="July 2017",
-                 Position="Lead Developer"
+                 Position="Lead Developer",
+                 Description=@"Developing software solutions, for different industries and market segments, 
+                                implementing the best tech stack according to the type of the project."
+             },
+            new Company
+             {
+                 Name="PartsBase Inc.",
+                 PictureUrl="/images/companies/parts-base.png",
+                 WebPageUrl="https://www.partsbase.com/",
+                 StartDate="Aug 2015",
+                 EndDate="May 2016",
+                 Position="Web Developer",
+                 Description=@"Worked with a team of developers across different countries in web projects
+                                related to inventory, e-commerce and service providers using enterprise architecture 
+                                with ASP.Net for REST APIs and AngularJs for SPA application."
+             },
+            new Company
+             {
+                 Name="Pinolero Media",
+                 PictureUrl="/images/companies/pinolero-media.png",
+                 WebPageUrl="https://www.pinoleromedia.com/",
+                 StartDate="Feb 2015",
+                 EndDate="Present",
+                 Position="Full Stack Developer",
+                 Description=@"Developing and implementing websites with online payments, REST APIs and integrations 
+                                for Quickbooks with Django, Django Rest Framework, Postgresql, 
+                                NodeJs tools such as Bower, Gulp, and different front-end libraries. Applied quality improvement 
+                                processes like unit testing, code reviews, and continuous delivery."
              }
            };
         }
@@ -53,9 +81,15 @@ namespace PersonalLuis.Site.Services
                     PersonalUrl="https://www.linkedin.com/in/wuelber-castillo-821a93115/",
                     PictureUrl="/images/contacts/wuelber-castillo.jpg",
                     Position="Web Developer",
-                    ShortDescription=@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec metus tincidunt, fermentum urna sit amet, 
-                                       ultricies orci. In hac habitasse platea dictumst. Ut malesuada lorem nibh, eu mollis quam feugiat non. Donec finibus 
-                                       aliquet tellus sit amet ornare. Sed a tempor est.",
+                    ShortDescription=@"",
+                },
+                new Contact
+                {
+                    Name = "Jarbit Lira",
+                    PersonalUrl="https://www.linkedin.com/in/jarbitlira/",
+                    PictureUrl="/images/contacts/jarbit-lira.jpg",
+                    Position="Full Stack Developer",
+                    ShortDescription=@"",
                 }
             };
         }
@@ -131,7 +165,16 @@ namespace PersonalLuis.Site.Services
                     PictureUrl="/images/devtools/react-logo.png",
                     ShortDescription=@"React makes it painless to create interactive UIs. Design simple views for each state in your application,
                                        and React will efficiently update and render just the right components when your data changes."
-                }
+                },
+                 new DevTool
+                 {
+                    Name="Angular.Js",
+                    Order = 8,
+                    Url="https://angularjs.org/",
+                    PictureUrl="/images/devtools/angular.png",
+                    ShortDescription=@"AgularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, 
+                                        readable, and quick to develop."
+                 }
             };
         }
 

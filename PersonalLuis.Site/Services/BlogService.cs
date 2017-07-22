@@ -33,7 +33,23 @@ namespace PersonalLuis.Site.Services
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
                     Slug="cmder-must-have-windows-console"
                 },
-
+                new Post
+                {
+                    Title = "Restoring multiple database in SQL Server from .bak files",
+                    Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
+                                     legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
+                    BanerThumbnailUrl="/images/posts/databases.png",
+                    Slug="restoring-multiple-database-in-sql-server-from-bak-files"
+                },
+                new Post
+                {
+                    Title = "Web pack for server side frameworks",
+                    Introduction = @"I've spend one year and half just working on SPA and came to love Web pack,
+                                      recently I had to come back to server side frameworks to do some works
+                                     and I wanted to continue using web pack which is normally made for front-end frameworks",
+                    BanerThumbnailUrl="/images/posts/webpack-server-side.png",
+                    Slug="web-pack-for-server-side-frameworks"
+                }
             };
         }
     }
