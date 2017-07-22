@@ -7,5 +7,6 @@ namespace PersonalLuis.Site.Models.Enums
         GooglePlus = 3,
         LinkedIn = 4,
         Github = 5,
+        Medium = 6,
     }
 }

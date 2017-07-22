@@ -39,34 +39,39 @@
                         <ul>
                             @foreach (var socialMediaUrl in @Model.SocialMediaUrls)
                             {
-                            switch (socialMediaUrl.SocialMediaType)
-                            {
-                            case SocialMediaType.Facebook:
-                            <li>
-                                <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            break;
-                            case SocialMediaType.Twitter:
-                            <li>
-                                <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            break;
-                            case SocialMediaType.GooglePlus:
-                            <li>
-                                <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            break;
-                            case SocialMediaType.LinkedIn:
-                            <li>
-                                <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                            break;
-                            case SocialMediaType.Github:
-                            <li>
-                                <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-github"></i></a>
-                            </li>
-                            break;
-                            }
+                                switch (socialMediaUrl.SocialMediaType)
+                                {
+                                    case SocialMediaType.Facebook:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.Twitter:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.GooglePlus:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.LinkedIn:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.Github:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-github"></i></a>
+                                        </li>
+                                        break;
+                                    case SocialMediaType.Medium:
+                                        <li>
+                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fa fa-medium"></i></a>
+                                        </li>
+                                        break;
+                                }
                             }
                         </ul>
                     </div>
@@ -99,21 +104,21 @@
                                 <div id="skillSlider" class="clearfix skill-graph">
                                     @foreach (var skill in @Model.Languages)
                                     {
-                                    <div class="single-skill">
-                                        <div class="after-li">
-                                            <div class="singel-hr">
-                                                <div class="singel-hr-inner" data-height="@skill.Level%">
-                                                    <div class="skill-visiable">
-                                                        <span class="skill-title">@skill.Language</span>
-                                                        <div class="hr-wrap">
-                                                            <div class="hrc"></div>
+                                        <div class="single-skill">
+                                            <div class="after-li">
+                                                <div class="singel-hr">
+                                                    <div class="singel-hr-inner" data-height="@skill.Level%">
+                                                        <div class="skill-visiable">
+                                                            <span class="skill-title">@skill.Language</span>
+                                                            <div class="hr-wrap">
+                                                                <div class="hrc"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <span class="skill-count">@skill.Level%</span>
                                                 </div>
-                                                <span class="skill-count">@skill.Level%</span>
                                             </div>
                                         </div>
-                                    </div>
                                     }
                                 </div>
                             </div>
@@ -147,31 +152,31 @@
                                         <div id="experienceSlider" class="clearfix card-element-wrapper">
                                             @foreach (var company in Model.Companies.Select((value, i) => new { Value = value, i }))
                                             {
-                                            <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall"
-                                                 data-wow-duration=".7s"
-                                                 data-wow-delay=".@(company.i*2)s">
-                                                <div class="card">
-                                                    <div class="card-image waves-effect waves-block waves-light">
-                                                        <h2 class="left-align card-title-top">@company.Value.StartDate - @company.Value.EndDate</h2>
-                                                        <div class="valign-wrapper card-img-wrap">
-                                                            <img class="activator" src="@company.Value.PictureUrl" alt="@company.Value.Name">
+                                                <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall"
+                                                     data-wow-duration=".7s"
+                                                     data-wow-delay=".@(company.i*2)s">
+                                                    <div class="card">
+                                                        <div class="card-image waves-effect waves-block waves-light">
+                                                            <h2 class="left-align card-title-top">@company.Value.StartDate - @company.Value.EndDate</h2>
+                                                            <div class="valign-wrapper card-img-wrap">
+                                                                <img class="activator" src="@company.Value.PictureUrl" alt="@company.Value.Name">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-more-vert right"></i></span>
-                                                        <p>@company.Value.Name</p>
-                                                    </div>
-                                                    <div class="card-reveal">
-                                                        <div class="rev-title-wrap">
-                                                            <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-close right"></i></span>
+                                                        <div class="card-content">
+                                                            <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-more-vert right"></i></span>
                                                             <p>@company.Value.Name</p>
                                                         </div>
-                                                        <p class="rev-content">
-                                                            @company.Value.Description
-                                                        </p>
+                                                        <div class="card-reveal">
+                                                            <div class="rev-title-wrap">
+                                                                <span class="card-title activator brand-text">@company.Value.Position<i class="mdi-navigation-close right"></i></span>
+                                                                <p>@company.Value.Name</p>
+                                                            </div>
+                                                            <p class="rev-content">
+                                                                @company.Value.Description
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             }
                                         </div>
                                     </div>
@@ -274,32 +279,32 @@
                             <div class="overflow-hidden">
                                 <div class="row">
                                     <div id="teamSlider" class="clearfix card-element-wrapper">
-                                        @foreach (var contact in Model.Contacts.Select((value, i) => new { Value=value, i }))
+                                        @foreach (var contact in Model.Contacts.Select((value, i) => new { Value = value, i }))
                                         {
-                                        <div class="col-sm-4 single-card-box wow fadeInUpSmall"
-                                             data-wow-duration=".7s"
-                                             data-wow-delay=".@(contact.i*2)s">
-                                            <div class="card">
-                                                <div class="card-image waves-effect waves-block waves-light">
-                                                    <div class="card-img-wrap">
-                                                        <img class="activator" src="@contact.Value.PictureUrl" alt="@contact.Value.Name">
+                                            <div class="col-sm-4 single-card-box wow fadeInUpSmall"
+                                                 data-wow-duration=".7s"
+                                                 data-wow-delay=".@(contact.i*2)s">
+                                                <div class="card">
+                                                    <div class="card-image waves-effect waves-block waves-light">
+                                                        <div class="card-img-wrap">
+                                                            <img class="activator" src="@contact.Value.PictureUrl" alt="@contact.Value.Name">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-content">
-                                                    <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
-                                                    <p>@contact.Value.Position</p>
-                                                </div>
-                                                <div class="card-reveal">
-                                                    <div class="rev-title-wrap">
-                                                        <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                    <div class="card-content">
+                                                        <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
                                                         <p>@contact.Value.Position</p>
                                                     </div>
-                                                    <p class="rev-content">
-                                                        @contact.Value.ShortDescription
-                                                    </p>
+                                                    <div class="card-reveal">
+                                                        <div class="rev-title-wrap">
+                                                            <span class="card-title activator brand-text">@contact.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                            <p>@contact.Value.Position</p>
+                                                        </div>
+                                                        <p class="rev-content">
+                                                            @contact.Value.ShortDescription
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div> <!-- single team member -->
+                                            </div> <!-- single team member -->
                                         }
                                     </div> <!-- #teamSlider end -->
                                 </div>
@@ -331,31 +336,31 @@
                             </div>
                         </div>
                         <div class="clearfix card-element-wrapper" id="blog-posts">
-                            @foreach (var post in Model.FeaturedPosts.Select((value, i) => new { Value=value, i }))
+                            @foreach (var post in Model.FeaturedPosts.Select((value, i) => new { Value = value, i }))
                             {
-                            <article class="col-sm-6 col-md-4 single-card-box single-post">
-                                <div class="card wow fadeInUpSmall"
-                                     data-wow-duration=".7s"
-                                     data-wow-delay=".@(post.i*2)s">
-                                    <div class="card-image">
-                                        <div class="card-img-wrap">
-                                            <div class="blog-post-thumb waves-effect waves-block waves-light">
-                                                <a class="blog-link">
-                                                    <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
-                                                </a>
-                                            </div>
-                                            <div class="post-body">
-                                                <a href="#" class="post-title-link brand-text"><h2 class="post-title">@post.Value.Title</h2></a>
-                                                <p class="post-content">@post.Value.Content</p>
+                                <article class="col-sm-6 col-md-4 single-card-box single-post">
+                                    <div class="card wow fadeInUpSmall"
+                                         data-wow-duration=".7s"
+                                         data-wow-delay=".@(post.i*2)s">
+                                        <div class="card-image">
+                                            <div class="card-img-wrap">
+                                                <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                                    <a class="blog-link">
+                                                        <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
+                                                    </a>
+                                                </div>
+                                                <div class="post-body">
+                                                    <a class="post-title-link brand-text blog-link"><h2 class="post-title">@post.Value.Title</h2></a>
+                                                    <p class="post-content">@post.Value.Content</p>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="clearfix card-content">
+                                            <a class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>
+                                            <a class="brand-text right waves-effect blog-link">Read More</a>
+                                        </div>
                                     </div>
-                                    <div class="clearfix card-content">
-                                        <a class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>
-                                        <a class="brand-text right waves-effect blog-link">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
+                                </article>
                             }
                         </div>
                         <div class="clearfix left-align">
@@ -387,24 +392,24 @@
                             <div class="overflow-hidden">
                                 <div class="row">
                                     <div id="testimonialSlider" class="clearfix card-element-wrapper">
-                                        @foreach (var recommendation in Model.Recommentations.Select((value, i) => new { Value=value, i}))
+                                        @foreach (var recommendation in Model.Recommentations.Select((value, i) => new { Value = value, i }))
                                         {
-                                        <div class="col-sm-6 single-card-box wow fadeInUpSmall"
-                                             data-wow-duration=".7s"
-                                             data-wow-delay=".@(recommendation.i*2)s">
-                                            <div class="card">
-                                                <div class="card-image waves-effect waves-block waves-light">
-                                                    <div class="card-img-wrap">
-                                                        <img class="activator" src="@recommendation.Value.PictureUrl" alt="@recommendation.Value.Name">
-                                                        <p class="saying-about">@recommendation.Value.Testimonial</p>
+                                            <div class="col-sm-6 single-card-box wow fadeInUpSmall"
+                                                 data-wow-duration=".7s"
+                                                 data-wow-delay=".@(recommendation.i*2)s">
+                                                <div class="card">
+                                                    <div class="card-image waves-effect waves-block waves-light">
+                                                        <div class="card-img-wrap">
+                                                            <img class="activator" src="@recommendation.Value.PictureUrl" alt="@recommendation.Value.Name">
+                                                            <p class="saying-about">@recommendation.Value.Testimonial</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <span class="card-title activator brand-text">@recommendation.Value.Name -</span>
+                                                        <a href="#">@recommendation.Value.Position, @recommendation.Value.Company</a>
                                                     </div>
                                                 </div>
-                                                <div class="card-content">
-                                                    <span class="card-title activator brand-text">@recommendation.Value.Name -</span>
-                                                    <a href="#">@recommendation.Value.Position, @recommendation.Value.Company</a>
-                                                </div>
                                             </div>
-                                        </div>
                                         }
                                     </div> <!-- #testimonialSlider end -->
                                 </div>

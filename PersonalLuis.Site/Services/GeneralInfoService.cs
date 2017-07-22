@@ -303,6 +303,11 @@ namespace PersonalLuis.Site.Services
                 {
                     SocialMediaType = SocialMediaType.Github,
                     Url = "https://github.com/Luis-Palacios"
+                },
+                  new SocialMediaInfo
+                {
+                    SocialMediaType = SocialMediaType.Medium,
+                    Url = "https://medium.com/@Luis_Palacios"
                 }
 
             };
