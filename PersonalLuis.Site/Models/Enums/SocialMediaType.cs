@@ -8,5 +8,6 @@ namespace PersonalLuis.Site.Models.Enums
         LinkedIn = 4,
         Github = 5,
         Medium = 6,
+        StackOverFlow = 7
     }
 }

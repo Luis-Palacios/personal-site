@@ -57,6 +57,18 @@ namespace PersonalLuis.Site.Services
                                 for Quickbooks with Django, Django Rest Framework, Postgresql, 
                                 NodeJs tools such as Bower, Gulp, and different front-end libraries. Applied quality improvement 
                                 processes like unit testing, code reviews, and continuous delivery."
+             },
+             new Company
+             {
+                 Name="MOi Solutions",
+                 PictureUrl="/images/companies/moi-solutions.png",
+                 WebPageUrl="http://www.moi-solutions.com/",
+                 StartDate="Jun 2013",
+                 EndDate="Feb 2015",
+                 Position="Senior Web Developer",
+                 Description=@"Adapted an In-House ERP to a SaaS business model. Some of the tasks performed: change from Webforms to MVC, 
+                               fix conceptual design problems, database normalization, UI and UX improvements, create a DevOps workflow, 
+                               migrate infrastructure to the cloud, application maintenance. "
              }
            };
         }
@@ -310,7 +322,8 @@ namespace PersonalLuis.Site.Services
                     PictureUrl="/images/recommendations/carlos-avendano.jpg",
                     Url="https://www.linkedin.com/in/caavendano/",
                     Testimonial=@"Luis, proved to be a professional with technical and human characteristics to carry out the assigned tasks,
-                                  he was very useful for the team because of his gift to easily learn new technologies and put them into practice while teaching the rest of the team"
+                                  he was very useful for the team because of his gift to easily learn new technologies and put them into practice.
+                                  I am absolutely sure that his skills are sufficient to carry out the projects entrusted to him based on his knowledge and experiences."
                 },
                 new Recommendation
                 {
@@ -357,6 +370,11 @@ namespace PersonalLuis.Site.Services
                 {
                     SocialMediaType = SocialMediaType.Medium,
                     Url = "https://medium.com/@Luis_Palacios"
+                },
+                  new SocialMediaInfo
+                {
+                    SocialMediaType = SocialMediaType.StackOverFlow,
+                    Url = "https://stackoverflow.com/users/1685147/luis-palacios"
                 }
 
             };
