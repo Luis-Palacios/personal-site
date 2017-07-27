@@ -90,6 +90,35 @@ namespace PersonalLuis.Site.Services
                     PictureUrl="/images/contacts/jarbit-lira.jpg",
                     Position="Full Stack Developer",
                     ShortDescription=@"",
+                },
+                new Contact
+                {
+                    Name = "Amadeus Nicoya",
+                    PersonalUrl="https://www.linkedin.com/in/amadeusj5/",
+                    PictureUrl="/images/contacts/amadeus-nicoya.jpg",
+                    Position="Web Developer",
+                    ShortDescription=@"I'm a Web developer with over 5 years of professional experience and strong skills in both Front End and Back End. 
+                                        Strong Knowledge ont the latest technologies: Vue, Angular, React. HTML5, SASS, .NET Platform (Entity Framework), and Laravel.",
+                },
+                new Contact
+                {
+                    Name = "Carlos Lenon",
+                    PersonalUrl="https://www.linkedin.com/in/clenondavis/",
+                    PictureUrl="/images/contacts/carlos-lenon.png",
+                    Position="UI/UX Frontend Developer",
+                    ShortDescription=@"I'm a passionate entrepreneur, very detailed front-end developer with a high level of HTML and css (sass, less, stylus), 
+                                    wich leads me to produce very clean and maintainable code with great HTML semantics. I worked already with Vuejs, AngularJs and currently working with Reactjs",
+                },
+                new Contact
+                {
+                    Name = "Harold Hurtado",
+                    PersonalUrl="https://www.linkedin.com/in/amadeusj5/",
+                    PictureUrl="/images/contacts/harold-hurtado.png",
+                    Position="Mobile / Web Developer",
+                    ShortDescription=@"I like mobile development I have experience in the android environment, 
+                                       I feel a lot of attraction for the web world, and I used Angular 2, 4 
+                                       and probably will be aware of the new versions, and worked with React on Meteor and 
+                                       Ruby on Rails, I like the Java language (knowing kotlin for android) and Ruby.",
                 }
             };
         }
@@ -174,6 +203,15 @@ namespace PersonalLuis.Site.Services
                     PictureUrl="/images/devtools/angular.png",
                     ShortDescription=@"AgularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, 
                                         readable, and quick to develop."
+                 },
+                  new DevTool
+                 {
+                    Name="webpack",
+                    Order = 9,
+                    Url="https://webpack.js.org/",
+                    PictureUrl="/images/devtools/webpack.png",
+                    ShortDescription=@"webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, 
+                                    or packaging just about any resource or asset."
                  }
             };
         }
@@ -253,6 +291,17 @@ namespace PersonalLuis.Site.Services
         {
             return new List<Recommendation>
             {
+                 new Recommendation
+                {
+                    Company="SafetyPay,INC",
+                    Name="Jorge Alfaro",
+                    Position="CTO",
+                    PictureUrl="/images/recommendations/jorge-alfaro.jpg",
+                    Url="https://www.linkedin.com/in/jorge-alfaro-16b9782/",
+                    Testimonial=@"As one of my recruiting ventures in Nicaragua looking for offshore talent, I had the pleasure to interview Luis as a candidate for a .NET Software Developer. 
+                                    After interviewing approximately 50 candidates, he was the first one who made the next round of interviews.
+                                    Luis has a great spirit and he is a quick learner. In a very short time, he showed excellent skills and became a valuable asset to the company"
+                },
                 new Recommendation
                 {
                     Company="BLAU Consulting Group",
