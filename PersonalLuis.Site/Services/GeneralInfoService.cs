@@ -218,7 +218,7 @@ namespace PersonalLuis.Site.Services
                  },
                   new DevTool
                  {
-                    Name="webpack",
+                    Name="Webpack",
                     Order = 9,
                     Url="https://webpack.js.org/",
                     PictureUrl="/images/devtools/webpack.png",
@@ -305,7 +305,7 @@ namespace PersonalLuis.Site.Services
             {
                  new Recommendation
                 {
-                    Company="SafetyPay,INC",
+                    Company="SafetyPay INC",
                     Name="Jorge Alfaro",
                     Position="CTO",
                     PictureUrl="/images/recommendations/jorge-alfaro.jpg",
