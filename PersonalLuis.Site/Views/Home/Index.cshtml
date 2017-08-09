@@ -106,7 +106,7 @@
                         <!-- skills container -->
                         <div class="col-sm-12 col-md-6 col-md-offset-1">
                             <div class="skill-right">
-                                <div id="skillSlider" class="clearfix skill-graph">
+                                <div id="skillSlider" class="clearfix skill-graph owl-carousel owl-theme">
                                     @foreach (var skill in @Model.Languages)
                                     {
                                         <div class="single-skill">
@@ -154,7 +154,7 @@
                             <div class="col-lg-12">
                                 <div class="overflow-hidden">
                                     <div class="row">
-                                        <div id="experienceSlider" class="clearfix card-element-wrapper">
+                                        <div id="experienceSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
                                             @foreach (var company in Model.Companies.Select((value, i) => new { Value = value, i }))
                                             {
                                                 <div class="col-sm-4 cold-xs-12 single-card-box wow fadeInUpSmall"
@@ -216,7 +216,7 @@
                             <div class="col-lg-12">
                                 <div class="overflow-hidden">
                                     <div class="row">
-                                        <div id="educationSlider" class="clearfix card-element-wrapper">
+                                        <div id="educationSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
                                             @foreach (var devtool in Model.DevTools.Select((value, i) => new { Value = value, i }))
                                             {
                                             <div class="col-sm-4 single-card-box wow fadeInUpSmall"
@@ -283,7 +283,7 @@
                         <div class="col-lg-12">
                             <div class="overflow-hidden">
                                 <div class="row">
-                                    <div id="teamSlider" class="clearfix card-element-wrapper">
+                                    <div id="teamSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
                                         @foreach (var contact in Model.Contacts.Select((value, i) => new { Value = value, i }))
                                         {
                                             <div class="col-sm-4 single-card-box wow fadeInUpSmall"
@@ -396,7 +396,7 @@
                         <div class="col-lg-12">
                             <div class="overflow-hidden">
                                 <div class="row">
-                                    <div id="testimonialSlider" class="clearfix card-element-wrapper">
+                                    <div id="testimonialSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
                                         @foreach (var recommendation in Model.Recommentations.Select((value, i) => new { Value = value, i }))
                                         {
                                             <div class="col-sm-6 single-card-box wow fadeInUpSmall"

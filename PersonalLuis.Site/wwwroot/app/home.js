@@ -1,10 +1,31 @@
 import 'wowjs';
 import swal from 'sweetalert';
 import Masonry from 'masonry-layout';
-import '../../node_modules/sweetalert/dist/sweetalert.css';
+import 'sweetalert/dist/sweetalert.css';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
 
 const WOW = window.WOW;
 const $ = window.jQuery;
+
+const carouselDefaultOptions = {
+  items: 3,
+  navSpeed: 600,
+  smartSpeed: 600,
+  fluidSpeed: 600,
+
+  responsive: {
+    0: {
+      items: 1,
+    },
+    768: {
+      items: 2,
+    },
+    1024: {
+      items: 3,
+    },
+  },
+};
 
 (function () {
   $.fn.scrollingTo = function (opts) {
@@ -59,129 +80,94 @@ $(document).ready(function () {
   const sklSlider = $('#skillSlider');
 
   sklSlider.owlCarousel({
-    slideSpeed: 400,
-    itemsCustom: [
-      [0, 3],
-      [400, 4],
-      [500, 5],
-      [620, 6],
-      [700, 8],
-      [992, 5],
-      [1200, 6],
-    ],
-    pagination: false,
+    items: 6,
+    navSpeed: 600,
+    smartSpeed: 600,
+    fluidSpeed: 600,
+
+    responsive: {
+      0: {
+        items: 4,
+      },
+      480: {
+        items: 6,
+      },
+    },
   });
 
-  const sklData = sklSlider.data('owlCarousel');
   const sklTgt = $('.skl-ctrl').find('.go');
-  sklTgt.on('click', function (e) {
-    e.preventDefault();
+  sklTgt.on('click', function () {
     if ($(this).hasClass('go-left')) {
-      sklData.prev();
+      sklSlider.trigger('prev.owl.carousel');
     } else {
-      sklData.next();
+      sklSlider.trigger('next.owl.carousel');
     }
   });
 
 
   const exSlider = $('#experienceSlider');
-  exSlider.owlCarousel({
-    items: 3,
-    slideSpeed: 600,
-    itemsDesktop: [1000, 3],
-    itemsDesktopSmall: [900, 3],
-    itemsTablet: [800, 2],
-    itemsMobile: [500, 1],
-    pagination: false,
-  });
-  const exData = exSlider.data('owlCarousel');
-
+  exSlider.owlCarousel(carouselDefaultOptions);
 
   const exTgt = $('.exp-ctrl').find('.go');
-  exTgt.on('click', function (e) {
-    e.preventDefault();
+  exTgt.on('click', function () {
     if ($(this).hasClass('go-left')) {
-      exData.prev();
+      exSlider.trigger('prev.owl.carousel');
     } else {
-      exData.next();
+      exSlider.trigger('next.owl.carousel');
     }
   });
 
 
   const edSlider = $('#educationSlider');
-  edSlider.owlCarousel({
-    slideSpeed: 600,
-    items: 3,
-    itemsDesktop: [1000, 3],
-    itemsDesktopSmall: [900, 3],
-    itemsTablet: [800, 2],
-    itemsMobile: [500, 1],
-    pagination: false,
-  });
-  const edData = edSlider.data('owlCarousel');
-
+  edSlider.owlCarousel(carouselDefaultOptions);
 
   const edTgt = $('.edu-ctrl').find('.go');
-  edTgt.on('click', function (e) {
-    e.preventDefault();
-
+  edTgt.on('click', function () {
     if ($(this).hasClass('go-left')) {
-      edData.prev();
+      edSlider.trigger('prev.owl.carousel');
     } else {
-      edData.next();
+      edSlider.trigger('next.owl.carousel');
     }
   });
 
 
   const tmSlider = $('#teamSlider');
-  tmSlider.owlCarousel({
-    slideSpeed: 600,
-    items: 3,
-    itemsDesktop: [1000, 3],
-    itemsDesktopSmall: [900, 3],
-    itemsTablet: [800, 2],
-    itemsMobile: [500, 1],
-    pagination: false,
-  });
-  const tmData = tmSlider.data('owlCarousel');
-
+  tmSlider.owlCarousel(carouselDefaultOptions);
 
   const tmTgt = $('.tmu-ctrl').find('.go');
-  tmTgt.on('click', function (e) {
-    e.preventDefault();
-
+  tmTgt.on('click', function () {
     if ($(this).hasClass('go-left')) {
-      tmData.prev();
+      tmSlider.trigger('prev.owl.carousel');
     } else {
-      tmData.next();
+      tmSlider.trigger('next.owl.carousel');
     }
   });
 
 
   const tesMoSlider = $('#testimonialSlider');
   tesMoSlider.owlCarousel({
-    slideSpeed: 600,
     items: 2,
-    itemsDesktop: [1000, 2],
-    itemsDesktopSmall: [900, 2],
-    itemsTablet: [600, 1],
-    itemsMobile: false,
-    pagination: false,
+    navSpeed: 600,
+    smartSpeed: 600,
+    fluidSpeed: 600,
+
+    responsive: {
+      0: {
+        items: 1,
+      },
+      480: {
+        items: 2,
+      },
+    },
   });
-
-  const tmoData = tesMoSlider.data('owlCarousel');
-
 
   const tmoTgt = $('.tmo-ctrl').find('.go');
 
-
-  tmoTgt.on('click', function (e) {
-    e.preventDefault();
-
+  tmoTgt.on('click', function () {
     if ($(this).hasClass('go-left')) {
-      tmoData.prev();
+      tesMoSlider.trigger('prev.owl.carousel');
     } else {
-      tmoData.next();
+      tesMoSlider.trigger('next.owl.carousel');
     }
   });
 
@@ -329,6 +315,7 @@ $(document).ready(function () {
     itemSelector: '.single-post',
     columnWidth: 30,
   });
+  msnry.layout();
   /* Choose your navigation style */
 
   menuFun.intelligent_menu(); // Hide intelligently

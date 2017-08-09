@@ -3,9 +3,6 @@ import 'animate.css';
 import 'jquery.nicescroll';
 import 'jquery.easing';
 
-import '../wwwroot/legacy-libs/owl-carousel/owl.carousel.css';
-import '../wwwroot/legacy-libs/owl-carousel/owl.carousel';
-
 import '../wwwroot/legacy-libs/materialize/css/materialize.min.css';
 
 import './css/site.css';
