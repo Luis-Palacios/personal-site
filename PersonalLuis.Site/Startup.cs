@@ -42,7 +42,22 @@ namespace PersonalLuis.Site
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = context =>
+                {
+                    if(!string.IsNullOrEmpty(context.Context.Request.Query["v"]))
+                    {
+                        context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=31536000" });
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddYears(1).ToString("R") }); // Format RFC1123
+                    }
+                    else
+                    {
+                        context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=21600" });
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(15).ToString("R") }); // Format RFC1123
+                    }
+                }
+            });
 
             app.UseMvc(routes =>
             {
