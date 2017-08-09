@@ -52,29 +52,4 @@ $(window).load(() => {
   $('#preloader').delay(350).fadeOut('slow');
   $('body').delay(350);
 
-  // blog post slider
-  const $blogPostSlider = $('.thumb-slides-container');
-  if ($blogPostSlider.length > 0) {
-    $blogPostSlider.each(() => {
-      $(this).owlCarousel({
-        singleItem: true,
-        autoPlay: true,
-        stopOnHover: true,
-        slideSpeed: 800,
-        transitionStyle: 'fade',
-      });
-    });
-
-    $('.thumb-slides-controller a').on('click', (e) => {
-      e.preventDefault();
-
-      const blogPostSliderData = $(this).closest('.blog-post-thumb').children('.thumb-slides-container').data('owlCarousel');
-
-      if ($(this).hasClass('left-arrow')) {
-        blogPostSliderData.prev();
-      } else {
-        blogPostSliderData.next();
-      }
-    });
-  }
 });

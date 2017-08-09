@@ -327,7 +327,7 @@ $(document).ready(function () {
   const msnry = new Masonry(elem, {
     // options
     itemSelector: '.single-post',
-    columnWidth: 10,
+    columnWidth: 30,
   });
   /* Choose your navigation style */
 
