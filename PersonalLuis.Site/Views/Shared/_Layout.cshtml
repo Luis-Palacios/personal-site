@@ -36,14 +36,14 @@
     <meta name="twitter:description" content="Full Stack developer that keep pushing himself forward! to learn more and more in the vast world of tech">
     <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
 
-    <script src="https://use.fontawesome.com/735204ed59.js"></script>
+    <script async src="https://use.fontawesome.com/735204ed59.js"></script>
     <environment include="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
         <link rel="stylesheet" href="~/.temp/all.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" as="style" onload="this.rel='stylesheet'" />
         <link rel="stylesheet" href="~/dist/all.css" asp-append-version="true" />
     </environment>
 </head>
