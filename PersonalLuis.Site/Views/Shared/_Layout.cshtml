@@ -35,7 +35,44 @@
     <meta name="twitter:title" content="Luis Palacios - Full Stack Web Developer">
     <meta name="twitter:description" content="Full Stack developer that keep pushing himself forward! to learn more and more in the vast world of tech">
     <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
+    <style>
+        .loader {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 50px);
+        }
 
+        .circle-loader {
+            -webkit-animation: rotate 2s linear infinite;
+            animation: rotate 2s linear infinite;
+            height: 50px;
+            left: 50%;
+            position: absolute;
+            top: 20%;
+            width: 50px;
+        }
+
+        .circle-loader .path {
+            stroke-dasharray: 1,200;
+            stroke-dashoffset: 0;
+            -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+            animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke: #3f88f8;
+        }
+
+        #preloader {
+            background: none repeat scroll 0 0 #fff;
+            display: block;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            z-index: 9999;
+        }
+    </style>
     <environment include="Development">
         <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
         <link rel="preload" href="~/.temp/all.css" as="style" onload="this.rel='stylesheet'"/>
@@ -51,41 +88,6 @@
 		/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
 		!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
 	</script>
-    <style>
-        .loader {
-            height: 50px;
-            width: 50px;
-            position: absolute;
-            left: calc(50% - 50px);
-            top: calc(50% - 50px);
-        }
-        .circle-loader {
-            -webkit-animation: rotate 2s linear infinite;
-            animation: rotate 2s linear infinite;
-            height: 50px;
-            left: 50%;
-            position: absolute;
-            top: 20%;
-            width: 50px;
-        }
-        .circle-loader .path {
-            stroke-dasharray: 1,200;
-            stroke-dashoffset: 0;
-            -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-            animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-            stroke-linecap: round;
-            stroke: #3f88f8;
-        }
-        #preloader {
-            background: none repeat scroll 0 0 #fff;
-            display: block;
-            height: 100vh;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            z-index: 9999;
-        }
-    </style>
 </head>
 <body>
     <!-- Preloader --> 
