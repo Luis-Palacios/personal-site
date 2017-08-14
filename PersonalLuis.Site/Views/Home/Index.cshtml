@@ -208,8 +208,8 @@
                                 <div class="col-sm-12">
                                     <h2 class="title">Frameworks &amp; Tools</h2>
                                     <p class="regular-text">
-                                        Frameworks, tools, and libraries that I have learned and used for software development.
-                                        Some of them I have loved, some of them... let's just say not so much but here they are.
+                                        Frameworks, tools, libraries and other that I have learned and used for software development.
+                                      
                                     </p>
                                 </div>
                             </div>
@@ -305,7 +305,9 @@
                                                             <p>@contact.Value.Position</p>
                                                         </div>
                                                         <p class="rev-content">
-                                                            @contact.Value.ShortDescription
+                                                           @contact.Value.ShortDescription
+                                                        <br /><br />
+                                                           More about <a href="@contact.Value.PersonalUrl">@contact.Value.Name</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -361,7 +363,7 @@
                                             </div>
                                         </div>
                                         <div class="clearfix card-content">
-                                            <a class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>
+                                            @*<a class="left js-favorite" title="Love this"><i class="mdi-action-favorite"></i><span class="numb">15</span></a>*@
                                             <a class="brand-text right waves-effect blog-link">Read More</a>
                                         </div>
                                     </div>

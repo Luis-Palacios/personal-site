@@ -36,11 +36,9 @@
     <meta name="twitter:description" content="Full Stack developer that keep pushing himself forward! to learn more and more in the vast world of tech">
     <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
 
-    <link rel="preload" href="https://use.fontawesome.com/735204ed59.css" as="style" onload="this.rel='stylesheet'"/>
-    <link rel="preload" href="https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css" as="style" onload="this.rel='stylesheet'"/>
     <environment include="Development">
         <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
-        <link rel="stylesheet" href="~/.temp/all.css" />
+        <link rel="preload" href="~/.temp/all.css" as="style" onload="this.rel='stylesheet'"/>
     </environment>
     <environment exclude="Development">
         <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -219,19 +217,12 @@
         </footer>
     <!-- #footer end -->
     </main>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script async src="https://use.fontawesome.com/735204ed59.js"></script>
     <environment include="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
-        <script src="~/.temp/bundle.js"></script>
+        <script async src="~/.temp/bundle.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/dist/bundle.js" asp-append-version="true"></script>
+        <script async src="~/dist/bundle.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("Scripts", required: false)
 </body>

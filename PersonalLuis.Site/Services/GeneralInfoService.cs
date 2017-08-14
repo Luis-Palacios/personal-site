@@ -85,7 +85,7 @@ namespace PersonalLuis.Site.Services
                     Position="Front-end Developer",
                     ShortDescription=@"I'm a very detailed front-end developer with a very high level of html and css (sass, less)
                                         which leads me to produce very clean and maintainable code with great html semantics. I also know Vue.js
-                                        and I've worked with django, laravel, and recently working with wordpress",
+                                        and I've worked with django, laravel, and recently working with wordpress.",
                 },
                 new Contact
                 {
@@ -98,10 +98,11 @@ namespace PersonalLuis.Site.Services
                 new Contact
                 {
                     Name = "Jarbit Lira",
-                    PersonalUrl="https://www.linkedin.com/in/jarbitlira/",
+                    PersonalUrl="https://jarbitlira.com",
                     PictureUrl="/images/contacts/jarbit-lira.jpg",
                     Position="Full Stack Developer",
-                    ShortDescription=@"",
+                    ShortDescription=@"I'm a Full Stack Web Developer with 5 years of experience, 
+                                        I'm currently working with Laravel, Angular, NodeJs, Gulp and Sass. Recently I've started working with ReactJS and ReactNative as a web developer  I write very clean code and I use coding standards.",
                 },
                 new Contact
                 {
@@ -115,11 +116,11 @@ namespace PersonalLuis.Site.Services
                 new Contact
                 {
                     Name = "Carlos Lenon",
-                    PersonalUrl="https://www.linkedin.com/in/clenondavis/",
+                    PersonalUrl="http://carloslenon.com/",
                     PictureUrl="/images/contacts/carlos-lenon.png",
                     Position="UI/UX Frontend Developer",
                     ShortDescription=@"I'm a passionate entrepreneur, very detailed front-end developer with a high level of HTML and css (sass, less, stylus), 
-                                    wich leads me to produce very clean and maintainable code with great HTML semantics. I worked already with Vuejs, AngularJs and currently working with Reactjs",
+                                    wich leads me to produce very clean and maintainable code with great HTML semantics. I worked already with Vuejs, AngularJs and currently working with Reactjs.",
                 },
                 new Contact
                 {
