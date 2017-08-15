@@ -107,6 +107,15 @@ namespace PersonalLuis.Site.Services
                 },
                 new Contact
                 {
+                    Name = "Darwing Medina",
+                    PersonalUrl="https://www.linkedin.com/in/dmedina93/",
+                    PictureUrl="/images/contacts/darwing.png",
+                    Position="Full Stack Developer",
+                    ShortDescription=@"I'm open source enthusiast, lover of clean code and pixel perfect UI/UX. My main programming languages are Python, Javascript and PHP, 
+                                       with technologies as Django, WordPress, Drupal and mobile technologies as Swift, Java & React Native. In the front-end side HTML5, CSS/SASS, jQuery, ReactJS, Angular & Gulp.",
+                },
+                new Contact
+                {
                     Name = "Amadeus Nicoya",
                     PersonalUrl="https://www.linkedin.com/in/amadeusj5/",
                     PictureUrl="/images/contacts/amadeus-nicoya.jpg",
