@@ -93,7 +93,8 @@ namespace PersonalLuis.Site.Services
                     PersonalUrl="https://www.linkedin.com/in/wuelber-castillo-821a93115/",
                     PictureUrl="/images/contacts/wuelber-castillo.jpg",
                     Position="Web Developer",
-                    ShortDescription=@"",
+                    ShortDescription=@"I've been a web developer for 5 years. I've work mostly on PHP, proficient on the Laravel framework.
+                                       I've worked with React and currently trying to improve my Javascript skills on Nodejs. Always learning something new everyday. #JuniorDevForLife",
                 },
                 new Contact
                 {
