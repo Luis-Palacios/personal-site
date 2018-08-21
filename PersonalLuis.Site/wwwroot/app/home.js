@@ -7,6 +7,7 @@ import 'owl.carousel';
 
 const WOW = window.WOW;
 const $ = window.jQuery;
+$.fn.load = function (callback) { $(window).on('load', callback); };
 
 const carouselDefaultOptions = {
   items: 3,
