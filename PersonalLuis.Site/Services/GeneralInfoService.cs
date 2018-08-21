@@ -85,7 +85,7 @@ namespace PersonalLuis.Site.Services
                     Position="Front-end Developer",
                     ShortDescription=@"I'm a very detailed front-end developer with a very high level of html and css (sass, less)
                                         which leads me to produce very clean and maintainable code with great html semantics. I also know Vue.js
-                                        and I've worked with django, laravel, and recently working with wordpress",
+                                        and I've worked with django, laravel, and recently working with wordpress.",
                 },
                 new Contact
                 {
@@ -93,15 +93,26 @@ namespace PersonalLuis.Site.Services
                     PersonalUrl="https://www.linkedin.com/in/wuelber-castillo-821a93115/",
                     PictureUrl="/images/contacts/wuelber-castillo.jpg",
                     Position="Web Developer",
-                    ShortDescription=@"",
+                    ShortDescription=@"I've been a web developer for 5 years. I've work mostly on PHP, proficient on the Laravel framework.
+                                       I've worked with React and currently trying to improve my Javascript skills on Nodejs. Always learning something new everyday. #JuniorDevForLife",
                 },
                 new Contact
                 {
                     Name = "Jarbit Lira",
-                    PersonalUrl="https://www.linkedin.com/in/jarbitlira/",
+                    PersonalUrl="https://jarbitlira.com",
                     PictureUrl="/images/contacts/jarbit-lira.jpg",
                     Position="Full Stack Developer",
-                    ShortDescription=@"",
+                    ShortDescription=@"I'm a Full Stack Web Developer with 5 years of experience, 
+                                        I'm currently working with Laravel, Angular, NodeJs, Gulp and Sass. Recently I've started working with ReactJS and ReactNative as a web developer  I write very clean code and I use coding standards.",
+                },
+                new Contact
+                {
+                    Name = "Darwing Medina",
+                    PersonalUrl="https://www.linkedin.com/in/dmedina93/",
+                    PictureUrl="/images/contacts/darwing.png",
+                    Position="Full Stack Developer",
+                    ShortDescription=@"I'm open source enthusiast, lover of clean code and pixel perfect UI/UX. My main programming languages are Python, Javascript and PHP, 
+                                       with technologies as Django, WordPress, Drupal and mobile technologies as Swift, Java & React Native. In the front-end side HTML5, CSS/SASS, jQuery, ReactJS, Angular & Gulp.",
                 },
                 new Contact
                 {
@@ -115,11 +126,11 @@ namespace PersonalLuis.Site.Services
                 new Contact
                 {
                     Name = "Carlos Lenon",
-                    PersonalUrl="https://www.linkedin.com/in/clenondavis/",
+                    PersonalUrl="http://carloslenon.com/",
                     PictureUrl="/images/contacts/carlos-lenon.png",
                     Position="UI/UX Frontend Developer",
                     ShortDescription=@"I'm a passionate entrepreneur, very detailed front-end developer with a high level of HTML and css (sass, less, stylus), 
-                                    wich leads me to produce very clean and maintainable code with great HTML semantics. I worked already with Vuejs, AngularJs and currently working with Reactjs",
+                                    wich leads me to produce very clean and maintainable code with great HTML semantics. I worked already with Vuejs, AngularJs and currently working with Reactjs.",
                 },
                 new Contact
                 {
