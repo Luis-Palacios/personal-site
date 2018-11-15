@@ -20,7 +20,8 @@ namespace PersonalLuis.Site.Services
                  StartDate="July 2017",
                  EndDate="Present",
                  Position="Software Developer",
-                 Description="Just getting started!"
+                 Description=@"Improved performance of existing .NET system and helped in the migration process
+                             to the .NET core. Supported the development of Sitecore sites and implemented data analysis tools and Recommendation systems based on collaborative filtering"
              },
             new Company
              {
