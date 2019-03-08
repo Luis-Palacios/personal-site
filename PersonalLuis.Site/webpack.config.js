@@ -42,7 +42,6 @@ module.exports = {
       {
         test: [
           require.resolve('jquery.nicescroll'),
-          require.resolve('jquery-hammerjs'),
           require.resolve('isotope-layout'),
         ],
         use: ['imports-loader?define=>false'],
