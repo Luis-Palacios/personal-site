@@ -317,6 +317,32 @@ namespace PersonalLuis.Site.Services
             {
                  new Recommendation
                 {
+                    Company="Rain",
+                    Name="Mitchell Harris",
+                    Position="Senior Technical Lead",
+                    PictureUrl="/images/recommendations/mitchell-harris.jpg",
+                    Url="https://www.linkedin.com/in/mitchell-harris-6b44b923/",
+                    Testimonial=@"I hired and managed Luis for about a year while I directed RAIN's Nicaragua office. 
+                                  Luis was among the top developer I've worked with. He is bright, experienced,
+                                  and exercises excellent judgement of technical problems. He could be assigned to projects and work independently,
+                                  or lead a team. Luis was often placed on struggling projects since he has an ability to recognize what is important and what is not,
+                                  and bring failing projects to success. Additionally Luis is a pleasure to work with. I also would commonly pair Luis with other
+                                  more junior develops since Luis enjoys and is strong with mentoring. An all-around solid developer, I'd make Luis a core member of any team I work with"
+                },
+                 new Recommendation
+                {
+                    Company="OOQIA",
+                    Name="Benjamin Lopez",
+                    Position="CEO",
+                    PictureUrl="/images/recommendations/benjamin-lopez.jpg",
+                    Url="https://www.linkedin.com/in/benjaminlopezb/",
+                    Testimonial=@"I have come to know Luis through multiple projects he managed while working on custom software development services at OOQIA.
+                                  Luis has proven himself to be an IT Leader who is passionate about leveraging technology to deliver business value on each project he participated.
+                                  He has been committed to output high-quality code by empowering his teams and continuously sharing his knowledge in the field.
+                                  I have no reservations in recommending Luis for future IT Team leadership roles"
+                },
+                 new Recommendation
+                {
                     Company="SafetyPay INC",
                     Name="Jorge Alfaro",
                     Position="CTO",
@@ -336,16 +362,7 @@ namespace PersonalLuis.Site.Services
                     Testimonial=@"Luis, proved to be a professional with technical and human characteristics to carry out the assigned tasks,
                                   he was very useful for the team because of his gift to easily learn new technologies and put them into practice.
                                   I am absolutely sure that his skills are sufficient to carry out the projects entrusted to him based on his knowledge and experiences."
-                },
-                new Recommendation
-                {
-                    Company="MPESO",
-                    Name="Harvin Toledo",
-                    Position="System Analyst",
-                    PictureUrl="/images/recommendations/harvin-toledo.jpg",
-                    Url="https://www.linkedin.com/in/harvin-toledo-1227bb58/",
-                    Testimonial="Luis Palacios is a very intelligent person he is predisposed and proactive to engage in any task assigned to him. I'm sure He will do a quality job for any company."
-                },
+                }
             };
         }
 
