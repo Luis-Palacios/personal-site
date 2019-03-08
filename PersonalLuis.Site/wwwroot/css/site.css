@@ -592,6 +592,7 @@ header.nav {
 
 .person-img img {
     border: 8px solid #fff;
+    border-radius: 50%;
 }
 
 .person-about p {

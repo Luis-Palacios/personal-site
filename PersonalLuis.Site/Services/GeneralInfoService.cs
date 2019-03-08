@@ -248,7 +248,7 @@ namespace PersonalLuis.Site.Services
                 Address = "Managua, Nicaragua",
                 BirthDate = new DateTime(1989, 4, 22),
                 Email = "lrpalaciosdev@gmail.com",
-                PictureUrl = "/images/luis-palacios.png",
+                PictureUrl = "/images/luis-palacios-3.jpeg",
                 History = @"Back in 1996 when I was seven years old, I learned how to start Prince of Persia game in a computer with MS-DOS and from then 
                             I knew that my history with the tech world had just begun.
                             <br />
