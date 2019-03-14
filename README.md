@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/ha99kgt2cwv4i1o7?svg=true)](https://ci.appveyor.com/project/Luis-Palacios/personal-site)
 # Personal site
 
 Development for my personal site. Great oportinity to test new tech and experiment a bit with free services for open source :D
