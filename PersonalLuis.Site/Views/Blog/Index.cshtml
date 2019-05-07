@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Banner start -->
+<section id="banner" class="root-sec brand-bg padd-tb-73 blogpage-banner-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix blog-banner-text">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <h2 class="title">BLOG</h2>
+                    <p class="regular-text">A Web page that serves as a publicly accessible personal journal for an individual. Typically updated daily, blogs often reflect the personality of the author.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--./Banner end-->
+
+@section scripts{
+    <environment include="Development">
+        <script async src="~/.temp/blogPage.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/blogPage.js" asp-append-version="true"></script>
+    </environment>
+}
