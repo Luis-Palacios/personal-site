@@ -2,7 +2,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@section styles{
+    <environment include="Development">
+        <link rel="preload" href="~/.temp/blog.css" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="preload" href="~/dist/blog.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+}
 <!-- Banner start -->
 <section id="banner" class="root-sec brand-bg padd-tb-73 blogpage-banner-wrap">
     <div class="container">
@@ -18,5 +25,10 @@
 </section> <!--./Banner end-->
 
 @section scripts{
-   
+    <environment include="Development">
+        <script async src="~/.temp/blog.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/blog.bundle.js" asp-append-version="true"></script>
+    </environment>
 }

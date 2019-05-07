@@ -4,10 +4,13 @@ const ProvidePlugin = require('webpack-provide-global-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './wwwroot/index.js',
+  entry: {
+    home: './wwwroot/index.js',
+    blog: './wwwroot/app/blog.js',
+  },
   devtool: 'inline-source-map',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'wwwroot', '.temp'),
   },
   module: {

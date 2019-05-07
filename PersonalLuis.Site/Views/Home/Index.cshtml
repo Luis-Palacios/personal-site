@@ -1,5 +1,15 @@
 ﻿@using PersonalLuis.Site.Models.Enums;
 @model HomeVm
+
+@section styles{
+    <environment include="Development">
+        <link rel="preload" href="~/.temp/home.css" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="preload" href="~/dist/home.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+}
+
 <!-- About Section start -->
 <section id="about" class="scroll-section root-sec padd-tb-60 grey lighten-5 about-wrap">
     <div class="container">
@@ -420,3 +430,11 @@
     </div> <!-- ./container end -->
 </section>
 <!-- #testimonial Section end -->
+@section scripts{
+    <environment include="Development">
+        <script async src="~/.temp/home.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/home.bundle.js" asp-append-version="true"></script>
+    </environment>
+}
