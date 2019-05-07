@@ -5,7 +5,7 @@ import 'sweetalert/dist/sweetalert.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 
-const WOW = window.WOW;
+const { WOW } = window;
 const $ = window.jQuery;
 $.fn.load = function (callback) { $(window).on('load', callback); };
 

@@ -30,11 +30,6 @@ $(document).ready(() => {
   });
 
 
-  $('html').niceScroll({
-    cursorwidth: '7px',
-    zindex: '9999999',
-  });
-
   // blog Mesonary
   if ($('#blog-posts').length > 0) {
     window.blogMsnry = new Isotope('.single-post', {

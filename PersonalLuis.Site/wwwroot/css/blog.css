@@ -30,8 +30,6 @@ header.nav {
     margin-bottom: 7px;
 }
 
-.single-banner {
-}
 
 .blog-post-meta a,
 .blog-post-meta span {
@@ -56,9 +54,6 @@ header.nav {
 .single-widget {
     margin-bottom: 56px;
 }
-
-    .single-widget ul {
-    }
 
         .single-widget ul li {
             border-bottom: 1px solid #eeeeee;
@@ -98,9 +93,6 @@ a.tags {
     }
 
 /*single blog*/
-
-.blog-post-meta {
-}
 
     .blog-post-meta li {
         float: left;
@@ -327,9 +319,6 @@ a.tags {
     .comment-list .card p {
         margin-top: 0;
     }
-
-.comment-list {
-}
 
     .comment-list .card {
         margin-bottom: 20px;

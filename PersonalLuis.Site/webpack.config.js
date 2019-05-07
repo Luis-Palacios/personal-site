@@ -1,9 +1,11 @@
 ﻿const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProvidePlugin = require('webpack-provide-global-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './wwwroot/index.js',
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'wwwroot', '.temp'),
@@ -16,16 +18,24 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
+            presets: ['env'],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader',
-        }),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              // publicPath: '../',
+              // hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -41,18 +51,10 @@ module.exports = {
       },
       {
         test: [
-          require.resolve('jquery.nicescroll'),
           require.resolve('isotope-layout'),
         ],
         use: ['imports-loader?define=>false'],
       },
-      //{
-      //    test: [
-      //        require.resolve('jquery.nicescroll'),
-      //        /waypoints/
-      //    ],
-      //    use: ['script-loader'],
-      //},
       {
         test: [
           require.resolve('wowjs'),
@@ -62,7 +64,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('all.css'),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
