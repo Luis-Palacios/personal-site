@@ -168,6 +168,10 @@ body {
     padding-bottom: 55px;
 }
 
+.padd-tb-15{
+    padding-top: 15px;
+}
+
 .row {
     margin-bottom: 0;
 }

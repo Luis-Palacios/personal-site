@@ -450,3 +450,16 @@ a.tags {
         display: none;
     }
 }
+
+.blog-title {
+    margin-bottom: 15px;
+}
+
+#search {
+    margin-bottom: 20px;
+}
+
+#search h2 {
+    color: #727272;
+    font-size: 18px;
+}
