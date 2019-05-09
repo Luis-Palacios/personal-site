@@ -16,12 +16,18 @@ namespace PersonalLuis.Site.Controllers
         {
             this.blogService = blogService;
         }
+
         public IActionResult Index(string searchTerm)
         {
             ViewBag.SearchTerm = searchTerm;
             BlogVm blogVm = new BlogVm();
             blogVm.FeaturedPosts = blogService.GetFeaturedPosts();
             return View(blogVm);
+        }
+
+        public IActionResult Detail(string postSlug)
+        {
+            return View();
         }
     }
 }
