@@ -1,6 +1,5 @@
 ﻿@using PersonalLuis.Site.Models.Enums;
 @model HomeVm
-
 @section styles{
     <environment include="Development">
         <link rel="preload" href="~/.temp/home.css" as="style" onload="this.rel='stylesheet'" />
@@ -9,7 +8,6 @@
         <link rel="preload" href="~/dist/home.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
     </environment>
 }
-
 <!-- About Section start -->
 <section id="about" class="scroll-section root-sec padd-tb-60 grey lighten-5 about-wrap">
     <div class="container">
@@ -220,31 +218,31 @@
                                         <div id="educationSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
                                             @foreach (var devtool in Model.DevTools.Select((value, i) => new { Value = value, i }))
                                             {
-                                            <div class="col-sm-4 single-card-box wow fadeInUpSmall"
-                                                 data-wow-duration=".7s"
-                                                 data-wow-delay=".@(devtool.i*2)s">
-                                                <div class="card">
-                                                    <div class="card-image waves-effect waves-block waves-light">
-                                                        <div class="card-img-wrap">
-                                                            <img class="activator" src="@devtool.Value.PictureUrl" alt="@devtool.Value.Name">
+                                                <div class="col-sm-4 single-card-box wow fadeInUpSmall"
+                                                     data-wow-duration=".7s"
+                                                     data-wow-delay=".@(devtool.i*2)s">
+                                                    <div class="card">
+                                                        <div class="card-image waves-effect waves-block waves-light">
+                                                            <div class="card-img-wrap">
+                                                                <img class="activator" src="@devtool.Value.PictureUrl" alt="@devtool.Value.Name">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
-                                                        <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
-                                                    </div>
-                                                    <!-- Reveal content-->
-                                                    <div class="card-reveal">
-                                                        <div class="rev-title-wrap">
-                                                            <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                        <div class="card-content">
+                                                            <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-more-vert right"></i></span>
                                                             <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
                                                         </div>
-                                                        <p class="rev-content">
-                                                            @Html.Raw(devtool.Value.ShortDescription)
-                                                        </p>
+                                                        <!-- Reveal content-->
+                                                        <div class="card-reveal">
+                                                            <div class="rev-title-wrap">
+                                                                <span class="card-title activator brand-text">@devtool.Value.Name<i class="mdi-navigation-close right"></i></span>
+                                                                <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
+                                                            </div>
+                                                            <p class="rev-content">
+                                                                @Html.Raw(devtool.Value.ShortDescription)
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             }
                                         </div>
                                     </div>
@@ -303,9 +301,9 @@
                                                             <p>@contact.Value.Position</p>
                                                         </div>
                                                         <p class="rev-content">
-                                                           @contact.Value.ShortDescription
-                                                        <br /><br />
-                                                           More about <a href="@contact.Value.PersonalUrl">@contact.Value.Name</a>
+                                                            @contact.Value.ShortDescription
+                                                            <br /><br />
+                                                            More about <a href="@contact.Value.PersonalUrl">@contact.Value.Name</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -349,18 +347,24 @@
                                         <div class="card-image">
                                             <div class="card-img-wrap">
                                                 <div class="blog-post-thumb waves-effect waves-block waves-light">
-                                                    <a class="blog-link">
+                                                    <a class="blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")">
                                                         <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
                                                     </a>
                                                 </div>
                                                 <div class="post-body">
-                                                    <a class="post-title-link brand-text blog-link"><h2 class="post-title">@post.Value.Title</h2></a>
+                                                    <a class="post-title-link brand-text blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")"><h2 class="post-title">@post.Value.Title</h2></a>
                                                     <p class="post-content">@post.Value.Introduction</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="clearfix card-content">
-                                            <a class="brand-text right waves-effect blog-link">Read More</a>
+                                            <a class="brand-text right waves-effect blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")">
+                                                @if (post.Value.isMedium)
+                                                {
+                                                    <i class="fa fa-medium link-icon"></i>
+                                                }
+                                                Read More
+                                            </a>
                                         </div>
                                     </div>
                                 </article>
@@ -368,7 +372,9 @@
                         </div>
                         <div class="clearfix left-align">
                             <div class="col-sm-12">
-                                <a class="waves-effect waves-light btn-large load-more blog-link">See More</a>
+                                <a class="waves-effect waves-light btn-large load-more blog-link" href="@Url.Action("Index", "Blog")">
+                                    See More
+                                </a>
                             </div>
                         </div>
                     </div>

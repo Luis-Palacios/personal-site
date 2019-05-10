@@ -45,18 +45,24 @@
                             <div class="card-image">
                                 <div class="card-img-wrap">
                                     <div class="blog-post-thumb waves-effect waves-block waves-light">
-                                        <a href="#">
+                                        <a href="@post.Url" target="@(post.isMedium? "_blank":"_self")">
                                             <img class="activator" src="@post.BanerThumbnailUrl" alt="@post.Title">
                                         </a>
                                     </div>
                                     <div class="post-body">
-                                        <a href="single.html" class="post-title-link brand-text"><h2 class="post-title">@post.Title</h2></a>
+                                        <a href="@post.Url" target="@(post.isMedium? "_blank":"_self")" class="post-title-link brand-text"><h2 class="post-title">@post.Title</h2></a>
                                         <p class="post-content">@post.Introduction</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="clearfix card-content">
-                                <a href="single.html" class="brand-text right waves-effect">read more</a>
+                                <a href="@post.Url" target="@(post.isMedium? "_blank":"_self")"class="brand-text right waves-effect">
+                                    @if (post.isMedium)
+                                    {
+                                        <i class="fa fa-medium link-icon"></i>
+                                    }
+                                    Read more
+                                </a>
                             </div>
                         </div>
                     </article> <!--./single blog post-->

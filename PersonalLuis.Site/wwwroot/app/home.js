@@ -1,7 +1,5 @@
 import 'wowjs';
-import swal from 'sweetalert';
 import Masonry from 'masonry-layout';
-import 'sweetalert/dist/sweetalert.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 
@@ -305,10 +303,6 @@ $(document).ready(function () {
   });
 
   window.menuFun = menuFun;
-
-  $('.blog-link').on('click', () => {
-    swal('Ops!', 'I am glad you want to check the blog, I will have it ready as soon as I can please be patient', 'info');
-  });
 
   const elem = document.querySelector('#blog-posts');
   const msnry = new Masonry(elem, {

@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PersonalLuis.Site.Models.Blog;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PersonalLuis.Site.Services
 {
     public class BlogService : IBlogService
     {
+        private readonly IUrlHelper urlHelper;
+        public BlogService(IUrlHelper urlHelper)
+        {
+            this.urlHelper = urlHelper;
+        }
         public IEnumerable<Post> GetFeaturedPosts()
         {
             return new List<Post>
             {
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Powerfull linting in C#",
                     Introduction = @"For those that have used tools like eslint for javascript know that a great linting tool and configuration
@@ -24,7 +30,7 @@ namespace PersonalLuis.Site.Services
                     Slug="powerfull-linting-csharp"
                    
                 },
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Cmder the must have windows console",
                     Introduction = @"If you have been doing development in windows and in need to use the command line, you probably already realize
@@ -33,15 +39,17 @@ namespace PersonalLuis.Site.Services
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
                     Slug="cmder-must-have-windows-console"
                 },
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
                     BanerThumbnailUrl="/images/posts/databases.png",
-                    Slug="restoring-multiple-database-in-sql-server-from-bak-files"
+                    Slug="restoring-multiple-database-sql-server-from-bak-files",
+                    isMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4"
                 },
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Web pack for server side frameworks",
                     Introduction = @"I've spend one year and half just working on SPA and came to love Web pack,
@@ -49,7 +57,18 @@ namespace PersonalLuis.Site.Services
                                      and I wanted to continue using web pack which is normally made for front-end frameworks",
                     BanerThumbnailUrl="/images/posts/webpack-server-side.png",
                     Slug="web-pack-for-server-side-frameworks"
-                }
+                },
+                new Post(urlHelper)
+                {
+                    Title = "Get development started with Sitecore ",
+                    Introduction = @"This series is about getting stronger in Sitecore core concepts and some third party tools
+                                        that will be helpful in the future such as Unicorn and Glass mapper you can consider this
+                                        series a possible next step after the Fundamental Course.",
+                    BanerThumbnailUrl="/images/posts/sitecore-development.png",
+                    Slug="sitecore-development",
+                    isMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a"
+                },
             };
         }
     }
