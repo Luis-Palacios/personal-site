@@ -1,7 +1,62 @@
-﻿
-@{
-    ViewData["Title"] = "Detail";
+﻿@model PersonalLuis.Site.Models.Blog.Post
+
+@section styles{
+    <environment include="Development">
+        <link rel="preload" href="~/.temp/blog.css" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="preload" href="~/dist/blog.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
+    </environment>
 }
 
-<h2>Detail</h2>
+<!-- Banner start -->
+<section id="banner" class="root-sec brand-bg padd-tb-55 single-banner blogpage-banner-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix blog-banner-text blog-single-banner">
+                <div class="col-md-12">
+                    <h2 class="title">@Model.Title</h2>
+                    <ul class="clearfix blog-post-meta">
+                        <li>
+                            By <a href="#">@Model.Author</a>
+                        </li>
+                        <li>@Model.PublishedDate.ToShortDateString()</li>
+                        <li>
+                            <a href="#">5 Comments</a>
+                        </li>
+                        <li>
+                            <a href="#">@Model.Category</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- ./Banner end -->
 
+<section id="all-posts" class="root-sec grey lighten-5 blogpage-posts-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix all-blog-post blog-inner with-sidebar">
+                <!-- post container start-->
+                <div class="col-sm-8">
+                    <article class="single-post-page">
+                        @await Html.PartialAsync($"~/Views/Blog/Posts/{Model.Content}.cshtml")
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        window.personalSite = "@ViewBag.SearchTerm";
+    </script>
+    <environment include="Development">
+        <script async src="~/.temp/blog.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/blog.bundle.js" asp-append-version="true"></script>
+    </environment>
+}

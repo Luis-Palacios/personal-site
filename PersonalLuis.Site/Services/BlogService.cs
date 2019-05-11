@@ -27,8 +27,9 @@ namespace PersonalLuis.Site.Services
                                       are forced. With a powerfull linting you can make sure to develop and keep a great code base that will feel like
                                       just one person wrote it, regardless of the size of the team.",
                     BanerThumbnailUrl="/images/posts/csharp-linting-thumb.png",
-                    Slug="powerfull-linting-csharp"
-                   
+                    Slug="powerfull-linting-csharp",
+                    Author="Luis Palacios"
+
                 },
                 new Post(urlHelper)
                 {
@@ -37,7 +38,11 @@ namespace PersonalLuis.Site.Services
                                      that the native console that the command prompt is bad, well the creator of cmder realized that too and they have build
                                      this amazing console that you will love!",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
-                    Slug="cmder-must-have-windows-console"
+                    Slug="cmder-must-have-windows-console",
+                    Author="Luis Palacios",
+                    Category ="DevTools",
+                    PublishedDate=new DateTime(2019, 5, 10),
+                    Content="CmderMustHaveWindowsConsole",
                 },
                 new Post(urlHelper)
                 {
@@ -46,8 +51,9 @@ namespace PersonalLuis.Site.Services
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
                     BanerThumbnailUrl="/images/posts/databases.png",
                     Slug="restoring-multiple-database-sql-server-from-bak-files",
-                    isMedium = true,
-                    ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4"
+                    IsMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4",
+                    Author="Luis Palacios"
                 },
                 new Post(urlHelper)
                 {
@@ -56,7 +62,8 @@ namespace PersonalLuis.Site.Services
                                       recently I had to come back to server side frameworks to do some works
                                      and I wanted to continue using web pack which is normally made for front-end frameworks",
                     BanerThumbnailUrl="/images/posts/webpack-server-side.png",
-                    Slug="web-pack-for-server-side-frameworks"
+                    Slug="web-pack-for-server-side-frameworks",
+                    Author="Luis Palacios"
                 },
                 new Post(urlHelper)
                 {
@@ -66,8 +73,9 @@ namespace PersonalLuis.Site.Services
                                         series a possible next step after the Fundamental Course.",
                     BanerThumbnailUrl="/images/posts/sitecore-development.png",
                     Slug="sitecore-development",
-                    isMedium = true,
-                    ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a"
+                    IsMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a",
+                    Author="Luis Palacios"
                 },
             };
         }

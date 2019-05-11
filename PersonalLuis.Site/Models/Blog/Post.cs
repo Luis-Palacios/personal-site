@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace PersonalLuis.Site.Models.Blog
 {
@@ -17,15 +18,18 @@ namespace PersonalLuis.Site.Models.Blog
         public string Introduction { get; set; }
         public string Content { get; set; }
         public string Slug { get; set; }
+        public string Author { get; set; }
+        public DateTime PublishedDate { get; set; }
+        public string Category { get; set; }
 
-        public bool isMedium { get; set; }
+        public bool IsMedium { get; set; }
         public string ExternalUrl { get; set; }
 
         public string Url
         {
             get
             {
-                if (isMedium)
+                if (IsMedium)
                     return ExternalUrl;
                 return urlHelper.Action("Detail", "Blog", new { postSlug = Slug });
             }

@@ -347,19 +347,19 @@
                                         <div class="card-image">
                                             <div class="card-img-wrap">
                                                 <div class="blog-post-thumb waves-effect waves-block waves-light">
-                                                    <a class="blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")">
+                                                    <a class="blog-link" href="@post.Value.Url" target="@(post.Value.IsMedium? "_blank":"_self")">
                                                         <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
                                                     </a>
                                                 </div>
                                                 <div class="post-body">
-                                                    <a class="post-title-link brand-text blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")"><h2 class="post-title">@post.Value.Title</h2></a>
+                                                    <a class="post-title-link brand-text blog-link" href="@post.Value.Url" target="@(post.Value.IsMedium? "_blank":"_self")"><h2 class="post-title">@post.Value.Title</h2></a>
                                                     <p class="post-content">@post.Value.Introduction</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="clearfix card-content">
-                                            <a class="brand-text right waves-effect blog-link" href="@post.Value.Url" target="@(post.Value.isMedium? "_blank":"_self")">
-                                                @if (post.Value.isMedium)
+                                            <a class="brand-text right waves-effect blog-link" href="@post.Value.Url" target="@(post.Value.IsMedium? "_blank":"_self")">
+                                                @if (post.Value.IsMedium)
                                                 {
                                                     <i class="fa fa-medium link-icon"></i>
                                                 }

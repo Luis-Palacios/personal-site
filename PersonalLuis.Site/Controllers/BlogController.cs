@@ -20,14 +20,18 @@ namespace PersonalLuis.Site.Controllers
         public IActionResult Index(string searchTerm)
         {
             ViewBag.SearchTerm = searchTerm;
-            BlogVm blogVm = new BlogVm();
-            blogVm.FeaturedPosts = blogService.GetFeaturedPosts();
+            BlogVm blogVm = new BlogVm
+            {
+                FeaturedPosts = blogService.GetFeaturedPosts()
+            };
             return View(blogVm);
         }
 
         public IActionResult Detail(string postSlug)
         {
-            return View();
+            var post = blogService.GetFeaturedPosts()
+                .FirstOrDefault(p => p.Slug == postSlug);
+            return View(post);
         }
     }
 }
