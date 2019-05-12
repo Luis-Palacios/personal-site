@@ -1,0 +1,255 @@
+﻿<div class="single-post-content">
+    <p>
+        Microsoft Build 2019 has just finished and some very exciting announcements were made among some of them is the new Windows Terminal which is described as:
+        <blockquote>a new, modern, fast, efficient, powerful, and productive terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and WSL.</blockquote>
+    </p>
+    <p>
+        They even created a video that is quite the marketing effort and I have to admit it, it's looking quite nice.
+    </p>
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <br />
+    <p>
+        You can see the presentation at Microsoft Build here: <a target="_blank" href="https://mybuild.techcommunity.microsoft.com/sessions/77004">Windows Terminal: Building a better command line experience for developers</a>
+        and you can see more details on this blog post: <a href="https://devblogs.microsoft.com/commandline/introducing-windows-terminal/" target="_blank">Introducing Windows Terminal</a>
+    </p>
+    <h2>Too little too late?</h2>
+    <p>
+        There is no doubt about too late because we know we haven't had a decent built-in terminal in windows, all we had is the Windows command prompt which
+        is already ~30 years old and while it does it works it's not a tool where you want
+        to spend your time in. The team working on it have added some basic improvements to it but is still a long way
+        from most terminals especially the ones available on UNIX systems and we certainly can not
+        customized as it is possible on UNIX and if you have used something like <a href="https://ohmyz.sh/" target="_blank">oh my zsh</a>
+        you will know cmd it just miles away from that but is it too little? We will know for sure once it fully released in around June.
+    </p>
+    <p>
+        You also have Powershell as an option but is also not that great, why hasn't this be a priority for Microsoft?
+        Dotnet developers have been mostly using <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>(Visual Studio) for development and you normally had
+        eveything you needed there.
+    </p>
+    <h2>
+        Do we need a good console application on Windows?
+    </h2>
+    <p>
+        With so many popular development tools that exist today that normally requires a <a href="https://www.w3schools.com/whatis/whatis_cli.asp">CLI</a>
+        to work the need for a good console is clear even dotnet core has moved to use more and more CLI tools and while you can integrate all of this directly
+        into Visual Studio so that those scripts will be run automatically when you build or execute your solution from Visual Studio.
+        The truth is many people is shifting away from the big IDE experience and using more lightweights editors such as Visual Studio Code and
+        terminal commands and if you are doing Development in other languages such as python, javascript or ruby you cannot
+        escape the need for a better console.
+    </p>
+    <p>
+        Such was my case when I started doing Django development, coming mostly from a DotNet background I opted to stay
+        on Windows to do Django development everything was going well except for cmd I was doing my pip installs, creating virtual environments,
+        generating and running migrations and even running the application on the console and cmd was just not good enough.
+        So I set myself to find a decent console for Windows that would provide me a better experience.
+    </p>
+    <h2>Console options for Windows</h2>
+    <p>
+        If you do a google search for alternatives on Windows you will find many options available for you, and one that you probably
+        already have is you are a software developer is <a href="https://www.atlassian.com/git/tutorials/git-bash" target="_blank">git bash</a>
+        which is normally included on the <a href="https://gitforwindows.org/" target="_blank">Git installer for Windows</a> and no doubt it' a great improvement
+        it allows you to execute Unix style commands it also provides you with commands such as ssh, scp, cat, etc and
+        in addition, it has great auto-complete for git commands however there are a few things that are missing.
+        <ol class="post-list">
+            <li>
+                1. Tabs and Split Views
+            </li>
+            <li>
+                2. Better keyboard shortcuts support
+            </li>
+            <li>
+                3. Better looks and more customizable options
+            </li>
+        </ol>
+    </p>
+    <p>
+        So what choices do we have? actually, a lot since many people have felt the need for a better console application in Windows, just to mention a few
+        Taken from <a href="https://www.slant.co/topics/1552/~best-terminal-emulators-for-windows">Slant.co</a>
+        <div class="thumb-wrap">
+            <img src="/images/posts/cmder/ranking.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+        </div>
+        You can read the reviews on the link to Slant if you want to see more for yourself
+    </p>
+    <h2>
+        My pick
+    </h2>
+    <p>
+        I'm in an agreement with results in Slant since I also went for <a href="https://cmder.net/">cmder</a> -- pronounced “Commander”
+        it provides exactly what I wanted, I really like the default styles and if you don't you can customize it, it also provides great
+        split views and great keyboard shortcuts
+    </p>
+
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/main.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/keyboard-shorctus.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/settings.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+    <p>
+        You can read more about cmder here <a href="https://github.com/cmderdev/cmder/wiki">Wiki</a> and here
+        <a href="https://github.com/cmderdev/cmder/blob/master/README.md">About cmder</a> but I will give you a very
+        brief overview of some of the features I use the most
+    </p>
+
+    <h3>Unix Style Commands</h3>
+    These are actually a gift from git for Windows and not cmder itself however cmder can take advantages of them and use them
+    and if case you are new to the console world on Windows I want you to be aware of the goodies available
+    <ul class="post-list">
+        <li>
+            <strong>ls</strong> to list the folders and file names in the current working directory and you can actually use the <a href="https://www.techonthenet.com/unix/basic/ls.php">variety of flags</a> available
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/ls.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+        </li>
+        <li>
+            <strong>touch</strong> have you ever tried to create a <code>.someName</code> file on Windows? it could be troublesome but you can use touch for quickly create empty files
+            and update the modification date on existent files eg: <code>touch .editorconfig </code>
+        </li>
+        <li>
+            <strong>cat</strong> to concatenate and quickly check the contents of a file directly on the console.
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/cat.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+        </li>
+        <li>
+            <strong>rm</strong> for deleting files and folder use it with <code>-r</code> to recursively delete subfolders and <code>-f</code>
+            to force my most typical use for this is <code>rm -rf node_modules</code> &#128517;
+        </li>
+        <li>
+            <strong>ssh</strong>, <strong>ssh-keygen</strong> and <strong>ssh-add</strong> For accessing remote servers, the lack of using ssh
+            as I was able to use it on Linux is probably the biggest reason I have cursed Windows, having to deal with <a href="https://www.putty.org/">PuTTY</a> and it's utilities
+            was a nightmare to me in comparison with using ssh on Linux, and to my surprise many people still think PuTTY is the only way to use ssh
+            on Windows, but we actually have two ways to use ssh just like on Linux now, one that comes with git for Windows an open ssh client that now
+            comes built in on Windows 10 so Putty is no longer your only option if you need to ssh into a server. If you want to check which ones you have available you can
+            use the <code>where</code> and <code>which</code> commands
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/ssh.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+            As you can see I have both options available but I'm using the open ssh client that comes in Windows 10
+        </li>
+    </ul>
+    <h3>Keyboard shortcuts</h3>
+    <ul class="post-list">
+        <li>
+            <strong>Ctrl + t</strong> you are probably already familiar with this short cut since it's used to open a new tab on browsers and on cmder it does exactly the same
+            so it is easy to get used to it.
+        </li>
+        <li>
+            <strong>Ctrl + w</strong> close the current tab
+        </li>
+        <li>
+            <strong>Alt + Enter</strong> Full screen
+        </li>
+        <li>
+            <strong>Ctrl + Alt + u</strong> Same as typing <code>cd ..</code> and hitting enter on the console it allows you to quickly traverse up in the directory structure
+        </li>
+        <li>
+            <strong>Ctrl + r</strong> Have you ever typed and execute any command with so many parameters that is hard to remember and you didn't save it? this shortcut has saved me
+            many times since it allows you to do a reverse search
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/search.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+        </li>
+    </ul>
+    <h3>Copy & Paste</h3>
+    <ul class="post-list">
+        <li>
+            <strong>Copy</strong> just select/highlight the text that you would like to copy and you have copied the selected text
+        </li>
+        <li>
+            <strong>Paste</strong> you can simply right click to paste the text on the clipboard or use <code>Ctrl + shift + v</code>
+        </li>
+    </ul>
+    <h3>Git</h3>
+    <ul class="post-list">
+        <li>
+            <strong>Git auto complete</strong> just type something like <code>git co</code> and hit tab and it will autocomplete <code>git commit</code> for you it can even suggest commands for you
+            when there is more than one autocomplete options try something like <code>git che</code> and you will see something like:
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/gitchec.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+        </li>
+        <li>
+            <strong>Git info right there on the console</strong>
+            <div class="thumb-wrap sub-image-wrap">
+                <img src="/images/posts/cmder/git.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+            </div>
+        </li>
+    </ul>
+    <h3>Aliases</h3>
+    This is probably the feature I love the most because of much it has increased my productivity and how simple it is to use it.
+    The following is a list of a few commands that I've used pretty much on a daily basis.
+    <ul class="post-list">
+        <li>
+            <strong>python manage.py runserver</strong>
+        </li>
+        <li>
+            <strong>python manage.py makemigrations</strong>
+        </li>
+        <li>
+            <strong>python manage.py migrate</strong>
+        </li>
+        <li>
+            <strong>dotnet run</strong>
+        </li>
+        <li>
+            <strong>cd source/repos/somerepo</strong>
+        </li>
+        <li>
+            <strong>rm -rf node_module && npm install</strong>
+        </li>
+        <li>
+            <strong>git fetch && git checkout somebranch</strong>
+        </li>
+        <li>
+            <strong>git commit -m "my commit comment"</strong>
+        </li>
+    </ul>
+    <p>
+        You can see some of them are a bit long with Alias I can create shorthands for all of these and it's as simple as <code>alias djrun=python manage.py runserver</code>
+        where djrun is the alias you would like to use for me is dj from Django and run of running the server so now I can just type <code>djrun</code>  which it's a lot less typing
+        than <code>python manage.py runserver</code> and you even get autocomplete for your aliases too.
+    </p>
+
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/djrun.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+    <p>
+        I can do similar things for my other commands, one that I find very helpful is creating an alias my accessing my repositories
+        eg: <code>alias gotopesite=cd C:\Users\LuisPalacios\source\repos\personal-site</code> this way no matter where I'm in my directory structure
+        I can just type <code>gotopesite</code> hit enter and I'll be immediately in my repository.
+    </p>
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/goto.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+    <p>
+        What about when you need an alias that supports an argument such as <code>git commit -m "this should be an argument"</code>
+        you can easily accomplish that using <code>$*</code> wherever you want your alias to receive an argument so in my case it can
+        be something like this <code>alias gtcommit=git commit -m "$*"</code> and then I can use it like this: <code>gtcommit this my example comment</code>
+    </p>
+    <div class="thumb-wrap">
+        <img src="/images/posts/cmder/gtcommit.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
+    </div>
+    <p>
+        There is a lot more you can do with alias and you can find more details on the official docs in cmder on the links I shared
+        but hopefully this is enough to get you started.
+    </p>
+    <h3>Is there a catch?</h3>
+    <p>
+        cmder just like many other options for a better console on Windows is an emulator so this mean performance could be affected,
+        on older versions, I did notice the startup time was slower than starting cmd or PowerShell but I also had older hardware,
+        now that I have better hardware (i7 and SSD) I don't notice any performance problems.
+    </p>
+    <p>
+        What do you think? are you excited about the new Windows Terminal? do you think cmder is a great option while we wait for it?
+        What have you been using as your go-to console on Windows? let me know in the comments below.
+    </p>
+</div>

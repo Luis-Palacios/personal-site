@@ -33,16 +33,19 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper)
                 {
-                    Title = "Cmder the must have windows console",
-                    Introduction = @"If you have been doing development in windows and in need to use the command line, you probably already realize
-                                     that the native console that the command prompt is bad, well the creator of cmder realized that too and they have build
-                                     this amazing console that you will love!",
+                    Title = "Good console experience on windows",
+                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI
+                                    to work the need for a good console is clear even dotnet core has moved to use more and more CLI tools and while you can integrate all of this directly
+                                    into Visual Studio so that those scripts will be run automatically when you build or execute your solution from Visual Studio.
+                                    The truth is many people is shifting away from the big IDE experience and using more lightweights editors such as Visual Studio Code and
+                                    terminal commands and if you are doing Development in other languages such as python, javascript or ruby you cannot
+                                    escape the need for a better console.",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
-                    Slug="cmder-must-have-windows-console",
+                    Slug="good-console-experience-on-windows",
                     Author="Luis Palacios",
                     Category ="DevTools",
-                    PublishedDate=new DateTime(2019, 5, 10),
-                    Content="CmderMustHaveWindowsConsole",
+                    PublishedDate=new DateTime(2019, 5, 11),
+                    Content="GoodConsoleExperience",
                 },
                 new Post(urlHelper)
                 {
