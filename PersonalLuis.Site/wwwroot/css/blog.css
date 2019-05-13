@@ -472,16 +472,28 @@ a.tags {
         margin-bottom: 5px;
     }
 
-ul.post-list{
+ul.post-list {
     margin-top: 5px;
 }
 
-    ul.post-list li>strong {
+    ul.post-list li > strong {
         font-weight: 500;
         text-decoration: underline;
         font-style: italic;
     }
 
-.sub-image-wrap{
+.sub-image-wrap {
+    margin-top: 10px;
+}
+
+.post-side-bar {
+    position: fixed;
+    display: inline-block;
+}
+
+.social-share {
+}
+
+.social-share li {
     margin-top: 10px;
 }

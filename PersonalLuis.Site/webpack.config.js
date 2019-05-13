@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     home: './wwwroot/index.js',
     blog: './wwwroot/app/blog.js',
+    post: './wwwroot/app/post.js',
   },
   devtool: 'inline-source-map',
   output: {

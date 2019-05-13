@@ -1,5 +1,23 @@
 ﻿@using PersonalLuis.Site.Models.Enums;
 @model HomeVm
+@section seo{
+    <title>Luis Palacios | Developer, Blogger, Teacher</title>
+    <meta name="description" content="Luis Palacios is a passionate Full Stack Web Developer that loves software development. Currently located on Managua, Nicaragua">
+}
+@section meta{
+    <meta property="og:title" content="Luis Palacios - Full Stack Web Developer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/luis-palacios-3.jpeg">
+    <meta property="og:image:width" content="308">
+    <meta property="og:image:height" content="509">
+    <meta property="og:description" content="Full Stack developer that keep pushing himself forward! to learn more and more in the vast world of tech">
+    @*<meta property="fb:app_id" content="1927001367325265">*@
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@@LRPalacios" />
+    <meta name="twitter:title" content="Luis Palacios - Full Stack Web Developer">
+    <meta name="twitter:description" content="Full Stack developer that keep pushing himself forward! to learn more and more in the vast world of tech">
+    <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
+}
 @section styles{
     <environment include="Development">
         <link rel="preload" href="~/.temp/home.css" as="style" onload="this.rel='stylesheet'" />

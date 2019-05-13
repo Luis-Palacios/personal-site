@@ -1,4 +1,26 @@
 ﻿@model PersonalLuis.Site.Models.Blog.Post
+@{ string absoluteUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Url.Action()}";}
+
+@section seo{
+    <title>Luis Palacios | @Model.Title</title>
+    <meta name="description" content="@Model.Introduction">
+}
+
+@section meta{
+    <meta property="og:title" content="@Model.Title">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/luis-palacios-3.jpeg">
+    <meta property="og:image:width" content="308">
+    <meta property="og:image:height" content="509">
+    <meta property="og:description" content="@Model.Introduction">
+    @*<meta property="fb:app_id" content="1927001367325265">*@
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@@LRPalacios" />
+    <meta name="twitter:title" content="@Model.Title">
+    <meta name="twitter:description" content="@Model.Introduction">
+    <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
+    <link rel="canonical" href="@absoluteUrl" />
+}
 
 @section styles{
     <environment include="Development">
@@ -39,10 +61,28 @@
         <div class="row">
             <div class="clearfix all-blog-post blog-inner with-sidebar">
                 <!-- post container start-->
-                <div class="col-sm-9">
+                <div class="col-sm-10">
                     <article class="single-post-page">
                         @await Html.PartialAsync($"~/Views/Blog/Posts/{Model.Content}.cshtml")
                     </article>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <aside class="post-side-bar">
+                        <ul class="social-share">
+                            <li data-tippy-content="Cambiar a español">
+                                <a href="#"><i class="fa fa-language fa-2x"></i></a>
+                            </li>
+                            <li data-tippy-content="Share on facebook">
+                                <a href="#"><i class="fa fa-facebook-official fa-2x"></i></a>
+                            </li>
+                            <li data-tippy-content="Share on twitter">
+                                <a href="https://twitter.com/intent/tweet?text=@Model.Title&url=@absoluteUrl&via=LRPalacios"><i class="fa fa-twitter fa-2x"></i></a>
+                            </li>
+                            <li data-tippy-content="Share on linkedin">
+                                <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+                            </li>
+                        </ul>
+                    </aside>
                 </div>
             </div>
         </div>
@@ -53,10 +93,27 @@
     <script type="text/javascript">
         window.personalSite = "@ViewBag.SearchTerm";
     </script>
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
     <environment include="Development">
-        <script async src="~/.temp/blog.bundle.js"></script>
+        <script async src="~/.temp/post.bundle.js"></script>
     </environment>
     <environment exclude="Development">
-        <script async src="~/dist/blog.bundle.js" asp-append-version="true"></script>
+        <script async src="~/dist/post.bundle.js" asp-append-version="true"></script>
     </environment>
 }
