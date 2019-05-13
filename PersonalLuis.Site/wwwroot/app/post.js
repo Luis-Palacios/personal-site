@@ -20,3 +20,8 @@ document.getElementById('facebook-share').addEventListener('click', () => {
     href: window.location.href,
   }, () => { });
 });
+
+document.getElementById('linkedin-share').addEventListener('click', () => {
+  const url = window.location.href;
+  window.open(`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+});
