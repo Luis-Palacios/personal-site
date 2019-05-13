@@ -34,13 +34,11 @@ namespace PersonalLuis.Site.Services
                 new Post(urlHelper)
                 {
                     Title = "Good console experience on windows",
-                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI
-                                    to work the need for a good console is clear even dotnet core has moved to use more and more CLI tools and while you can integrate all of this directly
-                                    into Visual Studio so that those scripts will be run automatically when you build or execute your solution from Visual Studio.
-                                    The truth is many people is shifting away from the big IDE experience and using more lightweights editors such as Visual Studio Code and
-                                    terminal commands and if you are doing Development in other languages such as python, javascript or ruby you cannot
-                                    escape the need for a better console.",
+                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
+                                    the need for a good console application have become more clear. A console where you can be productive that has a nice
+                                    look and feel is actually posible not only on UNIX Systems but also on Windows.",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
+                    BannerUrl="images/posts/cmder/main.png",
                     Slug="good-console-experience-on-windows",
                     Author="Luis Palacios",
                     Category ="DevTools",

@@ -8,17 +8,17 @@
 
 @section meta{
     <meta property="og:title" content="@Model.Title">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="/images/luis-palacios-3.jpeg">
-    <meta property="og:image:width" content="308">
-    <meta property="og:image:height" content="509">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="@Model.BannerUrl">
+    <meta property="og:image:width" content="2292">
+    <meta property="og:image:height" content="977">
     <meta property="og:description" content="@Model.Introduction">
-    @*<meta property="fb:app_id" content="1927001367325265">*@
+    <meta property="fb:app_id" content="299469044286183">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@@LRPalacios" />
     <meta name="twitter:title" content="@Model.Title">
     <meta name="twitter:description" content="@Model.Introduction">
-    <meta name="twitter:image" content="http://luispalacios.azurewebsites.net/images/luis-palacios.png">
+    <meta name="twitter:image" content="@($"{Context.Request.Scheme}://{Context.Request.Host}{Model.BannerUrl}")">
     <link rel="canonical" href="@absoluteUrl" />
 }
 

@@ -76,7 +76,7 @@ namespace PersonalLuis.Site
                     else
                     {
                         context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=1296000" });
-                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(15).ToString("R") }); // Format RFC1123
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(30).ToString("R") }); // Format RFC1123
                     }
                 }
             });

@@ -1,5 +1,23 @@
 ﻿
 @model BlogVm
+@section seo{
+    <title>Luis Palacios | Blog</title>
+    <meta name="description" content="Find helpful content related to software development here. Back-end, Front-End, Database, Development tools, Cloud Development and more">
+}
+@section meta{
+    <meta property="og:title" content="Luis Palacios - Blog">
+    <meta property="og:type" content="blog">
+    <meta property="og:image" content="/images/luis-palacios-3.jpeg">
+    <meta property="og:image:width" content="1034">
+    <meta property="og:image:height" content="800">
+    <meta property="og:description" content="Find helpful content related to software development here. Back-end, Front-End, Database, Development tools, Cloud Development and more">
+    <meta property="fb:app_id" content="299469044286183">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@@LRPalacios" />
+    <meta name="twitter:title" content="Luis Palacios - Blog">
+    <meta name="twitter:description" content="Find helpful content related to software development here. Back-end, Front-End, Database, Development tools, Cloud Development and more">
+    <meta name="twitter:image" content="@($"{Context.Request.Scheme}://{Context.Request.Host}")/images/luis-palacios-3.jpeg">
+}
 @section styles{
     <environment include="Development">
         <link rel="preload" href="~/.temp/blog.css" as="style" onload="this.rel='stylesheet'" />
@@ -56,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="clearfix card-content">
-                                <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")"class="brand-text right waves-effect">
+                                <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")" class="brand-text right waves-effect">
                                     @if (post.IsMedium)
                                     {
                                         <i class="fa fa-medium link-icon"></i>
@@ -66,7 +84,7 @@
                             </div>
                         </div>
                     </article> <!--./single blog post-->
-                                }
+                }
             </div>
         </div>
     </div>
