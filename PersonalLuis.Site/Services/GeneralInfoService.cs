@@ -248,7 +248,7 @@ namespace PersonalLuis.Site.Services
                 Address = "Managua, Nicaragua",
                 BirthDate = new DateTime(1989, 4, 22),
                 Email = "lrpalaciosdev@gmail.com",
-                PictureUrl = "/images/luis-palacios-3.jpeg",
+                PictureUrl = "/images/luis-palacios-3.jpg",
                 History = @"Hello, I'm Luis Palacios. I'm a Full Stack Developer that loves finding solutions for problems through software.
                             I'm passionate about code, not just writing code that works but also code that is nice to behold and maintain especially
                             because I've had already written a lot of ugly code. That is why the best coding practices are a priority for me now!
