@@ -20,15 +20,17 @@ namespace PersonalLuis.Site.Controllers
         public IActionResult Index()
         {
             ViewBag.MetaDescription = Constants.HomeMetaDescription;
-            HomeVm homeVm = new HomeVm();
-            homeVm.GeneralInfo = this.generalInfoService.GetGeneralInfo(); 
-            homeVm.Languages = this.generalInfoService.GetLanguages();
-            homeVm.SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks();
-            homeVm.DevTools = this.generalInfoService.GetDevTools();
-            homeVm.Companies = this.generalInfoService.GetCompanies();
-            homeVm.Contacts = this.generalInfoService.GetContacts();
-            homeVm.Recommentations = this.generalInfoService.GetRecommendations();
-            homeVm.FeaturedPosts = this.blogService.GetFeaturedPosts();
+            HomeVm homeVm = new HomeVm
+            {
+                GeneralInfo = this.generalInfoService.GetGeneralInfo(),
+                Languages = this.generalInfoService.GetLanguages(),
+                SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks(),
+                DevTools = this.generalInfoService.GetDevTools(),
+                Companies = this.generalInfoService.GetCompanies(),
+                Contacts = this.generalInfoService.GetContacts(),
+                Recommentations = this.generalInfoService.GetRecommendations(),
+                FeaturedPosts = this.blogService.GetFeaturedPosts()
+            };
             return View(homeVm);
         }
 
