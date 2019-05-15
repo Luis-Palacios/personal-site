@@ -249,13 +249,10 @@ namespace PersonalLuis.Site.Services
                 BirthDate = new DateTime(1989, 4, 22),
                 Email = "lrpalaciosdev@gmail.com",
                 PictureUrl = "/images/luis-palacios-3.jpeg",
-                History = @"Back in 1996 when I was seven years old, I learned how to start Prince of Persia game in a computer with MS-DOS and from then 
-                            I knew that my history with the tech world had just begun.
-                            <br />
-                            <br />
-                            I have faced multiple challenges that my career presents, but they have reassured me that I have chosen the right path for me, 
-                            whether it is maintaining a huge poorly designed and poorly coded application, architecting a new software project or 
-                            keeping my skills up to date with the latest frameworks, languages, libraries and tools. "
+                History = @"Hello, I'm Luis Palacios. I'm a Full Stack Developer that loves finding solutions for problems through software.
+                            I'm passionate about code, not just writing code that works but also code that is nice to behold and maintain especially
+                            because I've had already written a lot of ugly code. That is why the best coding practices are a priority for me now!
+                            I want to continue learning, sharing and teaching  everything about software development"
             };
         }
 

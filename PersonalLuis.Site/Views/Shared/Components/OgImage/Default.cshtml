@@ -1,0 +1,5 @@
+﻿@model OgImageVm
+
+    <meta property="og:image" content="@($"{Context.Request.GetBaseUrl()}{Model.Src}")" />
+    <meta property="og:image:width" content="@Model.Width" />
+    <meta property="og:image:height" content="@Model.Height" />

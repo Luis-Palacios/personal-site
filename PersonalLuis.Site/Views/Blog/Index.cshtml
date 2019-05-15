@@ -1,0 +1,101 @@
+﻿
+@model BlogVm
+@section seo{
+    <title>Luis Palacios | Blog</title>
+    <meta name="description" content="@ViewBag.MetaDescription">
+}
+@section meta{
+    <meta property="og:title" content="Luis Palacios - Blog">
+    <meta property="og:type" content="website">
+    <vc:og-image src="/images/luis-palacios-3.jpeg" width="1034" height="800"/>
+    <meta property="og:url" content="@Context.Request.GetAbsoluteUrl()" />
+    <meta property="og:description" content="@ViewBag.MetaDescription">
+    <meta property="fb:app_id" content="299469044286183">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@@LRPalacios" />
+    <meta name="twitter:title" content="Luis Palacios - Blog">
+    <meta name="twitter:description" content="@ViewBag.MetaDescription">
+    <meta name="twitter:image" content="@Context.Request.GetBaseUrl()/images/luis-palacios-3.jpeg">
+}
+@section styles{
+    <environment include="Development">
+        <link rel="preload" href="~/.temp/blog.css" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="preload" href="~/dist/blog.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+}
+<!-- Banner start -->
+<section id="banner" class="root-sec brand-bg padd-tb-15 blogpage-banner-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix blog-banner-text">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <h2 class="title blog-title">BLOG</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--./Banner end-->
+
+@if (!string.IsNullOrEmpty(ViewBag.SearchTerm))
+{
+    <section id="search">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Search results for: <strong>@ViewBag.SearchTerm</strong></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="bottom-50 root-sec grey lighten-5 blogpage-posts-wrap">
+    <div class="container">
+        <div class="row">
+            <div id="blog-posts" class="clearfix all-blog-post blog-inner without-sidebar">
+                @foreach (var post in Model.FeaturedPosts)
+                {
+                    <article class="col-sm-4 single-card-box single-post">
+                        <div class="card">
+                            <div class="card-image">
+                                <div class="card-img-wrap">
+                                    <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                        <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")">
+                                            <img class="activator" src="@post.BanerThumbnailUrl" alt="@post.Title">
+                                        </a>
+                                    </div>
+                                    <div class="post-body">
+                                        <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")" class="post-title-link brand-text"><h2 class="post-title">@post.Title</h2></a>
+                                        <p class="post-content">@post.Introduction</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix card-content">
+                                <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")" class="brand-text right waves-effect">
+                                    @if (post.IsMedium)
+                                    {
+                                        <i class="fa fa-medium link-icon"></i>
+                                    }
+                                    Read more
+                                </a>
+                            </div>
+                        </div>
+                    </article> <!--./single blog post-->
+                }
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script type="text/javascript">
+        window.personalSite = "@ViewBag.SearchTerm";
+    </script>
+    <environment include="Development">
+        <script async src="~/.temp/blog.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/blog.bundle.js" asp-append-version="true"></script>
+    </environment>
+}

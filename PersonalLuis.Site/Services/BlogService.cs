@@ -2,18 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using PersonalLuis.Site.Models.Blog;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PersonalLuis.Site.Services
 {
     public class BlogService : IBlogService
     {
-        public IEnumerable<Post> GetFeaturedPosts()
+        private readonly IUrlHelper urlHelper;
+        public BlogService(IUrlHelper urlHelper)
         {
-            return new List<Post>
+            this.urlHelper = urlHelper;
+        }
+
+        public ICollection<Post> Posts
+        {
+            get
             {
-                new Post
+                return new List<Post>
+                {
+                    new Post(urlHelper)
                 {
                     Title = "Powerfull linting in C#",
                     Introduction = @"For those that have used tools like eslint for javascript know that a great linting tool and configuration
@@ -21,36 +29,79 @@ namespace PersonalLuis.Site.Services
                                       are forced. With a powerfull linting you can make sure to develop and keep a great code base that will feel like
                                       just one person wrote it, regardless of the size of the team.",
                     BanerThumbnailUrl="/images/posts/csharp-linting-thumb.png",
-                    Slug="powerfull-linting-csharp"
-                   
+                    Slug="powerfull-linting-csharp",
+                    Author="Luis Palacios"
+
                 },
-                new Post
+                new Post(urlHelper)
                 {
-                    Title = "Cmder the must have windows console",
-                    Introduction = @"If you have been doing development in windows and in need to use the command line, you probably already realize
-                                     that the native console that the command prompt is bad, well the creator of cmder realized that too and they have build
-                                     this amazing console that you will love!",
+                    Title = "Good console experience on windows",
+                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
+                                    the need for a good console application have become more clear. A console where you can be productive that has a nice
+                                    look and feel is actually posible not only on UNIX Systems but also on Windows.",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
-                    Slug="cmder-must-have-windows-console"
+                    BannerUrl="images/posts/cmder/main.png",
+                    Slug="good-console-experience-on-windows",
+                    Author="Luis Palacios",
+                    Category ="DevTools",
+                    PublishedDate=new DateTime(2019, 5, 15),
+                    Content="GoodConsoleExperience",
+                    Published = true,
                 },
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
                     BanerThumbnailUrl="/images/posts/databases.png",
-                    Slug="restoring-multiple-database-in-sql-server-from-bak-files"
+                    Slug="restoring-multiple-database-sql-server-from-bak-files",
+                    IsMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4",
+                    Author="Luis Palacios",
+                    Published = true,
                 },
-                new Post
+                new Post(urlHelper)
                 {
                     Title = "Web pack for server side frameworks",
                     Introduction = @"I've spend one year and half just working on SPA and came to love Web pack,
                                       recently I had to come back to server side frameworks to do some works
                                      and I wanted to continue using web pack which is normally made for front-end frameworks",
                     BanerThumbnailUrl="/images/posts/webpack-server-side.png",
-                    Slug="web-pack-for-server-side-frameworks"
-                }
-            };
+                    Slug="web-pack-for-server-side-frameworks",
+                    Author="Luis Palacios"
+                },
+                new Post(urlHelper)
+                {
+                    Title = "Get development started with Sitecore ",
+                    Introduction = @"This series is about getting stronger in Sitecore core concepts and some third party tools
+                                        that will be helpful in the future such as Unicorn and Glass mapper you can consider this
+                                        series a possible next step after the Fundamental Course.",
+                    BanerThumbnailUrl="/images/posts/sitecore-development.png",
+                    Slug="sitecore-development",
+                    IsMedium = true,
+                    ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a",
+                    Author="Luis Palacios",
+                    Published = true,
+                },
+                };
+            }
+        }
+        public IEnumerable<Post> GetFeaturedPosts()
+        {
+            return Posts.Where(p => p.Published);
+        }
+
+        public IEnumerable<Post> GetPosts(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return Posts.Where(p => p.Published);
+            }
+            else
+            {
+                searchTerm = searchTerm.ToLower();
+                return Posts.Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)));
+            }
         }
     }
 }

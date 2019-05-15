@@ -1,6 +1,7 @@
 import Isotope from 'isotope-layout';
 
 const $ = window.jQuery;
+const { personalSite } = window;
 
 // callback after ready the document
 $(document).ready(() => {
@@ -11,11 +12,15 @@ $(document).ready(() => {
     $('.side-nav').addClass('hide');
   });
 
-  $(window).on('click', () => {
-    $('.search-form-li').find('#initSearchIcon').removeClass('hide');
-    $('.search-form-wrap').addClass('hide');
-    $('.side-nav').removeClass('hide');
-  });
+  if (!personalSite) {
+    $(window).on('click', () => {
+      $('.search-form-li').find('#initSearchIcon').removeClass('hide');
+      $('.search-form-wrap').addClass('hide');
+      $('.side-nav').removeClass('hide');
+    });
+  } else {
+    $('.search-form-li').trigger('click');
+  }
 
   $('.primary-nav .button-collapse').sideNav();
 
@@ -29,11 +34,6 @@ $(document).ready(() => {
     belowOrigin: true,
   });
 
-
-  $('html').niceScroll({
-    cursorwidth: '7px',
-    zindex: '9999999',
-  });
 
   // blog Mesonary
   if ($('#blog-posts').length > 0) {
@@ -51,5 +51,4 @@ $(window).load(() => {
   $('.loader').fadeOut();
   $('#preloader').delay(350).fadeOut('slow');
   $('body').delay(350);
-
 });

@@ -168,6 +168,10 @@ body {
     padding-bottom: 55px;
 }
 
+.padd-tb-15{
+    padding-top: 15px;
+}
+
 .row {
     margin-bottom: 0;
 }
@@ -592,7 +596,6 @@ header.nav {
 
 .person-img img {
     border: 8px solid #fff;
-    height: 340px;
 }
 
 .person-about p {

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalLuis.Site.Services;
@@ -32,10 +35,20 @@ namespace PersonalLuis.Site
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.Configure<RouteOptions>(options => 
+            {
+                options.LowercaseUrls = true;
+            });
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddScoped<IUrlHelper>(x => {
+                var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+                var factory = x.GetRequiredService<IUrlHelperFactory>();
+                return factory.GetUrlHelper(actionContext);
+            });
             services.AddSingleton<IGeneralInfoService, GeneralInfoService>();
-            services.AddSingleton<IBlogService, BlogService>();
+            services.AddScoped<IBlogService, BlogService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +76,7 @@ namespace PersonalLuis.Site
                     else
                     {
                         context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=1296000" });
-                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(15).ToString("R") }); // Format RFC1123
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(30).ToString("R") }); // Format RFC1123
                     }
                 }
             });
@@ -73,8 +86,15 @@ namespace PersonalLuis.Site
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                   name: "blog",
+                   template: "/blog/{postSlug}",
+                   defaults: new { controller = "Blog", action = "Detail" }
+                   );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }
