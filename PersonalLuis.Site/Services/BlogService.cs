@@ -40,7 +40,7 @@ namespace PersonalLuis.Site.Services
                                     the need for a good console application have become more clear. A console where you can be productive that has a nice
                                     look and feel is actually posible not only on UNIX Systems but also on Windows.",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
-                    BannerUrl="images/posts/cmder/main.png",
+                    BannerUrl="/images/posts/cmder/main.png",
                     Slug="good-console-experience-on-windows",
                     Author="Luis Palacios",
                     Category ="DevTools",

@@ -15,7 +15,7 @@
     <meta name="twitter:site" content="@@LRPalacios" />
     <meta name="twitter:title" content="@Model.Title">
     <meta name="twitter:description" content="@Model.Introduction">
-    <meta name="twitter:image" content="@($"{Context.Request.GetBaseUrl()}{Model.BannerUrl}")">
+    <meta name="twitter:image" content="@Context.Request.GetBaseUrl()@Model.BannerUrl">
     <link rel="canonical" href="@absoluteUrl" />
 }
 @section styles{
