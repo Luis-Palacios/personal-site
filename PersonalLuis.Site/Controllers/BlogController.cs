@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PersonalLuis.Site.Models.ViewModels;
 using PersonalLuis.Site.Services.Interfaces;
+using PersonalLuis.Site.Utils;
 
 namespace PersonalLuis.Site.Controllers
 {
@@ -20,9 +18,10 @@ namespace PersonalLuis.Site.Controllers
         public IActionResult Index(string searchTerm)
         {
             ViewBag.SearchTerm = searchTerm;
+            ViewBag.MetaDescription = Constants.BlogMetaDescription;
             BlogVm blogVm = new BlogVm
             {
-                FeaturedPosts = blogService.GetFeaturedPosts()
+                FeaturedPosts = blogService.GetPosts(searchTerm)
             };
             return View(blogVm);
         }

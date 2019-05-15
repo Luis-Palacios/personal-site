@@ -9,5 +9,6 @@ namespace PersonalLuis.Site.Services.Interfaces
     public interface IBlogService
     {
         IEnumerable<Post> GetFeaturedPosts();
+        IEnumerable<Post> GetPosts(string searchTerm);
     }
 }

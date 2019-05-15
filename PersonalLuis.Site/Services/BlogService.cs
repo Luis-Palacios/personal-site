@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using PersonalLuis.Site.Models.Blog;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +14,14 @@ namespace PersonalLuis.Site.Services
         {
             this.urlHelper = urlHelper;
         }
-        public IEnumerable<Post> GetFeaturedPosts()
+
+        public ICollection<Post> Posts
         {
-            return new List<Post>
+            get
             {
-                new Post(urlHelper)
+                return new List<Post>
+                {
+                    new Post(urlHelper)
                 {
                     Title = "Powerfull linting in C#",
                     Introduction = @"For those that have used tools like eslint for javascript know that a great linting tool and configuration
@@ -42,8 +44,9 @@ namespace PersonalLuis.Site.Services
                     Slug="good-console-experience-on-windows",
                     Author="Luis Palacios",
                     Category ="DevTools",
-                    PublishedDate=new DateTime(2019, 5, 11),
+                    PublishedDate=new DateTime(2019, 5, 15),
                     Content="GoodConsoleExperience",
+                    Published = true,
                 },
                 new Post(urlHelper)
                 {
@@ -54,7 +57,8 @@ namespace PersonalLuis.Site.Services
                     Slug="restoring-multiple-database-sql-server-from-bak-files",
                     IsMedium = true,
                     ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4",
-                    Author="Luis Palacios"
+                    Author="Luis Palacios",
+                    Published = true,
                 },
                 new Post(urlHelper)
                 {
@@ -76,9 +80,28 @@ namespace PersonalLuis.Site.Services
                     Slug="sitecore-development",
                     IsMedium = true,
                     ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a",
-                    Author="Luis Palacios"
+                    Author="Luis Palacios",
+                    Published = true,
                 },
-            };
+                };
+            }
+        }
+        public IEnumerable<Post> GetFeaturedPosts()
+        {
+            return Posts.Where(p => p.Published);
+        }
+
+        public IEnumerable<Post> GetPosts(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return Posts.Where(p => p.Published);
+            }
+            else
+            {
+                searchTerm = searchTerm.ToLower();
+                return Posts.Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)));
+            }
         }
     }
 }

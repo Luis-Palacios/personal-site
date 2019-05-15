@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PersonalLuis.Site.Models;
 using PersonalLuis.Site.Models.ViewModels;
 using PersonalLuis.Site.Services.Interfaces;
+using PersonalLuis.Site.Utils;
 
 namespace PersonalLuis.Site.Controllers
 {
@@ -22,6 +19,7 @@ namespace PersonalLuis.Site.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.MetaDescription = Constants.HomeMetaDescription;
             HomeVm homeVm = new HomeVm();
             homeVm.GeneralInfo = this.generalInfoService.GetGeneralInfo(); 
             homeVm.Languages = this.generalInfoService.GetLanguages();

@@ -1,27 +1,23 @@
 ﻿@model PersonalLuis.Site.Models.Blog.Post
-@{ string absoluteUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Url.Action()}";}
-
+@{ string absoluteUrl = Context.Request.GetAbsoluteUrl();}
 @section seo{
     <title>Luis Palacios | @Model.Title</title>
     <meta name="description" content="@Model.Introduction">
 }
-
 @section meta{
     <meta property="og:title" content="@Model.Title">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="@Model.BannerUrl">
-    <meta property="og:image:width" content="2292">
-    <meta property="og:image:height" content="977">
+    <vc:og-image src="@Model.BannerUrl" width="2292" height="977" />
+    <meta property="og:url" content="@absoluteUrl" />
     <meta property="og:description" content="@Model.Introduction">
     <meta property="fb:app_id" content="299469044286183">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@@LRPalacios" />
     <meta name="twitter:title" content="@Model.Title">
     <meta name="twitter:description" content="@Model.Introduction">
-    <meta name="twitter:image" content="@($"{Context.Request.Scheme}://{Context.Request.Host}{Model.BannerUrl}")">
+    <meta name="twitter:image" content="@($"{Context.Request.GetBaseUrl()}{Model.BannerUrl}")">
     <link rel="canonical" href="@absoluteUrl" />
 }
-
 @section styles{
     <environment include="Development">
         <link rel="preload" href="~/.temp/blog.css" as="style" onload="this.rel='stylesheet'" />
@@ -30,7 +26,6 @@
         <link rel="preload" href="~/dist/blog.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
     </environment>
 }
-
 <!-- Banner start -->
 <section id="banner" class="root-sec brand-bg padd-tb-55 single-banner blogpage-banner-wrap">
     <div class="container">
@@ -55,7 +50,6 @@
         </div>
     </div>
 </section> <!-- ./Banner end -->
-
 <section id="all-posts" class="root-sec grey lighten-5 blogpage-posts-wrap">
     <div class="container">
         <div class="row">
@@ -88,7 +82,6 @@
         </div>
     </div>
 </section>
-
 @section scripts{
     <script type="text/javascript">
         window.personalSite = "@ViewBag.SearchTerm";

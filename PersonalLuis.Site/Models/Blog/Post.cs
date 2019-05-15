@@ -21,6 +21,7 @@ namespace PersonalLuis.Site.Models.Blog
         public string Author { get; set; }
         public DateTime PublishedDate { get; set; }
         public string Category { get; set; }
+        public bool Published { get; set; }
 
         public bool IsMedium { get; set; }
         public string ExternalUrl { get; set; }
