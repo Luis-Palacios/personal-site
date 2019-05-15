@@ -1,5 +1,7 @@
 ﻿const Merge = require('webpack-merge');
 const path = require('path');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CommongConfig = require('./webpack.config');
 
 module.exports = Merge(CommongConfig, {
@@ -8,5 +10,8 @@ module.exports = Merge(CommongConfig, {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'wwwroot', 'dist'),
+  },
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
 });
