@@ -21,6 +21,11 @@ $(document).ready(() => {
     });
   } else {
     $('.search-form-li').trigger('click');
+    $('.button-collapse').on('click', () => {
+      $('.search-form-li').find('#initSearchIcon').removeClass('hide');
+      $('.search-form-wrap').addClass('hide');
+      $('.side-nav').removeClass('hide');
+    });
   }
 
   $('.primary-nav .button-collapse').sideNav();

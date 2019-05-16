@@ -154,7 +154,10 @@ $(document).ready(function () {
       0: {
         items: 1,
       },
-      480: {
+      768: {
+        items: 1,
+      },
+      1024: {
         items: 2,
       },
     },

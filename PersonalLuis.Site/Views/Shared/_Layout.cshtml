@@ -190,19 +190,25 @@
                                                 <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
                                             </li>
                                         }
+                                        else
+                                        {
+                                            <li>
+                                                <a asp-controller="Home" class="menu-smooth-scroll"><i class="fa fa-user fa-fw"></i>About Me</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Home" asp-fragment="resume" class="menu-smooth-scroll"><i class="fa fa-file-text fa-fw"></i>Resume</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Home" asp-fragment="books" class="menu-smooth-scroll"><i class="fa fa-users fa-fw"></i>Books</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Blog" asp-action="Index"><i class="fa fa-pencil fa-fw"></i>Blog</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Home" asp-fragment="testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
+                                            </li>
+                                        }
                                     </ul>
-                                    @*<ul id="dropdown1" class="inline-menu submenu-ul dropdown-content">
-                                            <li>Home</li>
-                                            <li>
-                                                <a href="blog.html">All Blog</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-with-sidebar.html">Blog with Sidebar</a>
-                                            </li>
-                                            <li>
-                                                <a href="single.html">Single Blog</a>
-                                            </li>
-                                        </ul>*@
                                 </div>
                             </nav>
                         </div>
