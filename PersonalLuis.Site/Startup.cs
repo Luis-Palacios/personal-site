@@ -29,20 +29,21 @@ namespace PersonalLuis.Site
         public void ConfigureServices(IServiceCollection services)
         {
 
-             services.Configure<CookiePolicyOptions>(options =>
-            {
+            services.Configure<CookiePolicyOptions>(options =>
+           {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-            services.Configure<RouteOptions>(options => 
+               options.MinimumSameSitePolicy = SameSiteMode.None;
+           });
+            services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
             });
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddScoped<IUrlHelper>(x => {
+            services.AddScoped<IUrlHelper>(x =>
+            {
                 var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
                 var factory = x.GetRequiredService<IUrlHelperFactory>();
                 return factory.GetUrlHelper(actionContext);
@@ -68,16 +69,8 @@ namespace PersonalLuis.Site
             {
                 OnPrepareResponse = context =>
                 {
-                    if(!string.IsNullOrEmpty(context.Context.Request.Query["v"]))
-                    {
-                        context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=31536000" });
-                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddYears(1).ToString("R") }); // Format RFC1123
-                    }
-                    else
-                    {
-                        context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=1296000" });
-                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddDays(30).ToString("R") }); // Format RFC1123
-                    }
+                    context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=31536000" });
+                    context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddYears(1).ToString("R") }); // Format RFC1123
                 }
             });
 
