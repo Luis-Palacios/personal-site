@@ -27,7 +27,7 @@ namespace PersonalLuis.Site.Controllers
                 SocialMediaUrls = this.generalInfoService.GetSocialMediaLinks(),
                 DevTools = this.generalInfoService.GetDevTools(),
                 Companies = this.generalInfoService.GetCompanies(),
-                Contacts = this.generalInfoService.GetContacts(),
+                Books = this.generalInfoService.GetBooks(),
                 Recommentations = this.generalInfoService.GetRecommendations(),
                 FeaturedPosts = this.blogService.GetFeaturedPosts()
             };

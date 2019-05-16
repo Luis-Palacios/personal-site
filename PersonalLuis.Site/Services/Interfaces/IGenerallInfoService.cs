@@ -18,5 +18,7 @@ namespace PersonalLuis.Site.Services.Interfaces
         IEnumerable<Contact> GetContacts();
 
         IEnumerable<Recommendation> GetRecommendations();
+
+        IEnumerable<Book> GetBooks();
     }
 }

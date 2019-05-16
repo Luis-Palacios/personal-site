@@ -8,6 +8,37 @@ namespace PersonalLuis.Site.Services
 {
     public class GeneralInfoService : IGeneralInfoService
     {
+        public IEnumerable<Book> GetBooks()
+        {
+            return new List<Book>
+            {
+                new Book
+                {
+                    Title = "Clean Code",
+                    Author = "Robert C. Martin",
+                    PictureUrl = "/images/books/clean-code.jpeg",
+                    ShortDescription = "Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way",
+                },
+                new Book
+                {
+                    Title = "Code Complete 2",
+                    Author = "Steve McConnell",
+                    PictureUrl = "/images/books/code-complete.jpg",
+                    ShortDescription = @"Full with leading-edge practices—and hundreds of code samples—illustrating the art and science of software construction.
+                                         Capturing the body of knowledge available from research, academia, and everyday commercial practice, McConnell synthesizes the most effective techniques and must-know principles into clear, pragmatic guidance.
+                                         No matter what your experience level, development environment, or project size, this book will inform and stimulate your thinking—and help you build the highest quality code",
+                },
+                new Book
+                {
+                    Title = "Working Effectively with Legacy",
+                    Author = "Michael C. Feathers",
+                    PictureUrl = "/images/books/legacy-code.jpeg",
+                    ShortDescription = @"The average software project, in our industry, was written under some aspect of code-and-fix, and without automated unit tests. And we can't just throw this code away; it represents a significant effort
+                                         debugging and maintaining. It contains many latent requirements decisions. Just as Agile processes are incremental, Agile adoption must be incremental too. No more throwing away code just because it looked at us funny.",
+                },
+            };
+        }
+
         public IEnumerable<Company> GetCompanies()
         {
             return new List<Company>
@@ -37,7 +68,7 @@ namespace PersonalLuis.Site.Services
             new Company
              {
                  Name="PartsBase Inc.",
-                 PictureUrl="/images/companies/parts-base.png",
+                 PictureUrl="/images/companies/parts-base.webp",
                  WebPageUrl="https://www.partsbase.com/",
                  StartDate="Aug 2015",
                  EndDate="May 2016",
@@ -250,9 +281,9 @@ namespace PersonalLuis.Site.Services
                 Email = "lrpalaciosdev@gmail.com",
                 PictureUrl = "/images/luis-palacios-3.jpg",
                 History = @"Hello, I'm Luis Palacios. I'm a Full Stack Developer that loves finding solutions for problems through software.
-                            I'm passionate about code, not just writing code that works but also code that is nice to behold and maintain especially
-                            because I've had already written a lot of ugly code. That is why the best coding practices are a priority for me now!
-                            I want to continue learning, sharing and teaching  everything about software development"
+                            I'm passionate about code, not just writing code that works but also code that is nice to behold and maintain. I'm committed
+                            to this because I've had already written a lot of ugly code on the past that became a nightmare to maintain, that is why the best coding practices are a priority for me now!
+                            I want to continue learning, sharing and teaching everything about software development"
             };
         }
 

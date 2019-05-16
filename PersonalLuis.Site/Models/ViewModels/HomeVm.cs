@@ -12,7 +12,7 @@ namespace PersonalLuis.Site.Models.ViewModels
             SocialMediaUrls = new List<SocialMediaInfo>();
             DevTools = new List<DevTool>();
             Companies = new List<Company>();
-            Contacts = new List<Contact>();
+            Books = new List<Book>();
             Recommentations = new List<Recommendation>();
             FeaturedPosts = new List<Post>();
         }
@@ -22,7 +22,7 @@ namespace PersonalLuis.Site.Models.ViewModels
         public IEnumerable<SocialMediaInfo> SocialMediaUrls { get; set; }
         public IEnumerable<DevTool> DevTools { get; set; }
         public IEnumerable<Company> Companies { get; set; }
-        public IEnumerable<Contact> Contacts { get; set; }
+        public IEnumerable<Book> Books { get; set; }
         public IEnumerable<Recommendation> Recommentations { get; set; }
         public IEnumerable<Post> FeaturedPosts { get; set; }
     }

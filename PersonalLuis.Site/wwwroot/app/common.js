@@ -1,4 +1,5 @@
 import Isotope from 'isotope-layout';
+import '../legacy-libs/custom-modernizr';
 
 const $ = window.jQuery;
 const { personalSite } = window;
