@@ -2,7 +2,7 @@
 import 'animate.css';
 import 'jquery.easing';
 
-import './legacy-libs/materialize/css/materialize.min.css';
+ import './legacy-libs/materialize/css/materialize.min.css';
 
 import './css/site.css';
 import './css/responsive.css';

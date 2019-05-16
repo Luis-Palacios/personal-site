@@ -119,13 +119,7 @@
             stroke: #000
         }
     </style>
-    <environment include="Development">
-        <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="preload" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" as="style" onload="this.rel='stylesheet'" />
-    </environment>
+    <link rel="preload" href="~/legacy-libs/bootstrap/bootstrap.min.css" as="style" onload="this.rel='stylesheet'"/>
     @RenderSection("styles", required: false)
     <script>
         (function (i, s, o, g, r, a, m) {

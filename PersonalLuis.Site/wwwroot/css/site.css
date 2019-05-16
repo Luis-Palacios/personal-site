@@ -1862,3 +1862,7 @@ span.num {
 
 
 /* Add your CSS below */
+
+.text-center{
+    text-align:center;
+}
