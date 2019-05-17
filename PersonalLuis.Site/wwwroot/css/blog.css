@@ -497,3 +497,56 @@ ul.post-list {
 .social-share li {
     margin-top: 10px;
 }
+
+.language-item{
+    margin-bottom: 15px;
+}
+.language-item i{
+    display: block
+}
+
+.sm-change-language{
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .post-side-bar {
+        position: static;
+        display: inline-block;
+    }
+
+    .social-share li {
+        margin-top: 0; 
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 30px;
+    }
+
+    .language-item{
+        display: none !important;
+    }
+
+    .sm-change-language{
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .sm-change-language i{
+        display: block;
+    }
+
+    .sm-change-language a{
+        color: white;
+    }
+
+    .sm-change-language a:hover{
+        color:#444;
+    }
+
+    .blogpage-banner-wrap {
+        margin-bottom: 20px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+}

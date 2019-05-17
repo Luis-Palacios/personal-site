@@ -410,8 +410,8 @@ namespace PersonalLuis.Site.Services
                 },
                 new SocialMediaInfo
                 {
-                    SocialMediaType = SocialMediaType.GooglePlus,
-                    Url = "https://plus.google.com/+LuisPalaciosLR"
+                    SocialMediaType = SocialMediaType.Youtube,
+                    Url = "https://www.youtube.com/channel/UCm3gnOZMcQfsmG8tRs5hIiA?view_as=subscriber"
                 },
                  new SocialMediaInfo
                 {

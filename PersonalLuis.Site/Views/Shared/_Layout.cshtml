@@ -111,6 +111,7 @@
             stroke: #000
         }
     </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="preload" href="~/legacy-libs/custom-bootstrap/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
     @RenderSection("styles", required: false)
     <script>
@@ -175,37 +176,37 @@
                                         @if (Context.Request.GetEncodedPathAndQuery() == Url.Action("Index", "Home"))
                                         {
                                             <li>
-                                                <a href="#about" data-section="#about" class="menu-smooth-scroll"><i class="fa fa-user fa-fw"></i>About Me</a>
+                                                <a href="#about" data-section="#about" class="menu-smooth-scroll"><i class="fas fa-user fa-fw"></i>About Me</a>
                                             </li>
                                             <li>
-                                                <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="fa fa-file-text fa-fw"></i>Resume</a>
+                                                <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="far fa-file-alt fa-fw"></i>Resume</a>
                                             </li>
                                             <li>
-                                                <a href="#books" data-section="#books" class="menu-smooth-scroll"><i class="fa fa-users fa-fw"></i>Books</a>
+                                                <a href="#books" data-section="#books" class="menu-smooth-scroll"><i class="fas fa-book fa-fw"></i>Books</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Blog" asp-action="Index"><i class="fa fa-pencil fa-fw"></i>Blog</a>
+                                                <a asp-controller="Blog" asp-action="Index"><i class="fas fa-pencil-alt fa-fw"></i>Blog</a>
                                             </li>
                                             <li>
-                                                <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
+                                                <a href="#testimonial" data-section="#testimonial" class="menu-smooth-scroll"><i class="fas fa-comments fa-fw"></i>Testimonial</a>
                                             </li>
                                         }
                                         else
                                         {
                                             <li>
-                                                <a asp-controller="Home" class="menu-smooth-scroll"><i class="fa fa-user fa-fw"></i>About Me</a>
+                                                <a asp-controller="Home" class="menu-smooth-scroll"><i class="fas fa-user fa-fw"></i>About Me</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Home" asp-fragment="resume" class="menu-smooth-scroll"><i class="fa fa-file-text fa-fw"></i>Resume</a>
+                                                <a asp-controller="Home" asp-fragment="resume" class="menu-smooth-scroll"><i class="fas fa-file-alt fa-fw"></i>Resume</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Home" asp-fragment="books" class="menu-smooth-scroll"><i class="fa fa-users fa-fw"></i>Books</a>
+                                                <a asp-controller="Home" asp-fragment="books" class="menu-smooth-scroll"><i class="fas fa-book fa-fw"></i>Books</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Blog" asp-action="Index"><i class="fa fa-pencil fa-fw"></i>Blog</a>
+                                                <a asp-controller="Blog" asp-action="Index"><i class="fas fa-pencil-alt fa-fw"></i>Blog</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Home" asp-fragment="testimonial" class="menu-smooth-scroll"><i class="fa fa-comments fa-fw"></i>Testimonial</a>
+                                                <a asp-controller="Home" asp-fragment="testimonial" class="menu-smooth-scroll"><i class="fas fa-comments fa-fw"></i>Testimonial</a>
                                             </li>
                                         }
                                     </ul>
@@ -226,25 +227,25 @@
                         <div class="clearfix footer-inner">
                             <ul class="left social-icons">
                                 <li>
-                                    <a href="https://www.facebook.com/luisrodolfopalacios" class="tooltips tooltipped facebook" data-position="top" data-delay="50" data-tooltip="Facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/luisrodolfopalacios" class="tooltips tooltipped facebook" data-position="top" data-delay="50" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://www.linkedin.com/in/luisrodolfopalacios/" class="tooltips tooltipped linkedin" data-position="top" data-delay="50" data-tooltip="Linkdin"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://www.linkedin.com/in/luisrodolfopalacios/" class="tooltips tooltipped linkedin" data-position="top" data-delay="50" data-tooltip="Linkdin"><i class="fab fa-linkedin"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/LRPalacios" class="tooltips tooltipped twitter" data-position="top" data-delay="50" data-tooltip="Twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://twitter.com/LRPalacios" class="tooltips tooltipped twitter" data-position="top" data-delay="50" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://plus.google.com/+LuisPalaciosLR" class="tooltips tooltipped google-plus" data-position="top" data-delay="50" data-tooltip="Google Plus"><i class="fa fa-google-plus"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCm3gnOZMcQfsmG8tRs5hIiA?view_as=subscriber" class="tooltips tooltipped google-plus" data-position="top" data-delay="50" data-tooltip="Youtube"><i class="fab fa-youtube"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://github.com/Luis-Palacios" class="tooltips tooltipped github" data-position="top" data-delay="50" data-tooltip="Github"><i class="fa fa-github"></i></a>
+                                    <a href="https://github.com/Luis-Palacios" class="tooltips tooltipped github" data-position="top" data-delay="50" data-tooltip="Github"><i class="fab fa-github"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://medium.com/@@Luis_Palacios" class="tooltips tooltipped medium" data-position="top" data-delay="50" data-tooltip="Medium"><i class="fa fa-medium"></i></a>
+                                    <a href="https://medium.com/@@Luis_Palacios" class="tooltips tooltipped medium" data-position="top" data-delay="50" data-tooltip="Medium"><i class="fab fa-medium"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://stackoverflow.com/users/1685147/luis-palacios" class="tooltips tooltipped stackoverflow" data-position="top" data-delay="50" data-tooltip="StackOverFlow"><i class="fa fa-stack-overflow"></i></a>
+                                    <a href="https://stackoverflow.com/users/1685147/luis-palacios" class="tooltips tooltipped stackoverflow" data-position="top" data-delay="50" data-tooltip="StackOverFlow"><i class="fab fa-stack-overflow"></i></a>
                                 </li>
                             </ul> <!-- ./social icons end -->
                             <div class="right copyright">
@@ -264,7 +265,6 @@
         /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
         !function (a) { if (a.loadCSS) { var b = loadCSS.relpreload = {}; if (b.support = function () { try { return a.document.createElement("link").relList.supports("preload") } catch (b) { return !1 } }, b.poly = function () { for (var b = a.document.getElementsByTagName("link"), c = 0; c < b.length; c++) { var d = b[c]; "preload" === d.rel && "style" === d.getAttribute("as") && (a.loadCSS(d.href, d, d.getAttribute("media")), d.rel = null) } }, !b.support()) { b.poly(); var c = a.setInterval(b.poly, 300); a.addEventListener && a.addEventListener("load", function () { b.poly(), a.clearInterval(c) }), a.attachEvent && a.attachEvent("onload", function () { a.clearInterval(c) }) } } }(this);
     </script>
-    <script async src="https://use.fontawesome.com/735204ed59.js"></script>
     <script type="application/ld+json">
         {
         "@@context": "http://schema.org",

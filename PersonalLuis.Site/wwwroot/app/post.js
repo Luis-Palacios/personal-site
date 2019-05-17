@@ -9,7 +9,7 @@ import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
 import './common';
 
-tippy('.social-share li', {
+tippy('.social-share li, .sm-change-language a', {
   flipBehavior: ['left', 'top'],
 });
 

@@ -4,7 +4,7 @@ namespace PersonalLuis.Site.Models.Enums
     {
         Facebook = 1,
         Twitter = 2,
-        GooglePlus = 3,
+        Youtube = 3,
         LinkedIn = 4,
         Github = 5,
         Medium = 6,
