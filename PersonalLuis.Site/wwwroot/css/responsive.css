@@ -118,12 +118,16 @@ TOC :
         line-height: 60px;
         width: 40px;
     }
-
+ 
     .mobile-profile {
-        background: url('/images/home-bg.jpg') no-repeat scroll center center / cover;
+        background: url('/images/home-bg.webp') no-repeat scroll center center;
         display: block;
         min-height: 160px;
         position: relative;
+    }
+
+    .no-webp .mobile-profile{
+        background: url('/images/home-bg.jpg') no-repeat scroll center center;
     }
 
     .profile-inner {
