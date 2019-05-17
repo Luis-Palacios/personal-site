@@ -111,9 +111,9 @@
             stroke: #000
         }
     </style>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css" integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/brands.css" integrity="sha384-i2PyM6FMpVnxjRPi0KW/xIS7hkeSznkllv+Hx/MtYDaHA5VcF0yL3KVlvzp8bWjQ" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css" integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs" crossorigin="anonymous" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/brands.css" integrity="sha384-i2PyM6FMpVnxjRPi0KW/xIS7hkeSznkllv+Hx/MtYDaHA5VcF0yL3KVlvzp8bWjQ" crossorigin="anonymous" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
     <link rel="preload" href="~/legacy-libs/custom-bootstrap/bootstrap.min.css" as="style" onload="this.rel='stylesheet'" />
     @RenderSection("styles", required: false)
     <script>
@@ -133,7 +133,8 @@
     <div id="preloader">
         <div class="loader">
             <svg class="circle-loader" height="50" width="50">
-                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10">
+                </circle>
             </svg>
         </div>
     </div>
@@ -150,15 +151,15 @@
                                     <a href="/" class="left brand-logo menu-smooth-scroll" data-section="#about">
                                         Luis Palacios
                                     </a>
-                                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
                                     <ul class="right static-menu">
                                         <li class="search-form-li">
-                                            <a id="initSearchIcon" class=""><i class="mdi-action-search"></i> </a>
+                                            <a id="initSearchIcon" class=""><i class="fas fa-search search-icon"></i> </a>
                                             <div class="search-form-wrap hide">
                                                 <form asp-controller="Blog" method="get">
                                                     <input type="search" name="searchTerm" class="search" value="@ViewBag.SearchTerm">
                                                     <button type="submit">
-                                                        <i class="mdi-action-search"></i>
+                                                        <i class="fas fa-search search-icon"></i>
                                                     </button>
                                                 </form>
                                             </div>
@@ -181,7 +182,7 @@
                                                 <a href="#about" data-section="#about" class="menu-smooth-scroll"><i class="fas fa-user fa-fw"></i>About Me</a>
                                             </li>
                                             <li>
-                                                <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="far fa-file-alt fa-fw"></i>Resume</a>
+                                                <a href="#resume" data-section="#resume" class="menu-smooth-scroll"><i class="fas fa-file-alt fa-fw"></i>Resume</a>
                                             </li>
                                             <li>
                                                 <a href="#books" data-section="#books" class="menu-smooth-scroll"><i class="fas fa-book fa-fw"></i>Books</a>
