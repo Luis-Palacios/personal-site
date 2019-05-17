@@ -522,19 +522,6 @@ header.nav {
 /* 4. Home Section Styles
  ----------------------------------- */
 
-#home {
-    background: url('../images/home-bg.webp') no-repeat fixed center center;
-}
-
-.no-webp #home {
-    background: url('../images/home-bg.jpg') no-repeat fixed center center;
-}
-
-#home .sec-overlay {
-    background: rgba(0,0,0, .7);
-    width: 100%;
-    height: 100%;
-}
 
 .home-inner {
     display: table;
