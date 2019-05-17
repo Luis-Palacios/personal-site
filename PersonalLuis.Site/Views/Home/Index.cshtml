@@ -69,37 +69,37 @@
                                 {
                                     case SocialMediaType.Facebook:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="@socialMediaUrl.Url" aria-label="Facebook Page" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-facebook-f"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.Twitter:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-twitter"></i></a>
+                                            <a href="@socialMediaUrl.Url" aria-label="Twitter Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-twitter"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.Youtube:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-youtube"></i></a>
+                                            <a href="@socialMediaUrl.Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-youtube"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.LinkedIn:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="@socialMediaUrl.Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-linkedin-in"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.Github:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-github"></i></a>
+                                            <a href="@socialMediaUrl.Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-github"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.Medium:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-medium-m"></i></a>
+                                            <a href="@socialMediaUrl.Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-medium-m"></i></a>
                                         </li>
                                         break;
                                     case SocialMediaType.StackOverFlow:
                                         <li>
-                                            <a href="@socialMediaUrl.Url" target="_blank" class="btn-floating waves-effect waves-light white"><i class="fab fa-stack-overflow"></i></a>
+                                            <a href="@socialMediaUrl.Url" target="_blank" rel="noopener" class="btn-floating waves-effect waves-light white"><i class="fab fa-stack-overflow"></i></a>
                                         </li>
                                         break;
                                 }
@@ -255,13 +255,13 @@
                                                         </div>
                                                         <div class="card-content">
                                                             <span class="card-title activator brand-text">@devtool.Value.Name<i class="fas fa-ellipsis-v right"></i></span>
-                                                            <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
+                                                            <p><a href="@devtool.Value.Url" target="_blank" rel="noopener">Official Page</a></p>
                                                         </div>
                                                         <!-- Reveal content-->
                                                         <div class="card-reveal">
                                                             <div class="rev-title-wrap">
                                                                 <span class="card-title activator brand-text">@devtool.Value.Name<i class="fas fa-times right"></i></span>
-                                                                <p><a href="@devtool.Value.Url" target="_blank">Official Page</a></p>
+                                                                <p><a href="@devtool.Value.Url" target="_blank" rel="noopener">Official Page</a></p>
                                                             </div>
                                                             <p class="rev-content">
                                                                 @Html.Raw(devtool.Value.ShortDescription)
