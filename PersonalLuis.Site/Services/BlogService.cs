@@ -53,7 +53,7 @@ namespace PersonalLuis.Site.Services
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
-                    BanerThumbnailUrl="/images/posts/databases.png",
+                    BanerThumbnailUrl="/images/posts/databases.webp,/images/posts/databases.png",
                     Slug="restoring-multiple-database-sql-server-from-bak-files",
                     IsMedium = true,
                     ExternalUrl = "https://medium.com/@Luis_Palacios/restoring-multiple-database-in-sql-server-from-bak-files-751051798ab4",
@@ -76,7 +76,7 @@ namespace PersonalLuis.Site.Services
                     Introduction = @"This series is about getting stronger in Sitecore core concepts and some third party tools
                                         that will be helpful in the future such as Unicorn and Glass mapper you can consider this
                                         series a possible next step after the Fundamental Course.",
-                    BanerThumbnailUrl="/images/posts/sitecore-development.png",
+                    BanerThumbnailUrl="/images/posts/sitecore-development.webp,/images/posts/sitecore-development.png",
                     Slug="sitecore-development",
                     IsMedium = true,
                     ExternalUrl = "https://medium.com/@Luis_Palacios/get-development-started-with-sitecore-part-1-set-up-40fff89ea0a",

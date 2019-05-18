@@ -23,7 +23,7 @@ namespace PersonalLuis.Site.Services
                 {
                     Title = "Code Complete 2",
                     Author = "Steve McConnell",
-                    PictureUrl = "/images/books/code-complete.jpg",
+                    PictureUrl = "/images/books/code-complete.web,/images/books/code-complete.jpg",
                     ShortDescription = @"Full with leading-edge practices—and hundreds of code samples—illustrating the art and science of software construction.
                                          Capturing the body of knowledge available from research, academia, and everyday commercial practice, McConnell synthesizes the most effective techniques and must-know principles into clear, pragmatic guidance.
                                          No matter what your experience level, development environment, or project size, this book will inform and stimulate your thinking—and help you build the highest quality code",
@@ -32,7 +32,7 @@ namespace PersonalLuis.Site.Services
                 {
                     Title = "Working Effectively with Legacy",
                     Author = "Michael C. Feathers",
-                    PictureUrl = "/images/books/legacy-code.jpeg",
+                    PictureUrl = "/images/books/legacy-code.webp,/images/books/legacy-code.jpeg",
                     ShortDescription = @"The average software project, in our industry, was written under some aspect of code-and-fix, and without automated unit tests. And we can't just throw this code away; it represents a significant effort
                                          debugging and maintaining. It contains many latent requirements decisions. Just as Agile processes are incremental, Agile adoption must be incremental too. No more throwing away code just because it looked at us funny.",
                 },
@@ -68,7 +68,7 @@ namespace PersonalLuis.Site.Services
             new Company
              {
                  Name="PartsBase Inc.",
-                 PictureUrl="/images/companies/parts-base.webp",
+                 PictureUrl="/images/companies/parts-base.webp,/images/companies/parts-base.png",
                  WebPageUrl="https://www.partsbase.com/",
                  StartDate="Aug 2015",
                  EndDate="May 2016",
@@ -219,7 +219,7 @@ namespace PersonalLuis.Site.Services
                     Name="SQL Server",
                     Order = 4,
                     Url="https://www.microsoft.com/en-us/sql-server/sql-server-2016",
-                    PictureUrl="/images/devtools/sql-server.png",
+                    PictureUrl="/images/devtools/sql-server.webp,/images/devtools/sql-server.png",
                     ShortDescription=@"Microsoft SQL Server is a relational database management system developed by Microsoft. As a database server,
                                        it is a software product with the primary function of storing and retrieving data as requested by other software
                                       applications—which may run either on the same computer or on another computer across a network (including the Internet)."
@@ -229,7 +229,7 @@ namespace PersonalLuis.Site.Services
                     Name="PostgreSQL",
                     Order = 5,
                     Url="https://www.postgresql.org/",
-                    PictureUrl="/images/devtools/postgresql_logo.png",
+                    PictureUrl="/images/devtools/postgresql_logo.webp,/images/devtools/postgresql_logo.png",
                     ShortDescription=@"PostgreSQL is a powerful, open source object-relational database system. It has more than 15 years of active development
                                         and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness."
                 },
@@ -238,7 +238,7 @@ namespace PersonalLuis.Site.Services
                     Name="MongoDB",
                     Order = 6,
                     Url="https://www.mongodb.com/",
-                    PictureUrl="/images/devtools/mongodb-logo.png",
+                    PictureUrl="/images/devtools/mongodb-logo.png,/images/devtools/mongodb-logo.png",
                     ShortDescription=@"MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need"
                 },
                  new DevTool

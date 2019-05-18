@@ -1,0 +1,10 @@
+﻿@model PictureComponentVm
+
+<picture>
+    @foreach (var imageUrl in Model.ImageUrls)
+    {
+        <source srcset="@imageUrl" type="image/@imageUrl.GetExtension()" />
+    }
+    <img src="@Model.ImageUrls.LastOrDefault()" alt="@Model.ImageAlt" class="@Model.ImageClass"/>
+</picture>
+

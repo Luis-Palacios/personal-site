@@ -1,5 +1,4 @@
 ﻿@using PersonalLuis.Site.Models.Enums;
-
 @model HomeVm
 @section seo{
     <title>Luis Palacios | Developer, Blogger, Teacher</title>
@@ -44,10 +43,10 @@
                     <div class="person-img wow fadeIn">
                         <picture>
                             <source type="image/webp" srcset="/images/luis-palacios-3.webp" />
-                            <source type="image/png" srcset="/images/luis-palacios-3.jpg" />
+                            <source type="image/jpg" srcset="/images/luis-palacios-3.jpg" />
                             <img class="z-depth-1" src="/images/luis-palacios-3.jpg" alt="luis-palacios">
                         </picture>
-                        
+
                     </div>
                 </div>
                 <!-- about me image -->
@@ -187,11 +186,9 @@
                                                         <div class="card-image waves-effect waves-block waves-light">
                                                             <h2 class="left-align card-title-top">@company.Value.StartDate - @company.Value.EndDate</h2>
                                                             <div class="valign-wrapper card-img-wrap">
-                                                                <picture>
-                                                                    <source type="image/webp" srcset="@company.Value.PictureUrl"/>
-                                                                    <source type="image/png" srcset="@company.Value.PictureUrl"/>
-                                                                    <img class="activator" src="@company.Value.PictureUrl" alt="@company.Value.Name">
-                                                                </picture>
+                                                                <vc:picture images-urls="@company.Value.PictureUrl.Split(',')"
+                                                                            image-alt="@company.Value.Name"
+                                                                            image-class="activator" />
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
@@ -250,7 +247,9 @@
                                                     <div class="card">
                                                         <div class="card-image waves-effect waves-block waves-light">
                                                             <div class="card-img-wrap">
-                                                                <img class="activator" src="@devtool.Value.PictureUrl" alt="@devtool.Value.Name">
+                                                                <vc:picture images-urls="@devtool.Value.PictureUrl.Split(',')" 
+                                                                            image-alt="@devtool.Value.Name"
+                                                                            image-class="activator"/>
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
@@ -306,28 +305,30 @@
                             <div class="overflow-hidden">
                                 <div class="row">
                                     <div id="teamSlider" class="clearfix card-element-wrapper owl-carousel owl-theme">
-                                        @foreach (var contact in Model.Books.Select((value, i) => new { Value = value, i }))
+                                        @foreach (var book in Model.Books.Select((value, i) => new { Value = value, i }))
                                         {
                                             <div class="col-sm-4 single-card-box wow fadeInUpSmall"
                                                  data-wow-duration=".7s"
-                                                 data-wow-delay=".@(contact.i*2)s">
+                                                 data-wow-delay=".@(book.i*2)s">
                                                 <div class="card">
                                                     <div class="card-image waves-effect waves-block waves-light">
                                                         <div class="card-img-wrap">
-                                                            <img class="activator" src="@contact.Value.PictureUrl" alt="@contact.Value.Title">
+                                                            <vc:picture images-urls="@book.Value.PictureUrl.Split(',')"
+                                                                        image-alt="@book.Value.Title"
+                                                                        image-class="activator"/>
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
-                                                        <span class="card-title activator brand-text">@contact.Value.Title<i class="fas fa-ellipsis-v right"></i></span>
-                                                        <p>@contact.Value.Author</p>
+                                                        <span class="card-title activator brand-text">@book.Value.Title<i class="fas fa-ellipsis-v right"></i></span>
+                                                        <p>@book.Value.Author</p>
                                                     </div>
                                                     <div class="card-reveal">
                                                         <div class="rev-title-wrap">
-                                                            <span class="card-title activator brand-text">@contact.Value.Title<i class="fas fa-times right"></i></span>
-                                                            <p>@contact.Value.Author</p>
+                                                            <span class="card-title activator brand-text">@book.Value.Title<i class="fas fa-times right"></i></span>
+                                                            <p>@book.Value.Author</p>
                                                         </div>
                                                         <p class="rev-content">
-                                                            @contact.Value.ShortDescription
+                                                            @book.Value.ShortDescription
                                                             <br /><br />
                                                             My personal review: <a href="#">Coming soon</a>
                                                         </p>
@@ -374,7 +375,11 @@
                                             <div class="card-img-wrap">
                                                 <div class="blog-post-thumb waves-effect waves-block waves-light">
                                                     <a class="blog-link" href="@post.Value.Url" target="@(post.Value.IsMedium? "_blank":"_self")">
-                                                        <img class="activator" src="@post.Value.BanerThumbnailUrl" alt="@post.Value.Slug">
+                                                        <vc:picture images-urls="@post.Value.BanerThumbnailUrl.Split(',')"
+                                                                    image-alt="@post.Value.Slug"
+                                                                    image-class="activator">
+
+                                                        </vc:picture>
                                                     </a>
                                                 </div>
                                                 <div class="post-body">
