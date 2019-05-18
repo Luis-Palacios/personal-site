@@ -27,7 +27,7 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
   window.open(`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 });
 
-const targets = document.querySelectorAll('.single-post-content img');
+const targets = document.querySelectorAll('.single-post-content .thumb-wrap > img');
 
 const lazyLoad = (target) => {
   const io = new IntersectionObserver((entries, observer) => {
