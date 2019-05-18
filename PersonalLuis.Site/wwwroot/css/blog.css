@@ -389,11 +389,11 @@ a.tags {
 
     .single-post-content ul li,
     .single-post-content p {
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .single-post-content blockquote {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .single-banner .title {
@@ -473,7 +473,7 @@ a.tags {
     }
 
 ul.post-list {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
     ul.post-list li > strong {

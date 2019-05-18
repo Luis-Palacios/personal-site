@@ -27,9 +27,10 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
   window.open(`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 });
 
-const targets = document.querySelectorAll('.single-post-content .thumb-wrap > img');
+const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img');
+const targetPictures = document.querySelectorAll('.single-post-content picture.lazy');
 
-const lazyLoad = (target) => {
+const lazyLoadImg = (target) => {
   const io = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -45,4 +46,29 @@ const lazyLoad = (target) => {
   io.observe(target);
 };
 
-targets.forEach(lazyLoad);
+const lazyLoadPicture = (target) => {
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const picture = entry.target;
+        picture.childNodes.forEach((child) => {
+          if (child.tagName === 'SOURCE') {
+            const { srcset } = child.dataset;
+            child.srcset = srcset;
+          }
+          if (child.tagName === 'IMG') {
+            const { src } = child.dataset;
+            child.src = src;
+          }
+        });
+        console.log(picture);
+        observer.disconnect();
+      }
+    });
+  });
+
+  io.observe(target);
+};
+
+targetImgs.forEach(lazyLoadImg);
+targetPictures.forEach(lazyLoadPicture);
