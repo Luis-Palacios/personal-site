@@ -1,7 +1,7 @@
 import Isotope from 'isotope-layout';
+import $ from 'jquery';
 import '../legacy-libs/custom-modernizr';
 
-const $ = window.jQuery;
 const { personalSite } = window;
 
 // callback after ready the document
@@ -52,7 +52,7 @@ $(document).ready(() => {
 
 
 // callback after loading the window
-$(window).load(() => {
+$(window).on('load', () => {
   // Preloader
   $('.loader').fadeOut();
   $('#preloader').delay(350).fadeOut('slow');

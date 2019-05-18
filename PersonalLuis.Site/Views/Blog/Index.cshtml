@@ -63,7 +63,9 @@
                                 <div class="card-img-wrap">
                                     <div class="blog-post-thumb waves-effect waves-block waves-light">
                                         <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")">
-                                            <img class="activator" src="@post.BanerThumbnailUrl" alt="@post.Title">
+                                            <vc:picture images-urls="@post.BanerThumbnailUrl.Split(",")"
+                                                        image-alt="@post.Slug"
+                                                        image-class="activator"/>
                                         </a>
                                     </div>
                                     <div class="post-body">

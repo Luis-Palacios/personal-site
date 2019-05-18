@@ -1,13 +1,14 @@
-﻿import 'jquery.easing';
-import tippy from 'tippy.js';
+﻿import tippy from 'tippy.js';
+
 import '../legacy-libs/materialize/css/materialize.min.css';
 import '../css/site.css';
 import '../css/responsive.css';
 import '../css/theme.css';
 import '../css/blog.css';
+
+import './common';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
-import './common';
 
 tippy('.social-share li, .sm-change-language a', {
   flipBehavior: ['left', 'top'],
