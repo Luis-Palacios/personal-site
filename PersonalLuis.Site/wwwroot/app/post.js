@@ -1,10 +1,12 @@
 ﻿import tippy from 'tippy.js';
 
 import '../legacy-libs/materialize/css/materialize.min.css';
+import '../css/animations.css';
 import '../css/site.css';
 import '../css/responsive.css';
 import '../css/theme.css';
 import '../css/blog.css';
+
 
 import './common';
 import '../legacy-libs/waypoints';
@@ -36,8 +38,8 @@ const lazyLoadImg = (target) => {
       if (entry.isIntersecting) {
         const img = entry.target;
         const src = img.getAttribute('data-lazy');
-
         img.setAttribute('src', src);
+        img.classList.add('blur-in');
         observer.disconnect();
       }
     });
@@ -59,6 +61,7 @@ const lazyLoadPicture = (target) => {
           if (child.tagName === 'IMG') {
             const { src } = child.dataset;
             child.src = src;
+            child.classList.add('blur-in');
           }
         });
         console.log(picture);

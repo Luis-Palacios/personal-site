@@ -1,0 +1,27 @@
+@keyframes blurin{
+    from {
+        filter: blur(8px);
+    }
+
+    to{
+        filter: blur(0);
+    }
+}
+
+.blur-in{
+    animation-name: blurin;
+    animation-duration: 0.8s;
+}
+
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%; 
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
