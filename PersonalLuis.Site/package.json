@@ -51,6 +51,7 @@
     "isotope-layout": "^3.0.4",
     "jquery": "^3.4.1",
     "masonry-layout": "^4.2.0",
+    "medium-zoom": "^1.0.4",
     "normalize.css": "^7.0.0",
     "owl.carousel": "^2.3.4",
     "tippy.js": "^4.3.1",

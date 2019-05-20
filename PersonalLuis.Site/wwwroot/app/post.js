@@ -1,4 +1,5 @@
 ﻿import tippy from 'tippy.js';
+import mediumZoom from 'medium-zoom';
 
 import '../legacy-libs/materialize/css/materialize.min.css';
 import '../css/animations.css';
@@ -15,6 +16,8 @@ import '../legacy-libs/materialize/js/materialize.min';
 tippy('.social-share li, .sm-change-language a', {
   flipBehavior: ['left', 'top'],
 });
+
+mediumZoom('.single-post-content img');
 
 document.getElementById('facebook-share').addEventListener('click', () => {
   // eslint-disable-next-line no-undef
