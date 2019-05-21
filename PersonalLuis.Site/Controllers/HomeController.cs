@@ -29,7 +29,7 @@ namespace PersonalLuis.Site.Controllers
                 Companies = this.generalInfoService.GetCompanies(),
                 Books = this.generalInfoService.GetBooks(),
                 Recommentations = this.generalInfoService.GetRecommendations(),
-                FeaturedPosts = this.blogService.GetFeaturedPosts()
+                FeaturedPosts = this.blogService.GetFeaturedPosts("en")
             };
             return View(homeVm);
         }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using PersonalLuis.Site.Models.Blog;
 using PersonalLuis.Site.Models.ViewModels;
 using PersonalLuis.Site.Services.Interfaces;
 using PersonalLuis.Site.Utils;
@@ -21,15 +22,25 @@ namespace PersonalLuis.Site.Controllers
             ViewBag.MetaDescription = Constants.BlogMetaDescription;
             BlogVm blogVm = new BlogVm
             {
-                FeaturedPosts = blogService.GetPosts(searchTerm)
+                FeaturedPosts = blogService.GetPosts(searchTerm, "en")
             };
             return View(blogVm);
         }
 
-        public IActionResult Detail(string postSlug)
+        public IActionResult Detail(string postSlug, string lang = "en")
         {
-            var post = blogService.GetFeaturedPosts()
-                .FirstOrDefault(p => p.Slug == postSlug);
+            ViewBag.Lang = lang;
+            Post post;
+            if (lang == "en")
+            {
+                post = blogService.GetFeaturedPosts(lang)
+                    .FirstOrDefault(p => p.Slug == postSlug);
+            }
+            else
+            {
+                post = blogService.GetFeaturedPosts(lang)
+                    .FirstOrDefault(p => p.SlugEs == postSlug);
+            }
             return View(post);
         }
     }

@@ -15,13 +15,11 @@ namespace PersonalLuis.Site.Services
             this.urlHelper = urlHelper;
         }
 
-        public ICollection<Post> Posts
+        public ICollection<Post> GetPostsData(string lang)
         {
-            get
-            {
-                return new List<Post>
+            return new List<Post>
                 {
-                    new Post(urlHelper)
+                    new Post(urlHelper, lang)
                 {
                     Title = "Powerfull linting in C#",
                     Introduction = @"For those that have used tools like eslint for javascript know that a great linting tool and configuration
@@ -33,22 +31,28 @@ namespace PersonalLuis.Site.Services
                     Author="Luis Palacios"
 
                 },
-                new Post(urlHelper)
+                new Post(urlHelper, lang)
                 {
                     Title = "Good terminal experience on windows",
+                    TitleEs= "Buena experiencia de terminal en windows",
                     Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
                                     the need for a good console application have become more clear. A console where you can be productive that has a nice
                                     look and feel is actually posible not only on UNIX Systems but also on Windows.",
+                    IntroductionEs =@"Con tantas herramientas populares de desarrollo que existen hoy en día que requiere de una interfaz de linea de comando para trabajar,
+                                        la necesidad de una buena aplicación de consola se ha vuelto más clara. Una consola donde podas ser productivo que se vea y sienta bien es
+                                        posible de lograr no solo en sistemas basados en UNIX sino también en Windows",
                     BanerThumbnailUrl="/images/posts/cmder-thumb.png",
                     BannerUrl="/images/posts/cmder/main.png",
                     Slug="good-terminal-experience-on-windows",
+                    SlugEs="buena-experiencia-terminal-en-windows",
                     Author="Luis Palacios",
                     Category ="DevTools",
                     PublishedDate=new DateTime(2019, 5, 15),
                     Content="GoodTerminalExperience",
+                    ContentEs="es/BuenaExperienciaTerminal",
                     Published = true,
                 },
-                new Post(urlHelper)
+                new Post(urlHelper, lang)
                 {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
@@ -60,7 +64,7 @@ namespace PersonalLuis.Site.Services
                     Author="Luis Palacios",
                     Published = true,
                 },
-                new Post(urlHelper)
+                new Post(urlHelper, lang)
                 {
                     Title = "Web pack for server side frameworks",
                     Introduction = @"I've spend one year and half just working on SPA and came to love Web pack,
@@ -70,7 +74,7 @@ namespace PersonalLuis.Site.Services
                     Slug="web-pack-for-server-side-frameworks",
                     Author="Luis Palacios"
                 },
-                new Post(urlHelper)
+                new Post(urlHelper, lang)
                 {
                     Title = "Get development started with Sitecore ",
                     Introduction = @"This series is about getting stronger in Sitecore core concepts and some third party tools
@@ -83,24 +87,23 @@ namespace PersonalLuis.Site.Services
                     Author="Luis Palacios",
                     Published = true,
                 },
-                };
-            }
+        };
         }
-        public IEnumerable<Post> GetFeaturedPosts()
+        public IEnumerable<Post> GetFeaturedPosts(string lang)
         {
-            return Posts.Where(p => p.Published);
+            return GetPostsData(lang).Where(p => p.Published);
         }
 
-        public IEnumerable<Post> GetPosts(string searchTerm)
+        public IEnumerable<Post> GetPosts(string searchTerm, string lang)
         {
             if (string.IsNullOrEmpty(searchTerm))
             {
-                return Posts.Where(p => p.Published);
+                return GetPostsData(lang).Where(p => p.Published);
             }
             else
             {
                 searchTerm = searchTerm.ToLower();
-                return Posts.Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)));
+                return GetPostsData(lang).Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)));
             }
         }
     }

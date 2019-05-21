@@ -1,20 +1,27 @@
 ﻿@model PersonalLuis.Site.Models.Blog.Post
-@{ string absoluteUrl = Context.Request.GetAbsoluteUrl();}
+@{
+    string absoluteUrl = Context.Request.GetAbsoluteUrl();
+    var switchLanguageSettings = new
+    {
+        Text = (ViewBag.Lang == "en") ? "Cambiar a español" : "Switch to english",
+        Url = (ViewBag.Lang == "en") ? Model.SpanishUrl : Model.Url
+    };
+}
 @section seo{
     <title>Luis Palacios | @Model.Title</title>
-    <meta name="description" content="@Model.Introduction">
+    <meta name="description" content="@Model.PostIntroduction">
 }
 @section meta{
-    <meta property="og:title" content="@Model.Title">
+    <meta property="og:title" content="@Model.PostTitle">
     <meta property="og:type" content="article">
     <vc:og-image src="@Model.BannerUrl" width="2292" height="977" />
     <meta property="og:url" content="@absoluteUrl" />
-    <meta property="og:description" content="@Model.Introduction">
+    <meta property="og:description" content="@Model.PostIntroduction">
     <meta property="fb:app_id" content="299469044286183">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@@LRPalacios" />
     <meta name="twitter:title" content="@Model.Title">
-    <meta name="twitter:description" content="@Model.Introduction">
+    <meta name="twitter:description" content="@Model.PostIntroduction">
     <meta name="twitter:image" content="@Context.Request.GetBaseUrl()@Model.BannerUrl">
     <link rel="canonical" href="@absoluteUrl" />
 }
@@ -32,22 +39,19 @@
         <div class="row">
             <div class="clearfix blog-banner-text blog-single-banner">
                 <div class="col-md-12">
-                    <h2 class="title">@Model.Title</h2>
+                    <h2 class="title">@Model.PostTitle</h2>
                     <ul class="clearfix blog-post-meta">
                         <li>
                             By <a href="#">@Model.Author</a>
                         </li>
                         <li>@Model.PublishedDate.ToShortDateString()</li>
                         <li>
-                            <a href="#">5 Comments</a>
-                        </li>
-                        <li>
                             <a href="#">@Model.Category</a>
                         </li>
                     </ul>
                 </div>
                 <div class="sm-change-language">
-                    <a href="#" data-tippy-content="Cambiar a español">
+                    <a href="@switchLanguageSettings.Url" data-tippy-content="@switchLanguageSettings.Text">
                         <i class="fas fa-language fa-2x"></i>
                         <i class="fas fa-exchange-alt"></i>
                     </a>
@@ -63,15 +67,15 @@
                 <!-- post container start-->
                 <div class="col-sm-10">
                     <article class="single-post-page">
-                        @await Html.PartialAsync($"~/Views/Blog/Posts/{Model.Content}.cshtml")
+                        @await Html.PartialAsync($"~/Views/Blog/Posts/{Model.PostContent}.cshtml")
                     </article>
                     <div id="disqus_thread"></div>
                 </div>
                 <div class="col-sm-2 text-center">
                     <aside class="post-side-bar">
                         <ul class="social-share">
-                            <li data-tippy-content="Cambiar a español" class="language-item">
-                                <a href="#">
+                            <li data-tippy-content="@switchLanguageSettings.Text" class="language-item">
+                                <a href="@switchLanguageSettings.Url">
                                     <i class="fas fa-language fa-2x"></i>
                                     <i class="fas fa-exchange-alt"></i>
                                 </a>

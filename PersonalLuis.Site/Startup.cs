@@ -78,6 +78,13 @@ namespace PersonalLuis.Site
 
             app.UseMvc(routes =>
             {
+
+                routes.MapRoute(
+                  name: "blog-multi",
+                  template: "/{lang}/blog/{postSlug}",
+                  defaults: new { controller = "Blog", action = "Detail" }
+                  );
+
                 routes.MapRoute(
                    name: "blog",
                    template: "/blog/{postSlug}",
