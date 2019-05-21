@@ -12,6 +12,7 @@ namespace PersonalLuis.Site.Models.Blog
             this.urlHelper = urlHelper;
         }
 
+        public int Id { get; set; }
         public string Title { get; set; }
         public string BannerUrl { get; set; }
         public string BanerThumbnailUrl { get; set; }

@@ -12,6 +12,7 @@ import '../css/blog.css';
 import './common';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
+import { debug } from 'util';
 
 tippy('.social-share li, .sm-change-language a', {
   flipBehavior: ['left', 'top'],
@@ -34,6 +35,7 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
 
 const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img');
 const targetPictures = document.querySelectorAll('.single-post-content picture.lazy');
+const disqusDiv = document.getElementById('disqus_thread');
 
 const lazyLoadImg = (target) => {
   const io = new IntersectionObserver((entries, observer) => {
@@ -67,7 +69,6 @@ const lazyLoadPicture = (target) => {
             child.classList.add('blur-in');
           }
         });
-        console.log(picture);
         observer.disconnect();
       }
     });
@@ -76,5 +77,23 @@ const lazyLoadPicture = (target) => {
   io.observe(target);
 };
 
+const lazyLoadDisqus = (target) => {
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const d = document;
+        const s = d.createElement('script');
+        s.src = 'https://luispalacios.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        observer.disconnect();
+      }
+    });
+  });
+
+  io.observe(target);
+};
+
+lazyLoadDisqus(disqusDiv);
 targetImgs.forEach(lazyLoadImg);
 targetPictures.forEach(lazyLoadPicture);

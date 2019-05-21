@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </div>
-                 <div class="sm-change-language" >
+                <div class="sm-change-language">
                     <a href="#" data-tippy-content="Cambiar a español">
                         <i class="fas fa-language fa-2x"></i>
                         <i class="fas fa-exchange-alt"></i>
@@ -65,6 +65,7 @@
                     <article class="single-post-page">
                         @await Html.PartialAsync($"~/Views/Blog/Posts/{Model.Content}.cshtml")
                     </article>
+                    <div id="disqus_thread"></div>
                 </div>
                 <div class="col-sm-2 text-center">
                     <aside class="post-side-bar">
@@ -94,6 +95,10 @@
 @section scripts{
     <script type="text/javascript">
         window.personalSite = "@ViewBag.SearchTerm";
+        var disqus_config = function () {
+        this.page.url = "@absoluteUrl";
+        this.page.identifier = "@Model.Id";
+        };
     </script>
     <script>
         window.twttr = (function (d, s, id) {
@@ -123,6 +128,7 @@
             });
         };
     </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <environment include="Development">
         <script async src="~/.temp/post.bundle.js"></script>
