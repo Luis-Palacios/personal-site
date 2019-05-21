@@ -6,11 +6,9 @@
     <p>
         Incluso crearon un video que es todo un esfuerzo de mercadeo y tengo que admitirlo se ve bastante bien.
     </p>
-
     <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-
     <br />
     <p>
         Puedes ver la presentation en Microsoft Build(en ingles) aqui: <a target="_blank" href="https://mybuild.techcommunity.microsoft.com/sessions/77004">Windows Terminal: Building a better command line experience for developers</a>
@@ -28,7 +26,7 @@
     <p>
         Tambiens tenes Powershell como opcion y aunque es la favorita de muchos administradores de sistema de Windows para los desarrolladores no ha sido la gran cosa.
         ¿Por que sera que este no habia sido una prioridad para Microsoft? bueno no puedo decirlo con certeza pero
-        en el pasado los desarrolladores de .Net han estado usando principalmente un <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>(Visual Studio) 
+        en el pasado los desarrolladores de .Net han estado usando principalmente un <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>(Visual Studio)
         para el desarrollo y normalmente tienes todo lo que necesitas ahi.
     </p>
     <h2>
@@ -107,7 +105,6 @@
         <a href="https://github.com/cmderdev/cmder/blob/master/README.md">About cmder</a> but I will give you a very
         brief overview of some of the features I use the most
     </p>
-
     <h3>Unix Style Commands</h3>
     These are actually a gift from git for Windows and not cmder itself however cmder can take advantages of them and use them
     and if case you are new to the console world on Windows I want you to be aware of the goodies available
@@ -195,7 +192,7 @@
             <strong>Git auto complete</strong> just type something like <code>git co</code> and hit tab and it will autocomplete <code>git commit</code> for you it can even suggest commands for you
             when there is more than one autocomplete options try something like <code>git che</code> and you will see something like:
             <div class="thumb-wrap sub-image-wrap">
-                <img data-lazy="/images/posts/cmder/gitchec.png" class="img-thumbnail" src="/images/blur.png"  alt="cmder-git-autocomplete">
+                <img data-lazy="/images/posts/cmder/gitchec.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-git-autocomplete">
             </div>
         </li>
         <li>
@@ -204,7 +201,7 @@
                 <picture class="lazy">
                     <source data-srcset="/images/posts/cmder/git.webp" type="image/webp" />
                     <source data-srcset="/images/posts/cmder/git.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/git.png" class="img-thumbnail" src="/images/blur.png"  alt="cmder-git">
+                    <img data-src="/images/posts/cmder/git.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-git">
                 </picture>
             </div>
         </li>
@@ -243,12 +240,11 @@
         where djrun is the alias you would like to use for me is dj from Django and run of running the server so now I can just type <code>djrun</code>  which it's a lot less typing
         than <code>python manage.py runserver</code> and you even get autocomplete for your aliases too.
     </p>
-
     <div class="thumb-wrap">
         <picture class="lazy">
             <source data-srcset="/images/posts/cmder/djrun.webp" type="image/webp" />
             <source data-srcset="/images/posts/cmder/djrun.png" type="image/png" />
-            <img data-src="/images/posts/cmder/djrun.png" class="img-thumbnail" src="/images/blur.png"  alt="cmder-alias-django-run">
+            <img data-src="/images/posts/cmder/djrun.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-alias-django-run">
         </picture>
     </div>
     <p>
@@ -260,7 +256,7 @@
         <picture class="lazy">
             <source data-srcset="/images/posts/cmder/goto.webp" type="image/webp" />
             <source data-srcset="/images/posts/cmder/goto.png" type="image/png" />
-            <img data-src="/images/posts/cmder/goto.png" class="img-thumbnail" src="/images/blur.png"  alt="cmder-alias-navigation">
+            <img data-src="/images/posts/cmder/goto.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-alias-navigation">
         </picture>
     </div>
     <p>
@@ -272,13 +268,206 @@
         <picture class="lazy">
             <source data-srcset="/images/posts/cmder/gtcommit.webp" type="image/webp" />
             <source data-srcset="/images/posts/cmder/gtcommit.png" type="image/png" />
-            <img data-src="/images/posts/cmder/gtcommit.png" class="img-thumbnail" src="/images/blur.png"  alt="cmder-git-commit">
+            <img data-src="/images/posts/cmder/gtcommit.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-git-commit">
         </picture>
     </div>
     <p>
         There is a lot more you can do with alias and you can find more details on the official docs in cmder on the links I shared
         but hopefully this is enough to get you started.
     </p>
+    <h3>Startup Tasks</h3>
+    <p>
+        This one also helps a lot with productivity, because you can create your own custom startup task, let's take a look at what I normally need to do when working on my personal site
+        which is build on Dotnet Core but it also uses Nodejs tools for building the front-end such as Webpack.
+    </p>
+    <ol class="post-list">
+        <li>
+            1. A command line tab for handling my git commands
+        </li>
+        <li>
+            2. A command line running my site <code>dotnet run</code>
+        </li>
+        <li>
+            3. A command line watching and building my front-end files <code>npm run watch</code>
+        </li>
+    </ol>
+    <p>
+        Not to mention, I need to navigate to my repository directory in order to run these commands, so the manual steps I would need to do every time I want to work on my personal site
+        would look like the following:
+    </p>
+    <ol class="post-list">
+        <li>
+            1. Open cmder and navigate to my repository directory
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/open-cmder.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder/open-cmder.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/open-cmder.png" class="img-thumbnail" src="/images/blur.png" alt="open-cmder">
+                </picture>
+            </div>
+        </li>
+        <li>
+            2. Open a new split tab to the right, navigate to my repository and run <code>dotnet run</code>
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-open-tab-right.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder/cmder-open-tab-right.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-open-tab-right.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-open-tab-right">
+                </picture>
+            </div>
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-run-dotnerun.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder/cmder-run-dotnerun.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-run-dotnerun.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-run-dotnerun">
+                </picture>
+            </div>
+        </li>
+        <li>
+            3. Open a new split tab to the bottom, navigate to my repository and run <code>npm run watch</code>
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-open-tab-bottom.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder/cmder-open-tab-bottom.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-open-tab-right.bottom" class="img-thumbnail" src="/images/blur.png" alt="cmder-open-tab-bottom">
+                </picture>
+            </div>
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-run-npmwatch.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder/cmder-run-npmwatch.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-run-npmwatch.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-run-npmwatch">
+                </picture>
+            </div>
+        </li>
+    </ol>
+    <p>
+        That is a lot of repetitive work, even using aliases is still annoying, cmder has an option like internet browsers that you can save and re-open all the same tabs you had
+        every time you close and open cmder.
+    </p>
+    <div class="thumb-wrap">
+        <picture class="lazy">
+            <source data-srcset="/images/posts/cmder/cmder-autorestore-tab.webp" type="image/webp" />
+            <source data-srcset="/images/posts/cmder/cmder-autorestore-tab.png" type="image/png" />
+            <img data-src="/images/posts/cmder/cmder-autorestore-tab.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-autorestore-tab">
+        </picture>
+    </div>
+    <p>
+        That might be everything you need if you only work in a repository, but if you are like me and you need to work on multiple repositories through the day this isn't that good because
+        if you try to keep open all the tabs for all the repository that you need, the navigation through the tabs becomes more difficult not to mention you would be wasting precious RAM.
+    </p>
+    <p>
+        So it would be great if I can just tell cmder <strong>"Open everything I need to work on my Personal Site"</strong> that is exactly what I can do trough Startup tasks, I'm going to define
+        my own custom Startup task to work on my personal site
+    </p>
+    <ol class="post-list">
+        <li>
+            1. Open cmder and go to settings <code>Win + alt + p</code> then go to Startup -> Tasks and click the <strong>"+"</strong> button.
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-add-newtask.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmdercmder-add-newtask.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-add-newtask.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask">
+                </picture>
+            </div>
+        </li>
+        <li>
+            2. Now we need to tell cmder exactly what we want our task to do, there is a lot we can do here you can see more about it here <a href="https://conemu.github.io/en/Tasks.html">ConEmu’s Tasks</a>
+            however this can be overwhelming if you are new to this console emulator world, cmder has an awesome feature that pretty much allows us to tell it "Save my current tabs as a new task"
+            so all we need to do is define whatever name you want to identify your task and click on  <strong>Active tabs</strong>.
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-name.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-add-newtask-name.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-add-newtask-name.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-name">
+                </picture>
+            </div>
+        </li>
+        <li>
+            3. This will create a task that will open all of the tabs I need on with the split views I have defined and on the directory where I need them, however, it won't run any command
+            when is started but adding that is pretty simple I just append at the end of each command <code>&& mycommand</code> and I also need to define task parameter which in my case I just copy
+            and paste from the task <strong>cmd::Cmder</strong>. Make sure you click Save Settings.
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-config.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-add-newtask-config.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-add-newtask-config.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-config">
+                </picture>
+            </div>
+        </li>
+        <li>
+            4. Now whenever I open cmder I can <code>ctrl + t</code> to open a new tab and you will see that my new task is listed there and if I selected it, it should open all the tabs and run
+            the commands that I want in order to work on my personal site repository
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-start-newtask.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-start-newtask.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-start-newtask.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-start-newtask">
+                </picture>
+            </div>
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-ready-togo.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-ready-togo.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-ready-togo.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-ready-togo">
+                </picture>
+            </div>
+        </li>
+    </ol>
+    <p>
+        That is a great improvement however, we can take it one step further, I can actually pin my new task to the windows taskbar. I've already had my cmder pinned to my taskbar
+        but if I right click it all I see is the option to open cmder or unpin it from the task bar.
+    </p>
+    <div class="thumb-wrap">
+        <picture class="lazy">
+            <source data-srcset="/images/posts/cmder/cmder-taskbar-default.webp" type="image/webp" />
+            <source data-srcset="/images/posts/cmder-taskbar-default.png" type="image/png" />
+            <img data-src="/images/posts/cmder/cmder-taskbar-default.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-defaulto">
+        </picture>
+    </div>
+    <p> In order to add the new task to the taskbar we need to follow the next steps.</p>
+    <ol>
+        <li>
+            1. Open settings and go select your task and make sure the checkbox <strong>Taskbar Jump list</strong> is active, you can also go through the task list and remove this check for the task
+            that you don't want to appear on the taskbar
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-taskbar.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-add-newtask-taskbar.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-add-newtask-taskbar.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-taskbar">
+                </picture>
+            </div>
+        </li>
+        <li>
+            2. On the settings windows go to General -> Taskbar and make sure the checkboxes <strong>Add ComEmu Task</strong> and <strong>AutoUpdate</strong> are active then click the Update now button and then save settings
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-taskbar-update.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-taskbar-update.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-taskbar-update.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-update">
+                </picture>
+            </div>
+        </li>
+        <li>
+            3. Now for our last step, execute the command <code>ConEmu.exe /updatejumplist</code> on a cmder tab.
+            <div class="thumb-wrap sub-image-wrap">
+                <picture class="lazy">
+                    <source data-srcset="/images/posts/cmder/cmder-taskbar-complete.webp" type="image/webp" />
+                    <source data-srcset="/images/posts/cmder-taskbar-complete.png" type="image/png" />
+                    <img data-src="/images/posts/cmder/cmder-taskbar-complete.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-complete">
+                </picture>
+            </div>
+        </li>
+    </ol>
+    <p>With this, I'm ready to open everything I need on my command line in order to work on my Personal Site repository with just a right click and a click</p>
+    <div class="thumb-wrap">
+        <picture class="lazy">
+            <source data-srcset="/images/posts/cmder/cmder-taskbar-ready.webp" type="image/webp" />
+            <source data-srcset="/images/posts/cmder-taskbar-ready.png" type="image/png" />
+            <img data-src="/images/posts/cmder/cmder-taskbar-ready.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-ready">
+        </picture>
+    </div>
+
     <h3>Is there a catch?</h3>
     <p>
         cmder just like many other options for a better console on Windows is an emulator so this mean performance could be affected,

@@ -4,7 +4,9 @@
     var switchLanguageSettings = new
     {
         Text = (ViewBag.Lang == "en") ? "Cambiar a español" : "Switch to english",
-        Url = (ViewBag.Lang == "en") ? Model.SpanishUrl : Model.Url
+        Url = (ViewBag.Lang == "en") ? Model.SpanishUrl : Model.Url,
+        By = (ViewBag.Lang == "en") ? "By" : "Por",
+        Share = (ViewBag.Lang == "en") ? "Share on" : "Compartir en",
     };
 }
 @section seo{
@@ -42,7 +44,7 @@
                     <h2 class="title">@Model.PostTitle</h2>
                     <ul class="clearfix blog-post-meta">
                         <li>
-                            By <a href="#">@Model.Author</a>
+                            @switchLanguageSettings.By <a href="#">@Model.Author</a>
                         </li>
                         <li>@Model.PublishedDate.ToShortDateString()</li>
                         <li>
@@ -80,13 +82,13 @@
                                     <i class="fas fa-exchange-alt"></i>
                                 </a>
                             </li>
-                            <li data-tippy-content="Share on facebook">
+                            <li data-tippy-content="@switchLanguageSettings.Share facebook">
                                 <a href="#" id="facebook-share"><i class="fab fa-facebook-square fa-2x"></i></a>
                             </li>
-                            <li data-tippy-content="Share on twitter">
+                            <li data-tippy-content="@switchLanguageSettings.Share twitter">
                                 <a href="https://twitter.com/intent/tweet?text=@Model.Title&url=@absoluteUrl&via=LRPalacios"><i class="fab fa-twitter fa-2x"></i></a>
                             </li>
-                            <li data-tippy-content="Share on linkedin">
+                            <li data-tippy-content="@switchLanguageSettings.Share linkedin">
                                 <a href="#" id="linkedin-share"><i class="fab fa-linkedin-in fa-2x"></i></a>
                             </li>
                         </ul>
