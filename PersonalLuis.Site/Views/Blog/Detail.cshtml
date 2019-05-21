@@ -8,7 +8,7 @@
     };
 }
 @section seo{
-    <title>Luis Palacios | @Model.Title</title>
+    <title>Luis Palacios | @Model.PostTitle</title>
     <meta name="description" content="@Model.PostIntroduction">
 }
 @section meta{
@@ -20,7 +20,7 @@
     <meta property="fb:app_id" content="299469044286183">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@@LRPalacios" />
-    <meta name="twitter:title" content="@Model.Title">
+    <meta name="twitter:title" content="@Model.PostTitle">
     <meta name="twitter:description" content="@Model.PostIntroduction">
     <meta name="twitter:image" content="@Context.Request.GetBaseUrl()@Model.BannerUrl">
     <link rel="canonical" href="@absoluteUrl" />
