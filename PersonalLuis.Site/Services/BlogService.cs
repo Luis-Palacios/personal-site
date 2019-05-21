@@ -33,6 +33,7 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper, lang)
                 {
+                    Id = 2,
                     Title = "Good terminal experience on windows",
                     TitleEs= "Buena experiencia de terminal en windows",
                     Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
