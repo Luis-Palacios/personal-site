@@ -34,12 +34,15 @@ namespace PersonalLuis.Site
                options.CheckConsentNeeded = context => true;
                options.MinimumSameSitePolicy = SameSiteMode.None;
            });
+
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
             });
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUrlHelper>(x =>
             {
