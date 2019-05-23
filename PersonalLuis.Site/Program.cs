@@ -22,7 +22,10 @@ namespace PersonalLuis.Site
                 .UseStartup<Startup>()
                 .ConfigureKestrel((context, options) =>
                 {
-                    // Set properties and call methods on options
+                    if (context.Configuration.GetValue<bool>("IsUnix"))
+                    {
+                        options.ListenUnixSocket("/tmp/some-site.sock");
+                    }
                 });
     }
 }
