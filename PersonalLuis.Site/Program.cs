@@ -20,6 +20,7 @@ namespace PersonalLuis.Site
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseLibuv()
                 .ConfigureKestrel((context, options) =>
                 {
                     if (context.Configuration.GetValue<bool>("IsUnix"))
