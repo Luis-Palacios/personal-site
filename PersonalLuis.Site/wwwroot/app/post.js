@@ -8,11 +8,9 @@ import '../css/responsive.css';
 import '../css/theme.css';
 import '../css/blog.css';
 
-
 import './common';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
-import { debug } from 'util';
 
 tippy('.social-share li, .sm-change-language a', {
   flipBehavior: ['left', 'top'],
@@ -42,9 +40,12 @@ const lazyLoadImg = (target) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        const src = img.getAttribute('data-lazy');
+        const src = img.getAttribute('data-src');
         img.setAttribute('src', src);
-        img.classList.add('blur-in');
+        img.addEventListener('load', (e) => {
+          e.target.classList.add('blur-in');
+          e.target.classList.remove('lazy');
+        });
         observer.disconnect();
       }
     });
@@ -66,7 +67,10 @@ const lazyLoadPicture = (target) => {
           if (child.tagName === 'IMG') {
             const { src } = child.dataset;
             child.src = src;
-            child.classList.add('blur-in');
+            child.addEventListener('load', (e) => {
+              e.target.classList.add('blur-in');
+              picture.classList.remove('lazy');
+            });
           }
         });
         observer.disconnect();

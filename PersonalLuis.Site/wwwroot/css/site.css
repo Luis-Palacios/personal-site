@@ -1869,3 +1869,11 @@ nav a.button-collapse i {
     font-size: 1.8em;
 }
 
+
+img.lazy{
+    filter: blur(8px);
+}
+
+.lazy img{
+    filter: blur(8px);
+}
