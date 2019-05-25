@@ -429,9 +429,6 @@ header.nav {
         margin-left: 12px;
     }
 
-.static-menu {
-}
-
     .static-menu form {
         width: 300px;
         position: relative;
@@ -898,9 +895,6 @@ header.nav {
         margin-bottom: 60px;
     }
 
-.portfolio-category {
-}
-
     .portfolio-category li {
         float: left;
         margin-right: 25px;
@@ -1080,10 +1074,6 @@ header.nav {
 /* 10. Testimonials Styles
  ----------------------------------- */
 
-
-.testimonial-inner {
-}
-
     .testimonial-inner .card .card-image img {
         width: 100px;
         height: auto;
@@ -1193,7 +1183,7 @@ header.nav {
 }
 
 
-.thumb-slides-container. img {
+.thumb-slides-container img {
     width: 100%;
 }
 
@@ -1296,8 +1286,6 @@ span.num {
     display: block;
 }
 
-.feature-box-outer {
-}
 
     .feature-box-outer:before {
         display: inline-block;

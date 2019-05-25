@@ -60,13 +60,14 @@ const lazyLoadPicture = (target) => {
       if (entry.isIntersecting) {
         const picture = entry.target;
         picture.childNodes.forEach((child) => {
-          if (child.tagName === 'SOURCE') {
-            const { srcset } = child.dataset;
-            child.srcset = srcset;
+          const elementChild = child;
+          if (elementChild.tagName === 'SOURCE') {
+            const { srcset } = elementChild.dataset;
+            elementChild.srcset = srcset;
           }
           if (child.tagName === 'IMG') {
-            const { src } = child.dataset;
-            child.src = src;
+            const { src } = elementChild.dataset;
+            elementChild.src = src;
             child.addEventListener('load', (e) => {
               e.target.classList.add('blur-in');
               picture.classList.remove('lazy');
