@@ -31,7 +31,7 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
   window.open(`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 });
 
-const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img');
+const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img.lazy');
 const targetPictures = document.querySelectorAll('.single-post-content picture.lazy');
 const disqusDiv = document.getElementById('disqus_thread');
 

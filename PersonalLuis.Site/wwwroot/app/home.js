@@ -5,7 +5,7 @@ import 'owl.carousel';
 
 const { WOW } = window;
 const $ = window.jQuery;
-$.fn.load = function (callback) { $(window).on('load', callback); };
+$.fn.load = function load(callback) { $(window).on('load', callback); };
 
 const carouselDefaultOptions = {
   items: 3,
@@ -26,8 +26,8 @@ const carouselDefaultOptions = {
   },
 };
 
-(function () {
-  $.fn.scrollingTo = function (opts) {
+(function ready() {
+  $.fn.scrollingTo = function scrollingTo(opts) {
     const defaults = {
       animationTime: 1000,
       easing: '',
@@ -38,7 +38,7 @@ const carouselDefaultOptions = {
 
     const config = $.extend({}, defaults, opts);
 
-    $(this).on('click', function (e) {
+    $(this).on('click', function mainClick(e) {
       const eventVal = e;
       e.preventDefault();
 
@@ -75,7 +75,7 @@ const carouselDefaultOptions = {
   };
 }());
 
-$(document).ready(function () {
+$(document).ready(function documentReady() {
   const sklSlider = $('#skillSlider');
 
   sklSlider.owlCarousel({
@@ -95,7 +95,7 @@ $(document).ready(function () {
   });
 
   const sklTgt = $('.skl-ctrl').find('.go');
-  sklTgt.on('click', function () {
+  sklTgt.on('click', function sklClick() {
     if ($(this).hasClass('go-left')) {
       sklSlider.trigger('prev.owl.carousel');
     } else {
@@ -108,7 +108,7 @@ $(document).ready(function () {
   exSlider.owlCarousel(carouselDefaultOptions);
 
   const exTgt = $('.exp-ctrl').find('.go');
-  exTgt.on('click', function () {
+  exTgt.on('click', function exTgtClick() {
     if ($(this).hasClass('go-left')) {
       exSlider.trigger('prev.owl.carousel');
     } else {
@@ -121,7 +121,7 @@ $(document).ready(function () {
   edSlider.owlCarousel(carouselDefaultOptions);
 
   const edTgt = $('.edu-ctrl').find('.go');
-  edTgt.on('click', function () {
+  edTgt.on('click', function edTgtClick() {
     if ($(this).hasClass('go-left')) {
       edSlider.trigger('prev.owl.carousel');
     } else {
@@ -134,7 +134,7 @@ $(document).ready(function () {
   tmSlider.owlCarousel(carouselDefaultOptions);
 
   const tmTgt = $('.tmu-ctrl').find('.go');
-  tmTgt.on('click', function () {
+  tmTgt.on('click', function tmTgtClick() {
     if ($(this).hasClass('go-left')) {
       tmSlider.trigger('prev.owl.carousel');
     } else {
@@ -165,7 +165,7 @@ $(document).ready(function () {
 
   const tmoTgt = $('.tmo-ctrl').find('.go');
 
-  tmoTgt.on('click', function () {
+  tmoTgt.on('click', function tmoTgtClick() {
     if ($(this).hasClass('go-left')) {
       tesMoSlider.trigger('prev.owl.carousel');
     } else {
@@ -208,7 +208,7 @@ $(document).ready(function () {
   });
 
   // Menu animations plugin
-  (function () {
+  (function loadMenu() {
     function Menu($element, options) {
       let handler;
       const defaults = {
@@ -240,7 +240,7 @@ $(document).ready(function () {
             $(window).unbind('scroll', handler);
           }
 
-          handler = function (e) {
+          handler = function menuHandler(e) {
             if (e.currentTarget.scrollY > lastScrollTop) {
               direction = 'down';
             } else {
@@ -270,7 +270,7 @@ $(document).ready(function () {
             $(window).unbind('scroll', handler);
           }
 
-          handler = function () {
+          handler = function fixedMenuHandler() {
             // check have we display small menu or normal menu ?
             coreFuns.displayMenu();
           };
@@ -291,7 +291,7 @@ $(document).ready(function () {
       return publicFuns;
     }
 
-    $.fn.menu = function (options) {
+    $.fn.menu = function $menu(options) {
       const $element = this.first();
       const menuFuns = new Menu($element, options);
       return menuFuns;
@@ -321,7 +321,7 @@ $(document).ready(function () {
   // menuFun.mobile_intelligent_menu(); // Hide on Mobile Devices
 
 
-  $('#switch input').on('change', function () {
+  $('#switch input').on('change', function switchChange() {
     const menuId = this.id;
 
     if (menuId === 'menu1') {
@@ -334,7 +334,7 @@ $(document).ready(function () {
   });
 
   // window scroll Sections scrolling
-  (function () {
+  (function scrollLoad() {
     const sections = $('.scroll-section');
 
     function getActiveSectionLength(section, sectionsArg) {
@@ -383,7 +383,7 @@ $(window).load(() => {
   });
 
 
-  $('.section-call-to-btn.call-to-about').delay(1000).fadeIn(0, function () {
+  $('.section-call-to-btn.call-to-about').delay(1000).fadeIn(0, function finishFade() {
     const $this = $(this);
     const showHandler = setTimeout(() => {
       $this.addClass('btn-show').removeClass('btn-up');
@@ -395,7 +395,7 @@ $(window).load(() => {
   // skills animation
   $('#skillSlider').waypoint({
     handler() {
-      $(this).find('.singel-hr-inner').each(function () {
+      $(this).find('.singel-hr-inner').each(function skillSliderEach() {
         const height = $(this).data('height');
         $(this).css('height', height);
       });
