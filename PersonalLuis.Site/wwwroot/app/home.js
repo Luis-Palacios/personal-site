@@ -2,6 +2,11 @@ import 'wowjs';
 import Masonry from 'masonry-layout';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+import { lazyLoadPicture } from './lazyload';
+import '../css/animations.css';
+
+const targetPictures = document.querySelectorAll('picture.lazy');
+targetPictures.forEach(lazyLoadPicture);
 
 const { WOW } = window;
 const $ = window.jQuery;

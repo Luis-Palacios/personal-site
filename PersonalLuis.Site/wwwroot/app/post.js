@@ -1,6 +1,7 @@
 ﻿import tippy from 'tippy.js';
 import mediumZoom from 'medium-zoom';
 
+import { lazyLoad, lazyLoadPicture } from './lazyload';
 import '../legacy-libs/materialize/css/materialize.min.css';
 import '../css/animations.css';
 import '../css/site.css';
@@ -33,72 +34,6 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
 
 const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img.lazy');
 const targetPictures = document.querySelectorAll('.single-post-content picture.lazy');
-const disqusDiv = document.getElementById('disqus_thread');
 
-const lazyLoadImg = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        const src = img.getAttribute('data-src');
-        img.setAttribute('src', src);
-        img.addEventListener('load', (e) => {
-          e.target.classList.add('blur-in');
-          e.target.classList.remove('lazy');
-        });
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-const lazyLoadPicture = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const picture = entry.target;
-        picture.childNodes.forEach((child) => {
-          const elementChild = child;
-          if (elementChild.tagName === 'SOURCE') {
-            const { srcset } = elementChild.dataset;
-            elementChild.srcset = srcset;
-          }
-          if (child.tagName === 'IMG') {
-            const { src } = elementChild.dataset;
-            elementChild.src = src;
-            child.addEventListener('load', (e) => {
-              e.target.classList.add('blur-in');
-              picture.classList.remove('lazy');
-            });
-          }
-        });
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-const lazyLoadDisqus = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const d = document;
-        const s = d.createElement('script');
-        s.src = 'https://luispalacios.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-lazyLoadDisqus(disqusDiv);
-targetImgs.forEach(lazyLoadImg);
+targetImgs.forEach(lazyLoad);
 targetPictures.forEach(lazyLoadPicture);

@@ -1,10 +1,10 @@
 ﻿@model PictureComponentVm
 
-<picture>
+<picture class="lazy">
     @foreach (var imageUrl in Model.ImageUrls)
     {
-        <source srcset="@imageUrl" type="image/@imageUrl.GetExtension()" />
+        <source data-srcset="@imageUrl" type="image/@imageUrl.GetExtension()" />
     }
-    <img src="@Model.ImageUrls.LastOrDefault()" alt="@Model.ImageAlt" class="@Model.ImageClass"/>
+    <img data-src="@Model.ImageUrls.LastOrDefault()" src="/images/blur.png" alt="@Model.ImageAlt" class="@Model.ImageClass"/>
 </picture>
 
