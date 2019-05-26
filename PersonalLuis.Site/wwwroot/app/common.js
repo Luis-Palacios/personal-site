@@ -1,4 +1,3 @@
-import Isotope from 'isotope-layout';
 import $ from 'jquery';
 import '../legacy-libs/custom-modernizr';
 
@@ -39,15 +38,6 @@ $(document).ready(() => {
     gutter: 10,
     belowOrigin: true,
   });
-
-
-  // blog Mesonary
-  if ($('#blog-posts').length > 0) {
-    window.blogMsnry = new Isotope('.single-post', {
-      isInitLayout: false,
-      layoutMode: 'masonry',
-    });
-  }
 });
 
 

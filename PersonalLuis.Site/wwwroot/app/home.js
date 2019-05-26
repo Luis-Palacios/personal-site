@@ -2,11 +2,37 @@ import 'wowjs';
 import Masonry from 'masonry-layout';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
-import { lazyLoadPicture } from './lazyload';
+import { lazyLoadPicture, ioWrapper, loadPicture } from './lazyload';
 import '../css/animations.css';
 
-const targetPictures = document.querySelectorAll('picture.lazy');
+const targetPictures = document.querySelectorAll('picture.lazy:not(.blog-picture)');
 targetPictures.forEach(lazyLoadPicture);
+
+const checkLoad = loaded => function onLoad() {
+  if (loaded === 0) {
+    setTimeout(() => {
+      const elem = document.querySelector('#blog-posts');
+      const msnry = new Masonry(elem, {
+        // options
+        itemSelector: '.single-post',
+        columnWidth: 30,
+      });
+      msnry.layout();
+    }, 0);
+  }
+};
+
+const blogSection = document.getElementById('blog');
+ioWrapper(blogSection, (entry) => {
+  const section = entry.target;
+  const pictures = section.getElementsByTagName('picture');
+  let loaded = pictures.length;
+  for (let i = 0; i < pictures.length; i += 1) {
+    const picture = pictures[i];
+    loadPicture(picture, checkLoad(loaded -= loaded));
+  }
+});
+
 
 const { WOW } = window;
 const $ = window.jQuery;
@@ -312,13 +338,13 @@ $(document).ready(function documentReady() {
 
   window.menuFun = menuFun;
 
-  const elem = document.querySelector('#blog-posts');
-  const msnry = new Masonry(elem, {
-    // options
-    itemSelector: '.single-post',
-    columnWidth: 30,
-  });
-  msnry.layout();
+  // const elem = document.querySelector('#blog-posts');
+  // const msnry = new Masonry(elem, {
+  //   // options
+  //   itemSelector: '.single-post',
+  //   columnWidth: 30,
+  // });
+  // msnry.layout();
   /* Choose your navigation style */
 
   menuFun.intelligent_menu(); // Hide intelligently

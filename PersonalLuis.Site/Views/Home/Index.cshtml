@@ -187,7 +187,9 @@
                                                             <div class="valign-wrapper card-img-wrap">
                                                                 <vc:picture images-urls="@company.Value.PictureUrl.Split(',')"
                                                                             image-alt="@company.Value.Name"
-                                                                            image-class="activator" />
+                                                                            image-class="activator"
+                                                                            lazy="true"
+                                                                            picture-class="" />
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
@@ -246,9 +248,11 @@
                                                     <div class="card">
                                                         <div class="card-image waves-effect waves-block waves-light">
                                                             <div class="card-img-wrap">
-                                                                <vc:picture images-urls="@devtool.Value.PictureUrl.Split(',')" 
+                                                                <vc:picture images-urls="@devtool.Value.PictureUrl.Split(',')"
                                                                             image-alt="@devtool.Value.Name"
-                                                                            image-class="activator"/>
+                                                                            image-class="activator"
+                                                                            lazy="true"
+                                                                            picture-class="" />
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
@@ -314,7 +318,9 @@
                                                         <div class="card-img-wrap">
                                                             <vc:picture images-urls="@book.Value.PictureUrl.Split(',')"
                                                                         image-alt="@book.Value.Title"
-                                                                        image-class="activator"/>
+                                                                        image-class="activator"
+                                                                        lazy="true"
+                                                                        picture-class="" />
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
@@ -351,7 +357,7 @@
 </section>
 <!-- #Books Section end -->
 <!-- Blog Section end -->
-<section id="blog" class="scroll-section root-sec grey lighten-5 padd-tb-120 blog-wrap">
+<section id="blog" class="scroll-section root-sec grey lighten-5 padd-tb-60 blog-wrap">
     <div class="container">
         <div class="row">
             <div class="blog-inner">
@@ -368,17 +374,17 @@
                             {
                                 <article class="col-sm-6 col-md-4 single-card-box single-post">
                                     <div class="card wow fadeInUpSmall"
-                                         data-wow-duration=".7s"
-                                         data-wow-delay=".@(post.i*2)s">
+                                         data-wow-duration=".7s">
                                         <div class="card-image">
                                             <div class="card-img-wrap">
                                                 <div class="blog-post-thumb waves-effect waves-block waves-light">
                                                     <a class="blog-link" href="@post.Value.Url" target="@(post.Value.IsMedium? "_blank":"_self")">
                                                         <vc:picture images-urls="@post.Value.BanerThumbnailUrl.Split(',')"
                                                                     image-alt="@post.Value.Slug"
-                                                                    image-class="activator">
-
-                                                        </vc:picture>
+                                                                    image-class="activator"
+                                                                    picture-class="blog-picture"
+                                                                    lazy="true"
+                                                                    picture-class="" />
                                                     </a>
                                                 </div>
                                                 <div class="post-body">
@@ -440,8 +446,10 @@
                                                     <div class="card-image waves-effect waves-block waves-light">
                                                         <div class="card-img-wrap">
                                                             <vc:picture images-urls="@recommendation.Value.PictureUrl.Split(',')"
-                                                                            image-alt="@recommendation.Value.Name"
-                                                                            image-class="activator" />
+                                                                        image-alt="@recommendation.Value.Name"
+                                                                        image-class="activator"
+                                                                        lazy="true"
+                                                                        picture-class="" />
                                                             <p class="saying-about">@recommendation.Value.Testimonial</p>
                                                         </div>
                                                     </div>

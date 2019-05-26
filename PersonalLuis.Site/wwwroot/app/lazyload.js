@@ -1,4 +1,4 @@
-const ioWrapper = (target, onIntersect) => {
+export const ioWrapper = (target, onIntersect) => {
   const io = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -24,23 +24,28 @@ export const lazyLoad = (target) => {
   });
 };
 
+export const loadPicture = (picture, onImageLoad) => {
+  picture.childNodes.forEach((childNode) => {
+    const child = childNode;
+    if (child.tagName === 'SOURCE') {
+      const { srcset } = child.dataset;
+      child.srcset = srcset;
+    }
+    if (child.tagName === 'IMG') {
+      const { src } = child.dataset;
+      child.src = src;
+      child.addEventListener('load', (evt) => {
+        evt.target.classList.add('blur-in');
+        picture.classList.remove('lazy');
+        if (onImageLoad) onImageLoad(evt);
+      });
+    }
+  });
+};
+
 export const lazyLoadPicture = (target) => {
   ioWrapper(target, (entry) => {
     const picture = entry.target;
-    picture.childNodes.forEach((childNode) => {
-      const child = childNode;
-      if (child.tagName === 'SOURCE') {
-        const { srcset } = child.dataset;
-        child.srcset = srcset;
-      }
-      if (child.tagName === 'IMG') {
-        const { src } = child.dataset;
-        child.src = src;
-        child.addEventListener('load', (evt) => {
-          evt.target.classList.add('blur-in');
-          picture.classList.remove('lazy');
-        });
-      }
-    });
+    loadPicture(picture);
   });
 };

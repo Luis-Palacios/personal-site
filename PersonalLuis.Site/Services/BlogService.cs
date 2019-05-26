@@ -28,8 +28,8 @@ namespace PersonalLuis.Site.Services
                                       just one person wrote it, regardless of the size of the team.",
                     BanerThumbnailUrl="/images/posts/csharp-linting-thumb.png",
                     Slug="powerfull-linting-csharp",
-                    Author="Luis Palacios"
-
+                    Author="Luis Palacios",
+                    Published = true,
                 },
                 new Post(urlHelper, lang)
                 {

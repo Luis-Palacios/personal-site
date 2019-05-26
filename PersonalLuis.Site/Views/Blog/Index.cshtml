@@ -65,7 +65,9 @@
                                         <a href="@post.Url" target="@(post.IsMedium? "_blank":"_self")">
                                             <vc:picture images-urls="@post.BanerThumbnailUrl.Split(",")"
                                                         image-alt="@post.Slug"
-                                                        image-class="activator"/>
+                                                        image-class="activator"
+                                                        lazy="false"
+                                                        picture-class=""/>
                                         </a>
                                     </div>
                                     <div class="post-body">
