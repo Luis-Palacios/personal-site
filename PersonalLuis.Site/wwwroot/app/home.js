@@ -338,13 +338,6 @@ $(document).ready(function documentReady() {
 
   window.menuFun = menuFun;
 
-  // const elem = document.querySelector('#blog-posts');
-  // const msnry = new Masonry(elem, {
-  //   // options
-  //   itemSelector: '.single-post',
-  //   columnWidth: 30,
-  // });
-  // msnry.layout();
   /* Choose your navigation style */
 
   menuFun.intelligent_menu(); // Hide intelligently
@@ -433,7 +426,6 @@ $(window).load(() => {
     },
     offset: '60%',
   });
-
 
   // Wow init
   new WOW({

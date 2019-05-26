@@ -40,7 +40,6 @@ $(document).ready(() => {
   });
 });
 
-
 // callback after loading the window
 $(window).on('load', () => {
   // Preloader

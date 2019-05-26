@@ -29,7 +29,6 @@ namespace PersonalLuis.Site.Services
                     BanerThumbnailUrl="/images/posts/csharp-linting-thumb.png",
                     Slug="powerfull-linting-csharp",
                     Author="Luis Palacios",
-                    Published = true,
                 },
                 new Post(urlHelper, lang)
                 {
