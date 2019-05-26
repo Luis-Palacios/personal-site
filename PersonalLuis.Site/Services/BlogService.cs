@@ -54,6 +54,28 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper, lang)
                 {
+                    Id = 3,
+                    Title = "Improve website speed performance using Next-Gen formats",
+                    TitleEs= "Mejora la velocidad de tu sitio web usando formatos Next-Gen",
+                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
+                                    the need for a good console application have become more clear. A console where you can be productive that has a nice
+                                    look and feel is actually posible not only on UNIX Systems but also on Windows.",
+                    IntroductionEs =@"Con tantas herramientas populares de desarrollo que existen hoy en día que requiere de una interfaz de linea de comando para trabajar,
+                                        la necesidad de una buena aplicación de consola se ha vuelto más clara. Una consola donde podas ser productivo que se vea y sienta bien es
+                                        posible de lograr no solo en sistemas basados en UNIX sino también en Windows",
+                    BanerThumbnailUrl="/images/posts/webp/6.png",
+                    BannerUrl="/images/posts/cmder/main.png",
+                    Slug="improve-website-speed-performance-using-next-gen-formats",
+                    SlugEs="mejora-velocidad-sitio-web-usando-formatos-next-gen ",
+                    Author="Luis Palacios",
+                    Category ="DevTools",
+                    PublishedDate=new DateTime(2019, 5, 26),
+                    Content="NextGenFormats",
+                    ContentEs="es/FormatosNextGen",
+                    Published = true,
+                },
+                new Post(urlHelper, lang)
+                {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
