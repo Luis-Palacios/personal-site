@@ -63,8 +63,8 @@ namespace PersonalLuis.Site.Services
                     IntroductionEs =@"Con tantas herramientas populares de desarrollo que existen hoy en día que requiere de una interfaz de linea de comando para trabajar,
                                         la necesidad de una buena aplicación de consola se ha vuelto más clara. Una consola donde podas ser productivo que se vea y sienta bien es
                                         posible de lograr no solo en sistemas basados en UNIX sino también en Windows",
-                    BanerThumbnailUrl="/images/posts/webp/6.png",
-                    BannerUrl="/images/posts/cmder/main.png",
+                    BanerThumbnailUrl="/images/posts/webp/squoosh-editor.png",
+                    BannerUrl="/images/posts/webp/squoosh-editor.png",
                     Slug="improve-website-speed-performance-using-next-gen-formats",
                     SlugEs="mejora-velocidad-sitio-web-usando-formatos-next-gen ",
                     Author="Luis Palacios",
