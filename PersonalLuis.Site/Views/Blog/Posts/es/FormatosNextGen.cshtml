@@ -1,9 +1,276 @@
+﻿@{
+    ViewBag.BaseImagePath = "/images/posts/webp/";
+}
 <div class="single-post-content">
     <p>
-        I've been working on improving my website speed performance, I normally use google <a href="https://developers.google.com/speed/pagespeed/insights/">Page Speed Insights</a>
-        to check my score and previously I had pretty much got the best score possible but since January 2018 google update the tool to use
-        <a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a> I didn't pay much attention to it since recently and I discovered
-        that my score got lower and the tool had new suggestions for me that didn't had before. This was good since after implementing those recommendations
-        I learned a few new tricks and my website got a lot more faster.
+        Recientemente he estado trabajando en mejorar el rendimiento de mi sitio web en cuanto a velocidad de carga inicial. Normalmente uso la herramienta de google
+        <a href="https://developers.google.com/speed/pagespeed/insights/">Page Speed Insights</a> para verificar mi puntaje y previamente ya habia alcanzado casi al maximo
+        puntaje posible pero desde Enero del 2018 la herramienta se actualizo y ahora usa <a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>.
+        No le puse mucha atencion al comienzo, pero hace poco descubri que my puntaje era mas bajo y la herramienta ahora me da sugerencias que antes no existian. Esto fue bueno
+        ya que despues de implementarlas aprendi nuevos trucos y mi stio web se volvio mucho mas rapido.
+    </p>
+    <p>
+        La herramiente se puede usar de diferentes manera una de ellas esta integrada en las herramientas para los desarrolladores de google chrome y la otra
+        es navegando al enlace que comparti al principio y simplemente poner la URL de la pagina que te gustaria medir.
+        Yo voy a usar usando la pagina para ver como esta mi sitio web.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="google-page-speed-insights"
+                         image-alt="google-page-speed-insights"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Page speed insights divide en dos diferentes pestañas los resultados uno para escritorio y otro para móvil
+        A continuacion mi resulta para escritorio el cual es bastante bueno.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="google-page-speed-insights-results"
+                         image-alt="google-page-speed-insights-results"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Para móvil, es mas estricto y mi resultado no es tan bueno.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="google-page-speed-insights-mobile-results"
+                         image-alt="google-page-speed-insights-mobile-results"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Lo bueno de la herramienta esque no solamente te da una puntuacion sino que tambien te sugiere recomendaciones y un estimado de cuanto tiempo de carga podrias
+        ahorrar si las implemtnas. En mi caso me da tres sugerencias y la primera que llamo mi atencion fue <strong>"Serve images in next-gen formats"</strong> que significa
+        <strong>"Servir imagenes en formatos de siguiente generacion".</strong>
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="google-page-speed-insights-recommendations"
+                         image-alt="google-page-speed-insights-recommendationst"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Puedes ver que me esta diciendo que podria ahorrar hasta medio segundo de tiempo de carga y esta listando muchas de mis imagenes, esto llamo mi atencion porque de acuerdo
+        a mi conocimiento ya estaba usando la mejor compresion posible y logrando los mejores tamaños de imagenes posibles sin compromoter la calidad de la imagen, pero claro, esto
+        es la web y las cosas se mueven muy rapido. La promesa de estos formatos de nueva generacion es:
+        <blockquote>
+            Proveer mejor comprasion que PNG o JPEg, lo que significa tiempos de descarga mas rapidos y menos consumo de datos.
+        </blockquote>
+        Puedes encontrar mas informacion acerca de cada recomendacion en el enlace que dice <strong>learn more</strong> que pone en cada recomendacion
+        el de los nuevos formatos te lleva aqui: <a href="https://developers.google.com/web/tools/lighthouse/audits/webp" target="_blank" rel="noopener">
+            Serve Images in Next-Gen Formats
+        </a>
+    </p>
+    <h2>Soporte en los navegadores</h2>
+    <p>
+        Puedes ver que estos nuevos formatos son JPEG 2000, JPEG XR, and WebP, todo iba bien hasta que llegue a la parte del soporte actual en los navegadores, la cual
+        al tiempo que escribo esto es que ninguno es soportado por <strong>todos</strong> los principales navegadores (Chrome, Firefox, Edge, Safari, and Opera). 
+        Puedes revisar los detalles para cada formato individual a continuacion:
+    </p>
+    <ul>
+        <li class="post-list">
+            <a href="https://caniuse.com/#feat=webp" target="_blank" rel="noopener">
+                WebP
+            </a>
+            <span>(Funciona en los principales navegadores excepto Safari)</span>
+        </li>
+        <li class="post-list">
+            <a href="https://caniuse.com/#feat=jpeg2000" target="_blank" rel="noopener">
+                JPEG 2000
+            </a>
+            <span>(Funciona solo en Safari)</span>
+        </li>
+        <li class="post-list">
+            <a href="https://caniuse.com/#feat=jpegxr" target="_blank" rel="noopener">
+                JPEG XR
+            </a>
+            <span>(Funciona solo en Edge and IE)</span>
+        </li>
+    </ul>
+    <p>
+        El que actualmente tiene mejor soporte es <a href="https://developers.google.com/speed/webp/">WebP</a> 
+        sin embargo dejar fuera a Safari no es bueno aunque no sea el navegador mas popular. Asi que esto casi me hizo olvidarme de implementar esto pero afortunadamente
+        continue leyendo acerca de como podria dar usar tecnicas para dar una alternativa cuando el navegador no soporte el formato webp poder cargar una imagen de un formato
+        que si sea soportado.
+    </p>
+    <h2>Etiqueta Picture</h2>
+    <p>
+        <a href="https://www.w3schools.com/tags/tag_picture.asp" target="_blank" rel="noopener">Picture</a> es una etiqueta muy util que nos da a los desarrolladores
+        mas flexbilidad para cargar imagenes y mientras que su uso mas comun es cargar condicionalmente images para un diseño responsivo tambien nos puede
+        ayudar en implementar tecnicas alternativas para cargar imagenes en formatos soportados por el navegador.
+
+        A continuacion muestro como tuve que transformar mis etiquetas <code>&lt;img /&gt;</code> para poder usar webp pero tambien ser capaz de cargar formato png en caso
+        que webp no sea soportado.
+    </p>
+    <p>
+    <p>
+        Asi es como se ven normalmente mis etiquetas <code>&lt;img /&gt;</code>
+        <script type="text/plain" class="language-markup">
+            <img src="/images/luis-palacios-3.jpg" class="z-depth-1" alt="luis-palacios" />
+        </script>
+        No tienen nada especial, ahora para transformar en una <strong>picture</strong> que cargue el formato webp en caso de ser soportado y si no que cargue la imagen en formato png debo transformar mi
+        codigo HTML a:
+        <script type="text/plain" class="language-markup">
+            <picture>
+                <source type="image/webp" srcset="/images/luis-palacios-3.webp" />
+                <source type="image/jpg" srcset="/images/luis-palacios-3.jpg" />
+                <img class="z-depth-1" src="/images/luis-palacios-3.jpg" alt="luis-palacios">
+            </picture>
+        </script>
+    </p>
+    <h2>Transformando a formato WebP</h2>
+    <p>
+        Ahora que se como manejar formatos webp con alternativas para cuando no es soportado el siguiente paso es transformar mi imagen png a web, hay muchos editores gratuitos en linea que te pueden ayudar con esto
+        pero si necesitas transformar muchas imagenes tambien hay excelente herramientas de linea de comando en Nodejs que puedes usar e incluso agregarlas a tu proceso de compilado. Para mantener
+        esto simple de momento voy a demostrar usando un editor en linea llamado <a href="https://squoosh.app/">squoosh</a> por Google Chrome Labs, esta es una herramiente sorprende y facil de usar
+        solo ve al enlace y Arrastra tu imagen o da click en<strong>Select an image</strong>
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="squoosh-homepage"
+                         image-alt="squoosh-homepage"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="squoosh-editor"
+                         image-alt="squoosh-editor"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Puedes ver que formateando mi ya optimizada png esta haciendo que el tamaño de la imagen vaya de <strong>67.4kB</strong> a <strong>7.12kB</strong>
+        lo cual la hace<strong>86% mas pequeña</strong> y sin perder calidad.
+        Esto es impresionante. Puedes probar con las diferentes opciones, yo he notado que algunas veces usar Lossless me da una mucho mayor reduccion en tamaño.
+    </p>
+    <h2>Resultados</h2>
+    <p>
+        En mi caso voy a comenzar con la imagen principal que se carga en mi pagina de inicio y despues de convertir a webp y usar <strong>picture</strong> puedes ver
+        que mi navegador esta cargando correctamente la imagen webp.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="main-page"
+                         image-alt="main-page"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Se ve que la calidad no se vio comprometidad y comparando la imagen web a la png puedes ver que hay una gran diferencia en tamaño.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="cmder-results"
+                         image-alt="cmder-results"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Una desventaja de este enfoque esque tengo que mantener una duplicacion de imagenes, pero para mi, vale la pena y una ves que se configura apropiadamente con una herramienta de linea
+        de comando no necesitar crear manualmente las imagenes para cada formato
+    </p>
+    <h2>Imagenes como fondo</h2>
+    <p>
+        Hay otra manera en la que puedo cargar imagenes la cual es por medio de css <code>background-image</code> y de hecho yo estoy usando esto en mi sitio web el codigo se ve asi:
+    </p>
+    <pre><code class="language-css">background: url('../images/home-bg.jpg') no-repeat scroll center center;</code></pre>
+    <p>
+        Si quiero usar imagenes webp tambien tendria problemas de soporte en Safari asi que tambien tengo que implementar alguna alternativa para esta manera tambien. Necesito detectar si el navegador
+        soporta webp y una libreria muy popular que me puede ayudar con esto es <a href="https://modernizr.com/">modernizr</a>, de hecho, te permite crear tu propia compilacion de la libreria que incluya
+        solamente las caracteristicas que te gustaria detectar y ya que estoy en la busqueda de optimizacion voy ha hacer mi propia compilacion.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="modernizr-custom-build"
+                         image-alt="modernizr-custom-buildt"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Despues de seleccionar las caracteristicas que quisieras detectar dale click en <strong>Build</strong> y selecciona la manera en la que te gustaria obtener tu libreria.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="modernizr-custom-build-get"
+                         image-alt="modernizr-custom-build-get"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        En mi caso use la opcion <strong>build in codepen.io</strong> para poder copiar y pegar de ahi e incluso me muestra un ejemplo de como se usa ahi mismo en codepen
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="modernizr-codepen-build"
+                         image-alt="modernizr-codepen-build"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Lo que modernizr hara por mi es agregar la class<code>.no-webp</code> a la etiqueta html
+        de esa manera puedo crear una regla css especifica para cuando no hay soporte en el navegador para webp, 
+        Mi codigo se transforma en lo siguiente:
+    </p>
+    <pre><code class="language-css">
+    my-selector {
+        background: url('../images/home-bg.webp') no-repeat scroll center center
+    }
+
+    .no-webp my-selector {
+        background: url('../images/home-bg.jpg') no-repeat scroll center center
+    }
+
+</code></pre>
+    <p>
+        Con esto, ahora puedo usar imagenes webp de una manera segura como fondos.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="background-url-loads"
+                         image-alt="background-url-loads"
+                         fall-back="png"
+                         lazy="true" />
+        <lazy-img src="/images/posts/webp/background-url-loads.png" class="img-thumbnail" alt="background-url-loads" />
+    </div>
+    <h2>Pruebas de soporte en Safari</h2>
+    <p>
+        Ahora necesito probar mi sito en Safari para asegurarme que esten funcionando correctamente.
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="safari-test-1"
+                         image-alt="safari-test-1"
+                         fall-back="jpg"
+                         lazy="true" />
+    </div>
+    <p>
+        Puedes ver que la etiqueta <strong>picture</strong> esta funcionando correctamente y esta cargando la imagen jpg ya que no tiene soporte para wbe y para lograr
+        cargar mis imagenes como fondo desde css modernizr esta haciendo su trabajo y esta agregando la clase <code>no-webp</code>
+        You can see that the picture tag is working correctly and loading the jpg image since it doesn't support webp, and in order to load my background images from css
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="safari-test-2"
+                         image-alt="safari-test-2"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Asi que la imagen correspondiente es descargada
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="safari-test-3"
+                         image-alt="safari-test-3"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <h2>Puntaje final</h2>
+    <p>
+        Asi que despues de correr page speed insights de nuevo me da mi nuevo puntaje
+    </p>
+    <div class="thumb-wrap">
+        <vc:post-picture image-name="final-mobile-score"
+                         image-alt="final-mobile-score"
+                         fall-back="png"
+                         lazy="true" />
+    </div>
+    <p>
+        Avanzar de 69 a 78 es una buena mejorar, ademas que mi pagina ahora carga medio segundo mas rapido. Todavia me quedan algunas recomendaciones pendientes por
+        implementar y a medida que las complete ire compartiendo mis hallazgos.
+    </p>
+    <p>
+        Crees que usar el formato webp vale la pena? Hay alguna herramienta de comando que ya hayas implementado con exito para convertir a webp?
     </p>
 </div>

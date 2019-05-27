@@ -15,9 +15,8 @@
     <p>
         You have a few ways to use this tool one is integrated into your google chrome developers tools and another one
         is going into the link I shared before and simply
-        enter the link to the page you would like to measure. I'm going to proceed using the page and see how is my
-        website currently doing. Go to the page speed insights link and enter
-        the URL for the page
+        enter the URL to the page you would like to measure. I'm going to proceed using the page and see how is my
+        website currently doing.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="google-page-speed-insights"
@@ -27,7 +26,7 @@
     </div>
     <p>
         Page speed insights split your results into two different tabs one for desktop and another one for mobile.
-        The following is my desktop result which is pretty good
+        The following is my desktop result which is pretty good.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="google-page-speed-insights-results"
@@ -36,7 +35,7 @@
                          lazy="true" />
     </div>
     <p>
-        For mobile, it's more strict and my result is not that great
+        For mobile, it's more strict and my result is not that great.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="google-page-speed-insights-mobile-results"
@@ -46,7 +45,7 @@
     </div>
     <p>
         The good think about the tool is that not only it gives you a Score but it also suggests recommendation and an estimated of how much load
-        time you could save implementing those. On my case, it suggested three and the first one that got my attention was "Serve images in next-gen formats"
+        time you could save implementing those. On my case, it suggested three and the first one that got my attention was <strong>"Serve images in next-gen formats"</strong>
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="google-page-speed-insights-recommendations"
@@ -68,7 +67,7 @@
     <h2>Browser Support</h2>
     <p>
         You can see that these new formats are JPEG 2000, JPEG XR, and WebP, everything was going well until I got to the browser support part, which at the time that I'm writing
-        this post none of these is supported in all major browsers (Chrome, Firefox, Edge, Safari, and Opera). You can check the support for each individual format here:
+        this post is that none of these of them is soported in <strong>all</strong> major browsers (Chrome, Firefox, Edge, Safari, and Opera). You can check the support for each individual format here:
     </p>
     <ul>
         <li class="post-list">
@@ -105,9 +104,9 @@
     <p>
         This is how my normal <code>&lt;img /&gt;</code> tags looks like:
         <script type="text/plain" class="language-markup">
-            <img src="~/images/luis-palacios-3.jpg" class="z-depth-1" alt="luis-palacios" />
+            <img src="/images/luis-palacios-3.jpg" class="z-depth-1" alt="luis-palacios" />
         </script>
-        Nothing special about it, now in order to transform it into a picture that would load a Webp format if supported and if not it would load the corresponding png image I must transform my HTML to:
+        Nothing special about it, now in order to transform it into a <strong>picture</strong> that would load a Webp format if supported and if not it would load the corresponding png image I must transform my HTML to:
         <script type="text/plain" class="language-markup">
             <picture>
                 <source type="image/webp" srcset="/images/luis-palacios-3.webp" />
@@ -118,7 +117,7 @@
     </p>
     <h2>Transforming to WebP format</h2>
     <p>
-        Now that I know how to handle WebP formats with a fallback when is not supported the next step is actually transforming my png image to webp, there are several only image editors that could do this for you
+        Now that I know how to handle WebP formats with a fallback when is not supported the next step is actually transforming my png image to webp, there are several free online image editors that could do this for you
         but if you need to transform lots of images there are also great CLI tools on Nodejs that you could use and even hook up to your current build pipeline. In order to keep this simple, I'm going to use an
         online editor called <a href="https://squoosh.app/">squoosh</a> by Google Chrome Labs, this is an amazing and easy to use tool just go to the link and Drag and Drop an image or click <strong>Select an image</strong>
     </p>
@@ -184,7 +183,7 @@
                          fall-back="png"
                          lazy="true" />
     </div>
-    <p>On my case I went for open build in codepen.io so that I can copy and past from there and I even get a usage example/demo right there on codepen</p>
+    <p>On my case I went for open build in codepen.io so that I can copy and paste from there and I even get a usage example/demo right there on codepen</p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="modernizr-codepen-build"
                          image-alt="modernizr-codepen-build"
@@ -217,7 +216,7 @@
     </div>
     <h2>Test Safari Support</h2>
     <p>
-        Now I also need to test my site on Safari to make sure it's working properly
+        Now I also need to test my site on Safari to make sure it's working properly.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="safari-test-1"
@@ -227,7 +226,7 @@
     </div>
     <p>
         You can see that the picture tag is working correctly and loading the jpg image since it doesn't support webp, and in order to load my background images from css
-        modernizr it's doing its job and adding the no-webp class
+        modernizr it's doing its job and adding the no-webp class.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="safari-test-2"
@@ -246,7 +245,7 @@
     </div>
     <h2>Final Score</h2>
     <p>
-        So after running page speed insights again I get a new score
+        So after running page speed insights again I get a new score.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="final-mobile-score"
@@ -255,9 +254,9 @@
                          lazy="true" />
     </div>
     <p>
-        Going from 69 to 78 is a good increase not to mention the main page nows load half a second faster, I still have other recommendations to implement and I'll be blogging my findings
+        Going from 69 to 78 is a good increase not to mention the main page nows load half a second faster, I still have other recommendations to implement and I'll be blogging my findings.
     </p>
     <p>
-        Do you think Webp is worth the trouble? Is there any CLI tool that you have successfully implemented on your build to support Webp formats?
+        Do you think webp is worth the trouble? Is there any CLI tool that you have successfully implemented on your build to support webp formats?
     </p>
 </div>

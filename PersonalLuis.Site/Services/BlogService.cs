@@ -56,7 +56,7 @@ namespace PersonalLuis.Site.Services
                 {
                     Id = 3,
                     Title = "Improve website speed performance using Next-Gen formats",
-                    TitleEs= "Mejora la velocidad de tu sitio web usando formatos Next-Gen",
+                    TitleEs= "Mejora la velocidad de tu sitio web usando formatos de siguiente generacion",
                     Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
                                     the need for a good console application have become more clear. A console where you can be productive that has a nice
                                     look and feel is actually posible not only on UNIX Systems but also on Windows.",
@@ -66,7 +66,7 @@ namespace PersonalLuis.Site.Services
                     BanerThumbnailUrl="/images/posts/webp/squoosh-editor.png",
                     BannerUrl="/images/posts/webp/squoosh-editor.png",
                     Slug="improve-website-speed-performance-using-next-gen-formats",
-                    SlugEs="mejora-velocidad-sitio-web-usando-formatos-next-gen ",
+                    SlugEs="mejora-velocidad-sitio-web-usando-formatos-siguiente-generacion",
                     Author="Luis Palacios",
                     Category ="DevTools",
                     PublishedDate=new DateTime(2019, 5, 26),
