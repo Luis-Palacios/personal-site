@@ -1,13 +1,6 @@
-﻿import 'normalize.css';
-import Masonry from 'masonry-layout';
-
-import '../legacy-libs/materialize/css/materialize.min.css';
-import '../css/site.css';
-import '../css/responsive.css';
-import '../css/theme.css';
-import '../css/blog.css';
-
+﻿import Masonry from 'masonry-layout';
 import './common';
+import '../css/blog.css';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
 

@@ -1,15 +1,8 @@
 ﻿import tippy from 'tippy.js';
 import mediumZoom from 'medium-zoom';
-
 import { lazyLoad, lazyLoadPicture } from './lazyload';
-import '../legacy-libs/materialize/css/materialize.min.css';
-import '../css/animations.css';
-import '../css/site.css';
-import '../css/responsive.css';
-import '../css/theme.css';
-import '../css/blog.css';
-
 import './common';
+import '../css/blog.css';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
 
@@ -34,6 +27,25 @@ document.getElementById('linkedin-share').addEventListener('click', () => {
 
 const targetImgs = document.querySelectorAll('.single-post-content .thumb-wrap > img.lazy');
 const targetPictures = document.querySelectorAll('.single-post-content picture.lazy');
+const disqusDiv = document.getElementById('disqus_thread');
 
+const lazyLoadDisqus = (target) => {
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const d = document;
+        const s = d.createElement('script');
+        s.src = 'https://luispalacios.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        observer.disconnect();
+      }
+    });
+  });
+
+  io.observe(target);
+};
+
+lazyLoadDisqus(disqusDiv);
 targetImgs.forEach(lazyLoad);
 targetPictures.forEach(lazyLoadPicture);
