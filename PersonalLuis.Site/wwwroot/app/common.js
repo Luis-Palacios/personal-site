@@ -1,5 +1,14 @@
 import $ from 'jquery';
+import 'normalize.css';
 import '../legacy-libs/custom-modernizr';
+import '../legacy-libs/custom-bootstrap/bootstrap.min.css';
+import '../legacy-libs/materialize/css/materialize.min.css';
+import '../legacy-libs/font-awesome/css/solid.css';
+import '../legacy-libs/font-awesome/css/brands.css';
+import '../legacy-libs/font-awesome/css/fontawesome.css';
+import '../css/site.css';
+import '../css/responsive.css';
+import '../css/theme.css';
 
 const { personalSite } = window;
 
