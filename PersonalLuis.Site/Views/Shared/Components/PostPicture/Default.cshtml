@@ -1,0 +1,21 @@
+﻿@model PostPictureVm
+@{
+    string fallBackImageUrl = $"{ViewBag.baseImagePath}{Model.ImageName}.{Model.FallBack}";
+    string imageUrl = $"{ViewBag.BaseImagePath}{Model.ImageName}.webp";
+}
+@if (Model.Lazy)
+{
+    <picture class="lazy">
+        <source data-srcset="@imageUrl" type="image/web" />
+        <source data-srcset="@fallBackImageUrl" type="image/@Model.FallBack" />
+        <lazy-img alt="@Model.ImageAlt" class="img-thumbnail" src="@fallBackImageUrl"/>
+    </picture>
+}
+else
+{
+    <picture>
+        <source srcset="@imageUrl" type="image/web" />
+        <source srcset="@fallBackImageUrl" type="image/@Model.FallBack" />
+        <img src="@fallBackImageUrl" class="img-thumbnail" alt="@Model.ImageAlt">
+    </picture>
+}

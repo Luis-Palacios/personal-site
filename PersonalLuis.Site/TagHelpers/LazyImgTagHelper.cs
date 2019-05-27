@@ -14,6 +14,7 @@ namespace PersonalLuis.Site.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             base.Process(context, output);
+            
             output.TagName = "img";
             output.Attributes.SetAttribute("data-src", Src);
             output.Attributes.SetAttribute("src", "/images/blur.png");
@@ -21,5 +22,6 @@ namespace PersonalLuis.Site.TagHelpers
             output.AddClass(Class, HtmlEncoder.Default);
             output.Attributes.SetAttribute("alt", Alt);
         }
+
     }
 }

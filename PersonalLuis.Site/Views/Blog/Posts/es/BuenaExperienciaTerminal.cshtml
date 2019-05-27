@@ -1,4 +1,7 @@
-﻿<div class="single-post-content">
+﻿@{
+    ViewBag.BaseImagePath = "/images/posts/cmder/";
+}
+<div class="single-post-content">
     <p>
         Microsoft Build 2019 termino hace poco y se hicieron muchos anuncios emocionantes entre uno de ellos está la nueva Terminal de Windows las cual es descrita como:
         <blockquote>una nueva, moderna, rápida, eficiente, poderosa, y productiva aplicación de terminal para usuarios de herramientas de linea de comando y shells como Command Prompt, PowerShell, y WSL.</blockquote>
@@ -68,7 +71,7 @@
         Entonces ¿que opciones tenemos? de hecho, muchas ya que muchas personas sintieron la necesidad de una mejor aplicación de consola en Windows, solo para mencionar
         algunas tomado de <a href="https://www.slant.co/topics/1552/~best-terminal-emulators-for-windows">Slant.co</a>
         <div class="thumb-wrap">
-            <lazy-img src="/images/posts/cmder/ranking.png" class="img-thumbnail" alt="cmder-must-have-windows-console"/>
+            <lazy-img src="/images/posts/cmder/ranking.png" class="img-thumbnail" alt="cmder-must-have-windows-console" />
         </div>
         Puedes leer las reseñas en el enlace a Slant si querés saber más acerca de cada opción.
     </p>
@@ -81,23 +84,21 @@
     </p>
     <h3>Pestañas y Vistas divida</h3>
     <div class="thumb-wrap">
-        <picture>
-            <source data-srcset="/images/posts/cmder/main.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder/main.png" type="image/png" />
-            <img src="/images/posts/cmder/main.png" class="img-thumbnail" alt="cmder-must-have-windows-console">
-        </picture>
+        <vc:post-picture image-name="main"
+                         image-alt="cmder-must-have-windows-console"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <h3>Excelentes atajos de teclado</h3>
     <div class="thumb-wrap">
-        <lazy-img src="/images/posts/cmder/keyboard-shorctus.png" class="img-thumbnail" alt="cmder-keyboart-shortcuts"/>
+        <lazy-img src="/images/posts/cmder/keyboard-shorctus.png" class="img-thumbnail" alt="cmder-keyboart-shortcuts" />
     </div>
     <h3>Altamente personalizable</h3>
     <div class="thumb-wrap">
-        <picture>
-            <source srcset="/images/posts/cmder/settings.webp" type="image/webp" />
-            <source srcset="/images/posts/cmder/settings.png" type="image/png" />
-            <img src="/images/posts/cmder/settings.png" class="img-thumbnail" alt="cmder-settings">
-        </picture>
+        <vc:post-picture image-name="settings"
+                         image-alt="cmder-settings"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p>
         Puedes leer más acerca de cmder aquí <a href="https://github.com/cmderdev/cmder/wiki">Wiki</a> y aquí
@@ -111,11 +112,10 @@
         <li>
             <strong>ls</strong> para listar todos las carpetas y archivos en el directorio actual y lo puedes usar con toda su <a href="https://www.techonthenet.com/unix/basic/ls.php">variedad de flags</a> disponibles
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/ls.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/ls.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/ls.png" src="/images/blur.png" class="img-thumbnail" alt="cmder-ls">
-                </picture>
+                <vc:post-picture image-name="ls"
+                                 image-alt="cmder-ls"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
@@ -125,11 +125,10 @@
         <li>
             <strong>cat</strong> para concatenar y rápidamente poder ver el contenido de un archivo en la consola.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cat.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/cat.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cat.png" src="/images/blur.png" class="img-thumbnail" alt="cmder-cat">
-                </picture>
+                <vc:post-picture image-name="cat"
+                                 image-alt="cmder-cat"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
@@ -145,11 +144,10 @@
             ahora por defecto en Windows 10 así que Putty no es tú única opcion si necesitas usar ssh. Si quieres verificar cuales tenes disponibles para ti puedes usar los comandos <code>where</code>
             y <code>which</code>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/ssh.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/ssh.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/ssh.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-ssh">
-                </picture>
+                <vc:post-picture image-name="ssh"
+                                 image-alt="cmder-ssh"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
             Como puedes ver yo tengo ambas opciones disponibles pero estoy utilizando open ssh que viene por defecto en Windows 10.
         </li>
@@ -173,7 +171,7 @@
             <strong>Ctrl + r</strong> ¿Alguna ves has usado un comando con muchos parámetros que es difícil de recordar y no lo guardaste? este atajo me ha salvado
             varias veces ya que te permite hacer una búsqueda de los comandos ejecutados.
             <div class="thumb-wrap sub-image-wrap">
-                <lazy-img src="/images/posts/cmder/search.png" class="img-thumbnail" alt="cmder-search"/>
+                <lazy-img src="/images/posts/cmder/search.png" class="img-thumbnail" alt="cmder-search" />
             </div>
         </li>
     </ul>
@@ -193,17 +191,16 @@
             auto completar <code>git commit</code> incluso puede sugerir comandos disponibles cuando hay más de una posibilidad de auto completado
             prueba algo como <code>git che</code> y presiona tab dos veces
             <div class="thumb-wrap sub-image-wrap">
-                <lazy-img src="/images/posts/cmder/gitchec.png" class="img-thumbnail" alt="cmder-git-autocomplete"/>
+                <lazy-img src="/images/posts/cmder/gitchec.png" class="img-thumbnail" alt="cmder-git-autocomplete" />
             </div>
         </li>
         <li>
             <strong>Información de Git disponible en la consola</strong>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/git.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/git.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/git.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-git">
-                </picture>
+                <vc:post-picture image-name="git"
+                                 image-alt="cmder-git"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
     </ul>
@@ -242,11 +239,10 @@
         lo cual es más corto que <code>python manage.py runserver</code> e incluso te funciona el auto completado para tus alias también!.
     </p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/djrun.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder/djrun.png" type="image/png" />
-            <img data-src="/images/posts/cmder/djrun.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-alias-django-run">
-        </picture>
+        <vc:post-picture image-name="djrun"
+                         image-alt="cmder-alias-django-run"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p>
         Puedo hacer algo similar para mis otros comando, uno que encuentro muy útil es crear un alias para acceder a mis repositorios
@@ -254,11 +250,10 @@
         estructura de directorio puedo simplemente escribir <code>gotopesite</code> presionar enter en inmediatamente estaré en mi repositorio.
     </p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/goto.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder/goto.png" type="image/png" />
-            <img data-src="/images/posts/cmder/goto.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-alias-navigation">
-        </picture>
+        <vc:post-picture image-name="goto"
+                         image-alt="cmder-alias-navigation"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p>
         ¿Que tal cuando necesitas un alias que requiere soporte para argumentos? tal como <code>git commit -m "esto debería ser un argumento"</code>
@@ -266,11 +261,10 @@
         seria algo como esto <code>alias gtcommit=git commit -m "$*"</code> y asi lo puedo usar de esta forma <code>gtcommit this my example comment</code>
     </p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/gtcommit.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder/gtcommit.png" type="image/png" />
-            <img data-src="/images/posts/cmder/gtcommit.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-git-commit">
-        </picture>
+        <vc:post-picture image-name="gtcommit"
+                         image-alt="cmder-alias-git-commit"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p>
         Hay mucho más que puedes hacer con alias y puedes encontrar más detalles en la documentación oficial en los enlaces que compartí antes, pero espero
@@ -300,45 +294,40 @@
         <li>
             1. Abrir cmder y navegar al directorio donde esta mi repositorio
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/open-cmder.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/open-cmder.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/open-cmder.png" class="img-thumbnail" src="/images/blur.png" alt="open-cmder">
-                </picture>
+                <vc:post-picture image-name="open-cmder"
+                                 image-alt="open-cmder"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
             2. Abrir una nueva pestaña divida a la derecha, navegar a mi repositorio y correr <code>dotnet run</code>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-open-tab-right.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/cmder-open-tab-right.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-open-tab-right.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-open-tab-right">
-                </picture>
+                <vc:post-picture image-name="cmder-open-tab-right"
+                                 image-alt="cmder-open-tab-right"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-run-dotnerun.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/cmder-run-dotnerun.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-run-dotnerun.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-run-dotnerun">
-                </picture>
+                <vc:post-picture image-name="cmder-run-dotnerun"
+                                 image-alt="cmder-run-dotnerun"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
             3. Abrir una nueva pestaña divida abajo, navegar a mi repositorio y correr <code>npm run watch</code>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-open-tab-bottom.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/cmder-open-tab-bottom.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-open-tab-right.bottom" class="img-thumbnail" src="/images/blur.png" alt="cmder-open-tab-bottom">
-                </picture>
+                <vc:post-picture image-name="cmder-open-tab-bottom"
+                                 image-alt="cmder-open-tab-bottom"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-run-npmwatch.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder/cmder-run-npmwatch.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-run-npmwatch.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-run-npmwatch">
-                </picture>
+                <vc:post-picture image-name="cmder-run-npmwatch"
+                                 image-alt="cmder-run-npmwatch"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
     </ol>
@@ -347,11 +336,10 @@
         las pestañas que tenias cada ves que cierras y abres cmder.
     </p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/cmder-autorestore-tab.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder/cmder-autorestore-tab.png" type="image/png" />
-            <img data-src="/images/posts/cmder/cmder-autorestore-tab.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-autorestore-tab">
-        </picture>
+        <vc:post-picture image-name="cmder-autorestore-tab"
+                         image-alt="cmder-autorestore-tab"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p>
         Eso podría ser suficiente si te toca trabajar solamente en un repositorio, pero si eres como yo y necesitas trabajar en múltiples repositorios en el día, esto no es lo suficientemente bueno
@@ -366,11 +354,10 @@
         <li>
             1. Abre cmder y ve a la configuración <code>Win + alt + p</code> después ve a Startup -> Tasks y da click en el botón <strong>"+"</strong>.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-add-newtask.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmdercmder-add-newtask.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-add-newtask.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask">
-                </picture>
+                <vc:post-picture image-name="cmder-add-newtask"
+                                 image-alt="cmder-add-newtask"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
@@ -378,11 +365,10 @@
             sin embargo esto puede resultar abrumador si eres nuevo en este mundo de emuladores de consola, cmder tiene una maravillosa funcion que te permite decirle "Guarda todas mis pestañas activas como una nueva tarea"
             así que lo único que tengo que hacer es definir el nombre de mi tarea y dar click en el botón <strong>Active tabs</strong>.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-name.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-add-newtask-name.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-add-newtask-name.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-name">
-                </picture>
+                <vc:post-picture image-name="cmder-add-newtask-name"
+                                 image-alt="cmder-add-newtask-name"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
@@ -390,29 +376,26 @@
             cuando inicie pero agregar eso es bastante sencillo simplemente agrego al final de cada comando <code>&& mycommand</code> y tambien necesito definir el campo de "task parameter"
             que en mi caso simplemente lo copio y pego de la tarea <strong>cmd::Cmder</strong> Recuerda dar click en el botón "Save Settings".
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-config.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-add-newtask-config.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-add-newtask-config.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-config">
-                </picture>
+                <vc:post-picture image-name="add-newtask-config"
+                                 image-alt="add-newtask-config"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
             4. Ahora cada vez que quiera abrir cmder puedo usar <code>ctrl + t</code> para abrir una nueva pestaña y veras que mi nueva tarea aparece en el listado y si
             la selecciono, debería abrir todas las pestañas y ejecutar los comandos que quiero para poder trabajar en mi repositorio.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-start-newtask.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-start-newtask.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-start-newtask.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-start-newtask">
-                </picture>
+                <vc:post-picture image-name="cmder-start-newtask"
+                                 image-alt="cmder-start-newtask"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-ready-togo.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-ready-togo.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-ready-togo.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-ready-togo">
-                </picture>
+                <vc:post-picture image-name="cmder-ready-togo"
+                                 image-alt="cmder-ready-togo"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
     </ol>
@@ -421,11 +404,10 @@
         en mi barra de tareas pero le doy click derecho todo lo que veo es la opción de abrir cmder o desanclar de la barra de tareas.
     </p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/cmder-taskbar-default.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder-taskbar-default.png" type="image/png" />
-            <img data-src="/images/posts/cmder/cmder-taskbar-default.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-defaulto">
-        </picture>
+        <vc:post-picture image-name="cmder-taskbar-default"
+                         image-alt="cmder-taskbar-default"
+                         fall-back="png"
+                         lazy="true" />
     </div>
     <p> Para poder agregar mi nueva tarea a la barra de tareas necesito seguir los siguientes pasos.</p>
     <ol>
@@ -433,44 +415,39 @@
             1. Abrir la configuración y seleccionar mi tarea y asegurarme que el checkbox <strong>Taskbar Jump list</strong> este activa, también
             puedes ver a través de la lista de tareas y remover el check de las tares que no quisieras que aparezcan.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-add-newtask-taskbar.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-add-newtask-taskbar.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-add-newtask-taskbar.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-add-newtask-taskbar">
-                </picture>
+                <vc:post-picture image-name="cmder-add-newtask-taskbar"
+                                 image-alt="cmder-add-newtask-taskbar"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
             2. Ahora en la configuración ve a General -> Taskbar y asegurate que los checkboxs <strong>Add ComEmu Task</strong> y <strong>AutoUpdate</strong> estén
             activos y después da click en el botón <strong>Update now</strong> y despues en <strong>Save Settings</strong>
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-taskbar-update.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-taskbar-update.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-taskbar-update.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-update">
-                </picture>
+                <vc:post-picture image-name="cmder-taskbar-update"
+                                 image-alt="cmder-taskbar-update"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
         <li>
             3. Ahora el último paso, ejecuta el comando <code>ConEmu.exe /updatejumplist</code> en cmder.
             <div class="thumb-wrap sub-image-wrap">
-                <picture class="lazy">
-                    <source data-srcset="/images/posts/cmder/cmder-taskbar-complete.webp" type="image/webp" />
-                    <source data-srcset="/images/posts/cmder-taskbar-complete.png" type="image/png" />
-                    <img data-src="/images/posts/cmder/cmder-taskbar-complete.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-complete">
-                </picture>
+                <vc:post-picture image-name="cmder-taskbar-complete"
+                                 image-alt="cmder-taskbar-complete"
+                                 fall-back="png"
+                                 lazy="true" />
             </div>
         </li>
     </ol>
     <p> Con esto, estoy listo para abrir todo lo que necesito en mí línea de comando para trabajar en mi repositorio con solamente un click derecho y un click.</p>
     <div class="thumb-wrap">
-        <picture class="lazy">
-            <source data-srcset="/images/posts/cmder/cmder-taskbar-ready.webp" type="image/webp" />
-            <source data-srcset="/images/posts/cmder-taskbar-ready.png" type="image/png" />
-            <img data-src="/images/posts/cmder/cmder-taskbar-ready.png" class="img-thumbnail" src="/images/blur.png" alt="cmder-taskbar-ready">
-        </picture>
+        <vc:post-picture image-name="cmder-taskbar-ready"
+                         image-alt="cmder-taskbar-ready"
+                         fall-back="png"
+                         lazy="true" />
     </div>
-
     <h3>¿Hay alguna desventaja?</h3>
     <p>
         cmder justo como muchas otras opciones para una mejor consola en Windows es un emulador esto significa que el rendimiento
