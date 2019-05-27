@@ -10,6 +10,7 @@ namespace PersonalLuis.Site.TagHelpers
         public string Src { get; set; }
         public string Class { get; set; }
         public string Alt { get; set; }
+        public bool NoLazyClass { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -18,7 +19,8 @@ namespace PersonalLuis.Site.TagHelpers
             output.TagName = "img";
             output.Attributes.SetAttribute("data-src", Src);
             output.Attributes.SetAttribute("src", "/images/blur.png");
-            output.Attributes.SetAttribute("class", "lazy");
+            if(!NoLazyClass)
+                output.Attributes.SetAttribute("class", "lazy");
             output.AddClass(Class, HtmlEncoder.Default);
             output.Attributes.SetAttribute("alt", Alt);
         }
