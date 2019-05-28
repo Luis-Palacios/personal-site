@@ -44,7 +44,7 @@
                          lazy="true" />
     </div>
     <p>
-        The good think about the tool is that not only it gives you a Score but it also suggests recommendation and an estimated of how much load
+        The good think about the tool is that not only it gives you a Score but it also give you recommendations and an estimated of how much load
         time you could save implementing those. On my case, it suggested three and the first one that got my attention was <strong>"Serve images in next-gen formats"</strong>
     </p>
     <div class="thumb-wrap">
@@ -90,7 +90,7 @@
         </li>
     </ul>
     <p>
-        The one that currently has better support is <a href="https://developers.google.com/speed/webp/">WebP</a> however leaving Safari out is not good so this almost became a show stopper for me, fortunately, I continued reading about ways to
+        The one that currently has broader support is <a href="https://developers.google.com/speed/webp/">WebP</a> however leaving Safari out is not good so this almost became a show stopper for me, fortunately, I continued reading about ways to
         implement fallback techniques so that if the user is using Safari I could load the image in a different format that is supported.
     </p>
     <h2>Picture tag</h2>
@@ -114,6 +114,9 @@
                 <img class="z-depth-1" src="/images/luis-palacios-3.jpg" alt="luis-palacios">
             </picture>
         </script>
+    </p>
+    <p>
+        That's it nothing more to do regarding code, with just HTML I can use webp with fallback to jpg in case is not supported
     </p>
     <h2>Transforming to WebP format</h2>
     <p>
@@ -162,13 +165,13 @@
     </p>
     <h2>Background images</h2>
     <p>
-        There is another way for you to load images which trough the css <code>background-image</code> and I'm actually using it so my code looks like this:
+        There is another way for you to load images which is trough the css <code>background-image</code> and I'm actually using it so my code looks like this:
     </p>
     <pre><code class="language-css">background: url('../images/home-bg.jpg') no-repeat scroll center center;</code></pre>
     <p>
-        If I want to use webp images there I would also run into the support for Safari problem so I have to implement a fallback for this too, so I need to detect browser support for webp and a very popular
+        If I want to use webp images there I would also run into the support for Safari problem so I have to implement a fallback for this too, I need to detect browser support for webp and a very popular
         library to do that is <a href="https://modernizr.com/">modernizr</a>, in fact, you can create your custom build of the library with just the features you want to detect and since I'm in the business of
-        optimizing for speed I'll do that
+        optimizing for speed I'll do that.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="modernizr-custom-build"
@@ -176,14 +179,14 @@
                          fall-back="png"
                          lazy="true" />
     </div>
-    <p>After selection the features you want to detect click on build and select the way you would like to get your custom build</p>
+    <p>After selection the features you want to detect click on build and select the way you would like to get your custom build.</p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="modernizr-custom-build-get"
                          image-alt="modernizr-custom-build-get"
                          fall-back="png"
                          lazy="true" />
     </div>
-    <p>On my case I went for open build in codepen.io so that I can copy and paste from there and I even get a usage example/demo right there on codepen</p>
+    <p>On my case I went for <strong>open build in codepen.io</strong> so that I can copy and paste from there and I even get a usage example/demo right there on codepen.</p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="modernizr-codepen-build"
                          image-alt="modernizr-codepen-build"
@@ -212,7 +215,6 @@
                          image-alt="background-url-loads"
                          fall-back="png"
                          lazy="true" />
-        <lazy-img src="/images/posts/webp/background-url-loads.png" class="img-thumbnail" alt="background-url-loads" />
     </div>
     <h2>Test Safari Support</h2>
     <p>
@@ -235,7 +237,7 @@
                          lazy="true" />
     </div>
     <p>
-        So the proper image is being loaded
+        So the proper image is being loaded.
     </p>
     <div class="thumb-wrap">
         <vc:post-picture image-name="safari-test-3"
