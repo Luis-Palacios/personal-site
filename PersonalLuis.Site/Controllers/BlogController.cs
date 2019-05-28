@@ -41,6 +41,8 @@ namespace PersonalLuis.Site.Controllers
                 post = blogService.GetFeaturedPosts(lang)
                     .FirstOrDefault(p => p.SlugEs == postSlug);
             }
+            if (post == null)
+                return NotFound();
             return View(post);
         }
     }

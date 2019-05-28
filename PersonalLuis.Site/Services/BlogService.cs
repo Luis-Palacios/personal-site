@@ -57,12 +57,12 @@ namespace PersonalLuis.Site.Services
                     Id = 3,
                     Title = "Improve website speed performance using Next-Gen formats",
                     TitleEs= "Mejora la velocidad de tu sitio web usando formatos de siguiente generacion",
-                    Introduction = @"With so many popular development tools that exist today that normally requires a CLI to work,
-                                    the need for a good console application have become more clear. A console where you can be productive that has a nice
-                                    look and feel is actually posible not only on UNIX Systems but also on Windows.",
-                    IntroductionEs =@"Con tantas herramientas populares de desarrollo que existen hoy en día que requiere de una interfaz de linea de comando para trabajar,
-                                        la necesidad de una buena aplicación de consola se ha vuelto más clara. Una consola donde podas ser productivo que se vea y sienta bien es
-                                        posible de lograr no solo en sistemas basados en UNIX sino también en Windows",
+                    Introduction = @"Web development moves really fast and performance is a priority. Many studies suggest that if your load time is high people will abandon your site
+                            not only that but also your search rank is affected so you should pay attention to any performance you can do that will help you bring down that load time. Using next-gen formats for
+                            images such as WebP can easily give you a great advantage and especially if your site loads many images",
+                    IntroductionEs=@"El desarrollo web se mueve muy rápido y el rendimiento es una prioridad, muchos estudios sugieren que si el tiempo de carga es alto,
+                             las personas abandonarán tu sitio y no solo eso, sino que también se ve afectado tu rango en los buscadoes, por lo que debes prestar atención
+                             a cualquiera mejora rendimiento que puedas hacer que te ayude a reducir ese tiempo de carga. Usando formatos de próxima generación para las imágenes como WebP puede brindarte una gran ventaja y especialmente si tu sitio carga muchas imágenes.",
                     BanerThumbnailUrl="/images/posts/webp/squoosh-editor.png",
                     BannerUrl="/images/posts/webp/squoosh-editor.png",
                     Slug="improve-website-speed-performance-using-next-gen-formats",

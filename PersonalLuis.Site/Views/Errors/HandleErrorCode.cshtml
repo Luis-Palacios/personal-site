@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "HandleErrorCode";
+}
+
+@section seo{
+    <title>Luis Palacios | Developer, Blogger, Teacher</title>
+    <meta name="description" content="404 page not found">
+}
+
+@section styles{
+    <environment include="Development">
+        <link rel="preload" href="~/.temp/home.css" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="preload" href="~/dist/home.css" asp-append-version="true" as="style" onload="this.rel='stylesheet'" />
+    </environment>
+}
+<section id="about" class="scroll-section root-sec padd-tb-60 grey lighten-5 about-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix about-inner">
+                <div class="col-sm-12">
+                    <div class="person-about">
+                        <h1 class="title" style="color:#47cfe0">404 Page not found</h1>
+                        <p>The content you were trying to reach was not found 😵 but you can try searching below</p>
+                        <form asp-controller="Blog" asp-action="Index" method="get">
+                            <input type="search" placeholder="Search..." autofocus name="searchTerm" style="color:#727272"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="blog" class="scroll-section root-sec grey lighten-5 blog-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="blog-inner">
+                <div class="col-sm-12 card-box-wrap">
+                    <div class="row">
+                        <div class="clearfix section-head blog-text" style="margin-bottom: 20px;">
+                            <div class="col-sm-10">
+                                <p class="regular-text">Or Maybe some of these posts are of interest to you?</p>
+                            </div>
+                        </div>
+                        <div class="clearfix card-element-wrapper" id="blog-posts">
+                            @foreach (var post in ViewBag.FeaturedPosts)
+                            {
+                                <article class="col-sm-6 col-md-4 single-card-box single-post">
+                                    <div class="card wow fadeInUpSmall"
+                                         data-wow-duration=".7s">
+                                        <div class="card-image">
+                                            <div class="card-img-wrap">
+                                                <div class="blog-post-thumb waves-effect waves-block waves-light">
+                                                    <a class="blog-link" href="@post.Url" target="@(post.IsMedium? "_blank":"_self")">
+                                                        <vc:picture images-urls="@post.BanerThumbnailUrl.Split(',')"
+                                                                    image-alt="@post.Slug"
+                                                                    image-class="activator"
+                                                                    picture-class="blog-picture"
+                                                                    lazy="true" />
+                                                    </a>
+                                                </div>
+                                                <div class="post-body">
+                                                    <a class="post-title-link brand-text blog-link" href="@post.Url" target="@(post.IsMedium? "_blank":"_self")"><h2 class="post-title">@post.Title</h2></a>
+                                                    <p class="post-content">@post.Introduction</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix card-content">
+                                            <a class="brand-text right waves-effect blog-link" href="@post.Url" target="@(post.IsMedium? "_blank":"_self")">
+                                                @if (post.IsMedium)
+                                                {
+                                                    <i class="fab fa-medium-m link-icon"></i>
+                                                }
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+                        <div class="clearfix left-align">
+                            <div class="col-sm-12">
+                                <a class="waves-effect waves-light btn-large load-more blog-link" href="@Url.Action("Index", "Blog")">
+                                    See More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ./container -->
+</section>
+
+@section scripts{
+    <script>
+        window.isNotFoundPage = true;
+    </script>
+    <environment include="Development">
+        <script async src="~/.temp/home.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script async src="~/dist/home.bundle.js" asp-append-version="true"></script>
+    </environment>
+}
+

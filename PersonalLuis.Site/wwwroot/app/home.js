@@ -23,18 +23,20 @@ const checkLoad = loaded => function onLoad() {
 };
 
 const blogSection = document.getElementById('blog');
-ioWrapper(blogSection, (entry) => {
-  const section = entry.target;
-  const pictures = section.getElementsByTagName('picture');
-  let loaded = pictures.length;
-  for (let i = 0; i < pictures.length; i += 1) {
-    const picture = pictures[i];
-    loadPicture(picture, checkLoad(loaded -= loaded));
-  }
-});
+if (blogSection) {
+  ioWrapper(blogSection, (entry) => {
+    const section = entry.target;
+    const pictures = section.getElementsByTagName('picture');
+    let loaded = pictures.length;
+    for (let i = 0; i < pictures.length; i += 1) {
+      const picture = pictures[i];
+      loadPicture(picture, checkLoad(loaded -= loaded));
+    }
+  });
+}
 
 
-const { WOW } = window;
+const { WOW, isNotFoundPage } = window;
 const $ = window.jQuery;
 $.fn.load = function load(callback) { $(window).on('load', callback); };
 
@@ -203,30 +205,32 @@ $(document).ready(function documentReady() {
       tesMoSlider.trigger('next.owl.carousel');
     }
   });
-
-  $('.menu-smooth-scroll').scrollingTo({
-    easing: 'easeOutQuart',
-    animationTime: 1800,
-    callbackBeforeTransition(e) {
-      if (e.currentTarget.hash !== '') {
-        if (e.currentTarget.hash !== '#home') {
-          $(e.currentTarget).parent().addClass('current').siblings()
-            .removeClass('current');
+  debugger;
+  if (!isNotFoundPage) {
+    $('.menu-smooth-scroll').scrollingTo({
+      easing: 'easeOutQuart',
+      animationTime: 1800,
+      callbackBeforeTransition(e) {
+        if (e.currentTarget.hash !== '') {
+          if (e.currentTarget.hash !== '#home') {
+            $(e.currentTarget).parent().addClass('current').siblings()
+              .removeClass('current');
+          }
         }
-      }
 
-      $('.button-collapse').sideNav('hide');
-    },
-    callbackAfterTransition(e) {
-      if (e.currentTarget.hash !== '') {
-        if (e.currentTarget.hash === '#home') {
-          window.location.hash = '';
-        } else {
-          window.location.hash = e.currentTarget.hash;
+        $('.button-collapse').sideNav('hide');
+      },
+      callbackAfterTransition(e) {
+        if (e.currentTarget.hash !== '') {
+          if (e.currentTarget.hash === '#home') {
+            window.location.hash = '';
+          } else {
+            window.location.hash = e.currentTarget.hash;
+          }
         }
-      }
-    },
-  });
+      },
+    });
+  }
 
   $('.section-call-to-btn').scrollingTo({
     easing: 'easeOutQuart',
