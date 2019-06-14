@@ -38,15 +38,6 @@ $(document).ready(() => {
 
   $('.primary-nav .button-collapse').sideNav();
 
-  $('.blog-submenu-init').dropdown({
-    inDuration: 300,
-    outDuration: 225,
-    constrain_width: true,
-    hover: false,
-    alignment: 'right',
-    gutter: 10,
-    belowOrigin: true,
-  });
 });
 
 // callback after loading the window

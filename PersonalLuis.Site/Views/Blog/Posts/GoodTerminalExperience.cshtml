@@ -9,8 +9,8 @@
     <p>
         They even created a video that is quite the marketing effort and I have to admit it, it's looking quite nice.
     </p>
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        
     </div>
     <br />
     <p>
@@ -457,3 +457,10 @@
         What have you been using as your go-to console on Windows? let me know in the comments below.
     </p>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var iframeContainer = document.getElementById('iframe-container');
+        iframeContainer.innerHTML = '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8gw0rXPMMPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    }, false);
+</script>
