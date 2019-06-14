@@ -12,9 +12,12 @@
 /* --------------------------------- */
 /* Blog Page/Single Page Styles
  ----------------------------------- */
+#banner{
+    margin-top: 65px;
+}
 
-header.nav {
-    position: relative;
+.blog-banner{
+    margin-top: 80px !important;
 }
 
 .blogpage-banner-wrap {
