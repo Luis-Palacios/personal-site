@@ -65,6 +65,8 @@ namespace PersonalLuis.Site
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

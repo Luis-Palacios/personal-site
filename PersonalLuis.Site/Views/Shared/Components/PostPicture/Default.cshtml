@@ -8,7 +8,7 @@
     <picture class="lazy">
         <source data-srcset="@imageUrl" type="image/web" />
         <source data-srcset="@fallBackImageUrl" type="image/@Model.FallBack" />
-        <lazy-img alt="@Model.ImageAlt" class="img-thumbnail" src="@fallBackImageUrl"/>
+        <lazy-img alt="@Model.ImageAlt" class="img-thumbnail" src="@fallBackImageUrl" no-lazy-class="true"/>
     </picture>
 }
 else

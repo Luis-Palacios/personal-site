@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    @RenderSection("seo", required: true)
+    @RenderSection("seo", required: false)
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#212121">
@@ -175,7 +175,7 @@
                                                 <h5>Full Stack Developer</h5>
                                             </div>
                                         </li><!-- mini profile end-->
-                                        @if (Context.Request.GetEncodedPathAndQuery() == Url.Action("Index", "Home"))
+                                        @if (Context.Request.GetEncodedPathAndQuery() == Url.Action("Index", "Home") && !ViewData.TryGetValue("NotFound", out object result))
                                         {
                                             <li>
                                                 <a href="#about" data-section="#about" class="menu-smooth-scroll"><i class="fas fa-user fa-fw"></i>About Me</a>

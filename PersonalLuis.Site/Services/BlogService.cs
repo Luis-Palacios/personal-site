@@ -54,6 +54,28 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper, lang)
                 {
+                    Id = 3,
+                    Title = "Improve website speed performance using Next-Gen formats",
+                    TitleEs= "Mejora la velocidad de tu sitio web usando formatos de siguiente generacion",
+                    Introduction = @"Web development moves really fast and performance is a priority. Many studies suggest that if your load time is high people will abandon your site
+                            not only that but also your search rank is affected so you should pay attention to any performance you can do that will help you bring down that load time. Using next-gen formats for
+                            images such as WebP can easily give you a great advantage and especially if your site loads many images",
+                    IntroductionEs=@"El desarrollo web se mueve muy rápido y el rendimiento es una prioridad, muchos estudios sugieren que si el tiempo de carga es alto,
+                             las personas abandonarán tu sitio y no solo eso, sino que también se ve afectado tu rango en los buscadoes, por lo que debes prestar atención
+                             a cualquiera mejora rendimiento que puedas hacer que te ayude a reducir ese tiempo de carga. Usando formatos de próxima generación para las imágenes como WebP puede brindarte una gran ventaja y especialmente si tu sitio carga muchas imágenes.",
+                    BanerThumbnailUrl="/images/posts/webp/squoosh-editor.png",
+                    BannerUrl="/images/posts/webp/squoosh-editor.png",
+                    Slug="improve-website-speed-performance-using-next-gen-formats",
+                    SlugEs="mejora-velocidad-sitio-web-usando-formatos-siguiente-generacion",
+                    Author="Luis Palacios",
+                    Category ="DevTools",
+                    PublishedDate=new DateTime(2019, 5, 26),
+                    Content="NextGenFormats",
+                    ContentEs="es/FormatosNextGen",
+                    Published = true,
+                },
+                new Post(urlHelper, lang)
+                {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",

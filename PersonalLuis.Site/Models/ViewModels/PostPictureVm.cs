@@ -7,6 +7,7 @@
             ImageName = imageName;
             ImageAlt = imageAlt;
             FallBack = fallBack;
+            Lazy = lazy;
         }
 
         public string ImageName { get; set; }

@@ -2,7 +2,10 @@
 import mediumZoom from 'medium-zoom';
 import { lazyLoad, lazyLoadPicture } from './lazyload';
 import './common';
+import '../legacy-libs/prism/prism.css';
 import '../css/blog.css';
+import '../css/animations.css';
+import '../legacy-libs/prism/prism';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';
 
