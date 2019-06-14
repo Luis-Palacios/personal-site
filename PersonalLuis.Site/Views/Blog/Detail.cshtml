@@ -10,7 +10,7 @@
     };
 }
 @section seo{
-    <title>Luis Palacios | @Model.PostTitle</title>
+    <title>@Model.PostTitle</title>
     <meta name="description" content="@Model.PostIntroduction">
 }
 @section meta{
@@ -142,4 +142,33 @@
     <environment exclude="Development">
         <script async src="~/dist/post.bundle.js" asp-append-version="true"></script>
     </environment>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "BlogPosting",
+        "headline": "@Model.PostTitle",
+        "image": [
+        "@($"{Context.Request.GetBaseUrl()}{Model.BannerUrl}")"
+        ],
+        "datePublished": "2019-02-05T08:00:00+08:00",
+        "dateModified": "2019-02-05T09:20:00+08:00",
+        "author": {
+        "@@type": "Person",
+        "name": "Luis Palacios"
+        },
+        "publisher": {
+        "@@type": "Organization",
+        "name": "Luis Palacios",
+        "logo": {
+        "@@type": "ImageObject",
+        "url": "@($"{Context.Request.GetBaseUrl()}/images/publisher-logo.png")"
+        }
+        },
+        "mainEntityOfPage": {
+        "@@type": "WebPage",
+        "@@id": "@absoluteUrl"
+        }
+        }
+    </script>
+
 }
