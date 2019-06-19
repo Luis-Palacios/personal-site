@@ -1,0 +1,77 @@
+@{
+    ViewBag.BaseImagePath = "/images/posts/defer-offscreen/";
+}
+<div class="single-post-content">
+    <p>
+        He estado en una aventura tratando de conquistar Google <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a>
+        para mi sitio personal. Previamente implemente la recomendación de <a href="@Url.Action("Detail", "Blog", new { postSlug = "mejora-velocidad-sitio-web-usando-formatos-siguiente-generacion", lang = "es" })">Formatos de imágenes de siguiente generacion</a>
+        la cual me dio una buena mejora en mi puntuacion y tiempo de carga, ahora trabajare en la siguiente recomendación la cual es <a href="https://developers.google.com/web/tools/lighthouse/audits/offscreen-images">
+            Defer OffScreen Images
+        </a>.
+    </p>
+    <p>
+        Para este tutorial, escogí hacer videos tutoriales en ves de un articulo. Es una serie corta que consiste de 4 videos con una duración
+        total de aproximadamente 25 minutos y aquí está la <a href="https://www.youtube.com/playlist?list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G">lista de reproduccion</a>
+        de youtube si quieres comenzar ahora mismo.
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/defer-offscreen/playlist-lenght.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        El audio está en ingles pero los videos contienen subtítulos en español si quieres activarlos.
+    </p>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=-fOW9fTmYKg&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=2&t=0s">
+            01
+            Intro - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        Una corta explicación de que es "Defer OffScreen Images", como es que google recomienda que la implementes, porque debería importante
+        y una pequeña muestra de como sé cuando está terminado.
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-fOW9fTmYKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=O8CHRT3wXQ8&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=2">
+            02 Img
+            Tags - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        Tiempo de codear, aquí cambio mí etiqueta html <code>img</code> y agrego un poco de código javascript usando
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersecion Observer</a>
+        para implementar la carga diferida
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/O8CHRT3wXQ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=PMiGSRPh-hw&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=3">
+            03
+            Improving UX - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        Aquí trabajo en mejorar la UX cuando las imágenes se cargan a medida que el usuario se va desplazando, Creo una simple animación CSS
+        de difuminado similar a la que se usa en Medium.
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PMiGSRPh-hw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=EG3iPxtud8o&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=4">04 Picture Tag - Defer OffScreen Images</a>
+    </h2>
+    <p>
+        Aquí implemento la carga diferida para las imágenes que cargo por medio de la etiqueta <code>picture</code> y rehúso algo de mí función <code>lazyLoad</code>
+        y la actualizo para poder cargar las pictures que usan imágenes webp con soporte en png para navegadores que no soportan webp.
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EG3iPxtud8o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>

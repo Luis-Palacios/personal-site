@@ -1,0 +1,77 @@
+@{
+    ViewBag.BaseImagePath = "/images/posts/defer-offscreen/";
+}
+<div class="single-post-content">
+    <p>
+        I have been on a quest trying to conquer Google <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a>
+        for my own personal website, I have previously implemented the recommended <a href="@Url.RouteUrl("blog", new { postSlug = "improve-website-speed-performance-using-next-gen-formats" })">Next-Gen Images format</a>
+        which gave me a good improvement on my score and load time, now I'll be tackling the next recommendation which is <a href="https://developers.google.com/web/tools/lighthouse/audits/offscreen-images">
+            Defer OffScreen Images
+        </a>.
+    </p>
+    <p>
+        For this tutorial, I choose to do a video tutorial instead of a blog post. It is a short series that contains 4
+        videos with a total duration
+        of approximitly 25 minutes here is the youtube <a href="https://www.youtube.com/playlist?list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G">playlist</a> is if you want
+        to start right now.
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/defer-offscreen/playlist-lenght.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        The series is split in the following way
+    </p>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=-fOW9fTmYKg&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=2&t=0s">
+            01
+            Intro - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        A brief explanation of what Defer OffScreen Images is, how Google recommends to do it, why should you care and a
+        small teaser of how it looks once it's completed
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-fOW9fTmYKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=O8CHRT3wXQ8&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=2">
+            02 Img
+            Tags - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        Code time, here I change my html <code>img</code> tags and add a bit of javascript code using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersecion Observer</a>
+        to implement lazy load
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/O8CHRT3wXQ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=PMiGSRPh-hw&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=3">
+            03
+            Improving UX - Defer OffScreen Images
+        </a>
+    </h2>
+    <p>
+        Here I work on improving the UX for when the images are loaded when the user is scrolling, I create a very
+        simple blur in CSS animation similar to the one that it's used on Medium.
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PMiGSRPh-hw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br>
+    <h2>
+        <a href="https://www.youtube.com/watch?v=EG3iPxtud8o&list=PLHbKgSx8_tMSQE0KJASPrgxDrgUpfwx8G&index=4">04 Picture Tag - Defer OffScreen Images</a>
+    </h2>
+    <p>
+        Here I implement lazy load for the images that I load through the <code>picture</code> tag, I re-use some of my lazy load function and update it
+        to be able to lazy load pictures that use webp images but fall back to png when webp is not supported
+    </p>
+    <div class="embed-responsive embed-responsive-16by9" id="iframe-container">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EG3iPxtud8o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>

@@ -76,6 +76,31 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper, lang)
                 {
+                    Id = 4,
+                    Title = "Improve website speed performance using Defer Offscreen Images",
+                    TitleEs= "Mejora la velocidad de tu sitio web usando carga diferida de imagenes",
+                    Introduction = @"Web development moves really fast and performance is a priority. Many studies suggest that if your load time is high people will abandon your site
+                            not only that but also your search rank is affected so you should pay attention to any performance you can do that will help you bring down that load time. 
+                            On this tutorial I continue my quest regarding optimization this time using Defer Offscreen Images
+                            which actually gave me the best improvement on load time and score.",
+                    IntroductionEs=@"El desarrollo web se mueve muy rápido y el rendimiento es una prioridad, muchos estudios sugieren que si el tiempo de carga es alto,
+                             las personas abandonarán tu sitio y no solo eso, sino que también se ve afectado tu rango en los buscadoes, por lo que debes prestar atención
+                             a cualquiera mejora rendimiento que puedas hacer que te ayude a reducir ese tiempo de carga.
+                             En este tutorial continuo mi aventura respecto a optimizacion esta vez usando la carga diferida de imagenes
+                             la cual me dio la mayor mejora en tiempo de carga y puntuacion",
+                    BanerThumbnailUrl="/images/posts/defer-offscreen/main.png",
+                    BannerUrl="/images/posts/defer-offscreen/main.png",
+                    Slug="improve-website-speed-performance-using-defer-offscreen-images",
+                    SlugEs="mejora-velocidad-sitio-web-usando-carga-diferida-de-imagenes",
+                    Author="Luis Palacios",
+                    Category ="DevTools",
+                    PublishedDate=new DateTime(2019, 6, 18),
+                    Content="DeferOffScreenImages",
+                    ContentEs="es/CargaDiferidaImagenes",
+                    Published = true,
+                },
+                new Post(urlHelper, lang)
+                {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
