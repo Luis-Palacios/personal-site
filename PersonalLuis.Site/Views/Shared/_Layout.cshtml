@@ -155,7 +155,7 @@
                                         <li class="search-form-li">
                                             <a id="initSearchIcon" class=""><i class="fas fa-search search-icon"></i> </a>
                                             <div class="search-form-wrap hide">
-                                                <form asp-controller="Blog" method="get">
+                                                <form asp-controller="Blog" asp-action="Index" method="get">
                                                     <input type="search" name="searchTerm" class="search" value="@ViewBag.SearchTerm">
                                                     <button type="submit" role="button" aria-label="Search">
                                                         <i class="fas fa-search search-icon"></i>
