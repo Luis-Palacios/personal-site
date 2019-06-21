@@ -4,30 +4,28 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://luispalacios.ninja/</loc>
-  <lastmod>2019-05-24T20:56:26+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://luispalacios.ninja/blog</loc>
-  <lastmod>2019-05-24T20:56:26+00:00</lastmod>
-</url>
-<url>
-  <loc>https://luispalacios.ninja/LuisPalaciosCV.pdf</loc>
-  <lastmod>2019-03-08T16:15:16+00:00</lastmod>
-</url>
-<url>
-  <loc>https://luispalacios.ninja/blog/good-terminal-experience-on-windows</loc>
-  <lastmod>2019-05-24T20:56:26+00:00</lastmod>
-</url>
-<url>
-  <loc>https://luispalacios.ninja/es/blog/buena-experiencia-terminal-en-windows</loc>
-  <lastmod>2019-05-24T20:56:26+00:00</lastmod>
-</url>
+  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  <url>
+    <loc>https://luispalacios.ninja/</loc>
+    <lastmod>2019-05-24T20:56:26+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://luispalacios.ninja/blog</loc>
+    <lastmod>2019-05-24T20:56:26+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://luispalacios.ninja/LuisPalaciosCV.pdf</loc>
+    <lastmod>2019-03-08T16:15:16+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://luispalacios.ninja/blog/good-terminal-experience-on-windows</loc>
+    <lastmod>2019-05-24T20:56:26+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://luispalacios.ninja/es/blog/buena-experiencia-terminal-en-windows</loc>
+    <lastmod>2019-05-24T20:56:26+00:00</lastmod>
+  </url>
   <url>
     <loc>https://luispalacios.ninja/blog/improve-website-speed-performance-using-next-gen-formats</loc>
     <lastmod>2019-05-28T20:56:26+00:00</lastmod>
@@ -36,6 +34,12 @@
     <loc>https://luispalacios.ninja/es/blog/mejora-velocidad-sitio-web-usando-formatos-siguiente-generacion</loc>
     <lastmod>2019-05-28T20:56:26+00:00</lastmod>
   </url>
-
-
+  <url>
+    <loc>https://luispalacios.ninja/blog/improve-website-speed-performance-using-defer-offscreen-images</loc>
+    <lastmod>2019-06-19T20:56:26+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://luispalacios.ninja/es/blog/mejora-velocidad-sitio-web-usando-carga-diferida-de-imagenesn</loc>
+    <lastmod>2019-06-19T20:56:26+00:00</lastmod>
+  </url>
 </urlset>
