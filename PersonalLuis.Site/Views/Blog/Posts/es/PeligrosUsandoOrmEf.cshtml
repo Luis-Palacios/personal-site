@@ -11,11 +11,11 @@
         un diseño de BD muy explicito y especifico cuando usas un ORM, puedes especificar exactamente que tipo de datos SQL usaras, indices y más.
     </p>
     <p>
-        Observemos un benchmark creado por el asombroso equipo que trabaja en <a href="https://github.com/StackExchange/Dapper">Dapper</a> un micro ORM creado y usando por <a href="https://stackoverflow.com/">stackoverflow</a>
+        Observemos un benchmark creado por el asombroso equipo que trabaja en <a href="https://github.com/StackExchange/Dapper">Dapper</a> un micro ORM creado y usado por <a href="https://stackoverflow.com/">stackoverflow</a>
     </p>
     <p>
         <strong>Nota:</strong> He removido algunos ORM de la lista para facilitar la concentración en EF y HandCoded, HandCoded significa sin usar ningún ORM, simplemente SQL puro
-        si deseas ver el benchmar completo puedes verlo aquí: <a href="https://github.com/StackExchange/Dapper#performance">Dapper benchmark</a>
+        si deseas ver el benchmark completo puedes verlo aquí: <a href="https://github.com/StackExchange/Dapper#performance">Dapper benchmark</a>
     </p>
     <div class="thumb-wrap">
         <lazy-img src="/images/posts/dangers-using-orm-ef/benchmark.png" class="img-thumbnail"
@@ -42,15 +42,11 @@
         pero normalmente vas a encontrar una parte en la documentación relacionada con <strong>"Performance considerations"</strong> y te recomiendo buscar y leer esas partes antes de comenzar a usarlo.
     </p>
     <p>
-        Adicionalmente la documentación y tutoriales de los ORM se enfocan en mostrarte lo rápido y fácil que son de usar, de tal forma que en cuestión de minutos podrías comenzar a usar un ORM,
-        pero normalmente vas a encontrar una parte en la documentación relacionada con <strong>"Performance considerations"</strong> y te recomiendo buscar y leer esas partes antes de comenzar a usarlo.
-    </p>
-    <p>
         En este post:
     </p>
     <ul class="post-list">
         <li>
-            <a href="sqldatatypes">1. No saber que tipo de datos SQL son generados para tus tablas</a>
+            <a href="#sqldatatypes">1. No saber que tipo de datos SQL son generados para tus tablas</a>
         </li>
         <li>
             <a href="#queryexecution">2. No saber el momento en que la consulta SQL es ejecutada</a>
@@ -98,7 +94,7 @@
     }
 </code></pre>
     <p>
-        Esa es simplemente una clase de C # que no tiene nada de especial que se conoce como POCO, EF tiene la fortaleza para usar mi POCO y
+        Esta es simplemente una clase de C # que no tiene nada de especial se le conoce como POCO, EF tiene la fortaleza para usar mi POCO y
         crear tablas SQL usando sus convenciones, todo lo que necesito hacer es agregar mi clase como DbSet a mí DBContext
     </p>
     <script type="text/plain" class="language-csharp line-numbers">
@@ -165,7 +161,7 @@
     </div>
     <p>
         Puedes ver que termino con dos <code> nvarchar (max) </code> que son nulables y eso no es lo que deseo, quiero definir un límite y que los campos no sean nulables.
-        Las convenciones son útiles ya ayudan a desarrollar más rápido, pero debes ser consciente de cuándo debes ser explícito en tus configuraciones, como en este
+        Las convenciones son útiles ya que ayudan a desarrollar más rápido, pero debes ser consciente de cuándo debes ser explícito en tus configuraciones, como en este
         caso necesito detallar cómo quiero asignar explícitamente a los tipos de SQL. En EF tengo dos opciones dos para esto Data Annotations de datos o Fluent API
     </p>
     <p class="text-center m-bottom-0">
@@ -231,7 +227,7 @@
                   alt="youtube-playlist" />
     </div>
     <p>
-        Tal vez le resulte tedioso tener que definir esto para cada campo string, en ese caso, se puede sobre-escribir la convención predeterminada para los valores de string y establecerla en
+        Tal vez te resulte tedioso tener que definir esto para cada campo string, en ese caso, se puede sobre-escribir la convención predeterminada para los valores de string y establecerla en
         250 en lugar de Max y no nulo en lugar de nulo de esa manera solo necesitas definir este tipo de mapeo para campos string que estás seguro usará menos o más de 250.
     </p>
     <p>
@@ -320,8 +316,8 @@
         Esto ejecutará el tipo de consulta que quiero y producirá los resultados esperados, sin embargo, si invertiera el orden en el que estoy
         llamando a los métodos <code>Where</code> y <code>ToList</code>, aún produciré los resultados que quiero pero en realidad cargaré todos los registros del
         base de datos y luego hare un filtro en memoria con solo unos pocos registros no notaré ninguna diferencia de rendimiento, pero cuando la cantidad de datos aumenta, el rendimiento
-        se vera seriamente afecta. Puede pensar que esto es obvio, pero es solo así si sabes cuándo se ejecuta tu consulta SQL. Supongamos que ahora necesitamos ordenar por
-        el campo de <code>Order</code> que tenemos sobre la Table y el desarrollador no sabe sobre esto y solo hace una búsqueda rápida en Google y aprende sobre el método OrderBy de Linq el podría venir
+        se vera seriamente afecta. Puedes pensar que esto es obvio, pero es solo así si sabes cuándo se ejecuta tu consulta SQL. Supongamos que ahora necesitamos ordenar por
+        el campo de <code>Order</code> que tenemos sobre en Tabla y el desarrollador no sabe sobre esto y solo hace una búsqueda rápida en Google y aprende sobre el método OrderBy de Linq el podría venir
         y simplemente hacer lo siguiente:
     </p>
     <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="11">
@@ -391,21 +387,21 @@
                   alt="results-without-projections" />
     </div>
     <p>
-        I have achieved the results that I needed, but did I only retrieve the Name and Id fields? we can find out using SQL Server Profiler which will
-        track every command executed against the database. If you haven't used SQL Server Profiler you can open it from SQL Server Management Studio
-        in <strong>Tools -> SQL Server Profiler</strong> it is available even on the express/free edition.
+        He logrado los resultados que necesitaba, pero ¿solo lei los campos Id y Nombre de la BD? podemos averiguar usando el SQL Server Profiler que
+        rastrea cada comando ejecutado contra la base de datos. Si no has usado SQL Server Profiler, puedes abrirlo desde SQL Server Management Studio
+        en <strong> Herramientas -> SQL Server Profiler </strong> está disponible incluso en la edición express / gratuita.
     </p>
     <div class="thumb-wrap">
         <lazy-img src="/images/posts/dangers-using-orm-ef/sql-without-projection.png" class="img-thumbnail"
                   alt="sql-without-projection" />
     </div>
     <p>
-        You can see I'm actually pulling all of the fields, for this table that might not be that big of a deal but as the number of fields and records growth the
-        the amount of reads will also increase so be aware of that.
+        Puedes ver que en realidad estoy sacando todos los campos, para esta tabla esto podría no ser tan importante, pero a medida que crece el número de campos y registros,
+        la cantidad de lecturas también aumentará, así que ten en cuenta esto.
     </p>
     <p>
-        Using projection on EF is fairly simple I just need to specify what fields I want on a Select method and map to an anonymous object or a specific class on
-        my case I will use an anonymous object
+        Usar proyección en EF es bastante simple, solo necesito especificar qué campos quiero en un método Seleccionar y asignar a un objeto anónimo o una clase específica en
+        mi caso usaré un objeto anónimo
     </p>
     <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="5-9">
         var menuCategories = db.MenuCategories
@@ -419,31 +415,31 @@
                                     .ToList();
     </script>
     <p>
-        This will produce exactly the same output as my before but if we inspect SQL Server Profiler again
+        Esto producirá exactamente el mismo resultado que antes en la consola, pero si inspeccionamos SQL Server Profiler nuevamente
     </p>
     <div class="thumb-wrap">
         <lazy-img src="/images/posts/dangers-using-orm-ef/sql-with-projection.png" class="img-thumbnail"
                   alt="sql-with-projection" />
     </div>
     <p>
-        You can see now I'm only pulling the fields that I actually need. In Summary:
+        Puedes ver ahora que solo estoy leyendo los campos que realmente necesito. En resumen:
     </p>
     <ul class="post-list">
-        <li>Be aware of the number of fields you are pulling from the DB if needed be explicit and pull just the one you need</li>
-        <li>When in doubt, use any tool that will let you see the generated SQL Query</li>
+        <li> Ten en cuenta la cantidad de campos que estás extrayendo de la base de datos, si es necesario, se explícito y extrae solo los que necesitas </li>
+        <li> En caso de duda, utiliza cualquier herramienta que te permita ver la consulta SQL generada y ejecutada </li>
     </ul>
     <h2 id="transaction">
         <a href="#transaction" title="Permalink to this section">#</a> 4. No saber como el ORM maneja las trasacciones Atomic/Autocommit
     </h2>
     <p>
-        Let's move into the Menu Items now, assume we have some sort of UI that allows the user to add the data of a Menu Category and also it's
-        children items, being atomic means that we will save everything in one go or we won't save anything. This is very common in enterprise when
-        you need to make sure everything success or else you won't save anything while auto-commit means We will be doing multiple inserts/updates in a way that if anything fails we already did some operations on the DB that were saved. Both approaches have their corresponding use but we need to understand
-        how our ORM handles it
+        Pasemos a los elementos del menú ahora, supongamos que tenemos algún tipo de interfaz de usuario que permite al usuario agregar los datos de una categoría de menú y también sus
+        correspondientes elementos hijos, atomic significa que guardaremos todo de una vez o no guardaremos nada. Esto es muy común en aplicaciones empresariales cuando
+        debes asegurarte de que todo tenga éxito o, de lo contrario, no guardar nada, mientras que Autocommit significa que haremos múltiples inserciones / actualizaciones de manera que si algo falla, ya hicimos algunas operaciones en la base de datos que se guardaron.
+        Ambos enfoques tienen su uso correspondiente pero necesitamos entender cómo lo maneja nuestro ORM
     </p>
     <p>
-        EF by default it's Atomic it can handle transactions so we can save everything in one go which can help performance by avoiding multiple roundtrips to the Database,
-        however, we can forfeit this advantage if we are not sure of what we are doing, look at the following code that saves a Menu Category and it's Menu Items
+        EF por defecto es Atomic, puede manejar transacciones, por lo que podemos guardar todo de una vez, lo que puede ayudar al rendimiento al evitar múltiples viajes de ida y vuelta a la base de datos,
+        sin embargo, podemos perder esta ventaja si no estamos seguros de lo que estamos haciendo, mira el siguiente código que guarda una categoría de menú y sus elementos de menú
     </p>
     <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="13,24">
         var menuCategory = new MenuCategory
@@ -509,11 +505,11 @@
       db.SaveChanges();
     </script>
     <p>
-        In summary:
+        En resumen:
     </p>
     <ul class="post-list">
-        <li> Entiendo cómo el ORM maneja las transacciones y aprovéchalo </li>
-        <li> Verifica cómo el ORM maneja las inserciones/actualizaciones por lotes y hazlo de manera apropiada cuando maneje grandes cantidades de datos </li>
+        <li> Entiende cómo el ORM maneja las transacciones y aprovéchalo </li>
+        <li> Verifica cómo el ORM maneja las inserciones/actualizaciones por lotes y hazlo de manera apropiada cuando manejes grandes cantidades de datos </li>
     </ul>
     <h2 id="nplus1">
         <a href="#nplus1" title="Permalink to this section">#</a> 5. No saber sobre el infame problema de consulta N + 1
@@ -526,8 +522,8 @@
     </p>
     <p>
         Hay dos formas principales en que el ORM te permitirá cargar datos relacionados, Lazy Loading y Eager Loading. Este problema ocurre cuando se
-        use Lazy Loading, por lo que era más común encontrarlo en EF6, ya que viene con Lazy Loading habilitado de forma predeterminada en EF core está deshabilitado por
-        defectp, pero voy ha <a href="https://docs.microsoft.com/en-us/ef/core/querying/related-data#lazy-loading"> habilitar lazy loading </a> para demostrarlo.
+        usa Lazy Loading, por lo que era más común encontrarlo en EF6, ya que viene con Lazy Loading habilitado de forma predeterminada en EF core está deshabilitado por
+        defecto, pero voy ha <a href="https://docs.microsoft.com/en-us/ef/core/querying/related-data#lazy-loading"> habilitar lazy loading </a> para demostrarlo.
         Usaré la misma consulta que estábamos usando pero sin proyección e imprimiré todas las categorías de menú con sus elementos de menú correspondientes.
     </p>
     <script type="text/plain" class="language-csharp line-numbers m-top-3">
@@ -588,7 +584,7 @@
     </div>
     <p>
         Todavía estoy sacando más campos de los que necesito y puedo arreglarlo nuevamente usando proyección, de hecho, siempre usar proyección es probablemente la ruta más segura ya que proyección
-        de forma predeterminada usará eager loading de esa manera, no tendre que preocuparme por recordar el uso de <code>Include</code>, actualizando mi código para usar proyección
+        de forma predeterminada usará eager loading de esa manera, no tendre que preocuparme por recordar el uso de <code>Include</code>. Actualizando mi código para usar proyección quedara de la siguiente forma
     </p>
     <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="5-12">
         var menuCategories = db.MenuCategories
@@ -613,10 +609,10 @@
                   alt="sql-eagerloading-projection" />
     </div>
     <p>
-        In summary:
+        En resumen:
     </p>
     <ul class="post-list">
-        <li> Comprenda qué tipo de carga usa el ORM por defecto </li>
+        <li> Comprende qué tipo de carga (Lazy, Eager) usa el ORM por defecto </li>
         <li> Ten en cuenta al cargar datos relacionados utilizando un ORM si la tabla podría crecer, asegúrate de que tu consulta esté optimizada </li>
         <li> Verifique el SQL que se genera, no confies en el rendimiento cuando pruebas con pocos datos </li>
         <li> Usa proyección siempre que puedas </li>

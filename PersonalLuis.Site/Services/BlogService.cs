@@ -102,8 +102,8 @@ namespace PersonalLuis.Site.Services
                 new Post(urlHelper, lang)
                 {
                     Id = 5,
-                    Title = "The dangers of using an ORM Entity Framework Version",
-                    TitleEs= "Los peligros de usar un ORM Version Entity Framework",
+                    Title = "The dangers of using an ORM - Entity Framework Version",
+                    TitleEs= "Los peligros de usar un ORM - Version Entity Framework",
                     Introduction = @"Often I have heard from people that refuse to use an ORM that their main reason is: ""They have performance issues""
                                      which is not entirely true, What do I mean by that? Well The ORM per se does not give you performance issues,
                                      while is true they create a bit of an overhead when doing their magic that overhead by itself is not really that big of a deal the real performance issue comes when we use them incorrectly",
