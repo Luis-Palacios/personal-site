@@ -5,6 +5,7 @@ import './common';
 import '../legacy-libs/prism/prism.css';
 import '../css/blog.css';
 import '../css/animations.css';
+import '../css/utilities.css';
 import '../legacy-libs/prism/prism';
 import '../legacy-libs/waypoints';
 import '../legacy-libs/materialize/js/materialize.min';

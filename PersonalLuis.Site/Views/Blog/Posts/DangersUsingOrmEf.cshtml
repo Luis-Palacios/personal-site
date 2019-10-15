@@ -1,0 +1,628 @@
+﻿
+@{
+    ViewBag.BaseImagePath = "/images/posts/dangers-using-orm-ef/";
+}
+
+<div class="single-post-content">
+    <p>
+        Often I have heard from people that refuse to use an ORM that their main reason is: "They have performance issues" or they create "Bad database design"
+        which is not entirely true, What do I mean by that? Well, The ORM per se does not have performance issues,
+        while is true they create a bit of an overhead when doing their magic that overhead by itself is not really that big of a deal and you can create a lot of
+        explicit database definitions using and ORM such as specific data types, indexes and more.
+    </p>
+    <p>
+        Let's look at the benchmark created by the awesome team that works on <a href="https://github.com/StackExchange/Dapper">Dapper</a> a micro ORM created and used by <a href="https://stackoverflow.com/">stackoverflow</a>
+    </p>
+    <p>
+        <strong>Note:</strong> I have removed others ORM from the list in order to make it more easy to focus on EF and HandCoded, HandCoded means without using any ORM just Raw SQL
+        if you want to see the full benchmark you can go here: <a href="https://github.com/StackExchange/Dapper#performance">Dapper benchmark</a>
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/benchmark.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        You might be initially alarmed to see the differences in the numbers between Hand-coded and EF 6 or Core but take notices that we are talking about (<a href="https://en.wikipedia.org/wiki/Microsecond">us</a>) microseconds and 1 microsecond is one
+        <a href="https://en.wikipedia.org/wiki/Millionth">millionth</a> of a second in order to get a bit of perspective know that the average human eye blink takes 350,000 microseconds (just over 1/3 of one second).
+        so there is no way a human being is able to perceive a difference of 200 microseconds and if we compare that difference with how much easier is to develop an application
+        using an ORM vs hand coded SQL and how much development time you will save using and ORM is definitely worth it.
+    </p>
+    <p>
+        So if the performance issues are not caused directly by the ORM why is it that they have earned that kind of reputation with so many people? Well because
+        they could be dangerous to use if you are not aware of the dangers and common pitfalls when using one and the tricky part is that most of these problems only become evident when the
+        application start growing and again is not that the ORM is not able to handle a lot of data (which is the conclusion many people arrive) is mostly that we have used it incorrectly and we didn't realize
+        because we were using a dev database that probably had few records.
+    </p>
+    <p>
+        <strong>Note:</strong> There might be some instances where the ORM will have performance problems such as when doing a bulk insert or bulk update but most of the ORM
+        have their special way of handling this but you have to know it.
+    </p>
+    <p>
+        Additionally ORM documentation and tutorials focus on show you how fast and easy you can get started, so it's easy to jump start using an ORM, but you will normally find
+        a part in the documentation that is related to <strong>Performance considerations</strong> and I highly recommend finding this part of the documentation and read trough it.
+    </p>
+    <p>
+        This post is about some of the most common errors I have seen people made including myself mostly because they don't know certain things that
+        I have found is essential in order to properly use an ORM. I'm going to be showing them using Entity Framework Core which is an
+        ORM by Microsoft but many of the concepts also apply for other ORM, I will also highlight any important difference with version 6 of EF and I will also
+        create a Django ORM version and at some point.
+    </p>
+    <p>
+        On This post:
+    </p>
+    <ul class="post-list">
+        <li>
+            <a href="sqldatatypes">1. Not knowing what kind of SQL data types are being generated for your tables</a>
+        </li>
+        <li>
+            <a href="#queryexecution">2. Not knowing when the SQL Query is executed</a>
+        </li>
+        <li>
+            <a href="#projection">3. Not using projection</a>
+        </li>
+        <li>
+            <a href="#transaction">4. Not knowing how the ORM handle transactions Atomic/Autocommit</a>
+        </li>
+        <li>
+            <a href="#nplus1">5. Not knowing about the infamous N+1 Query problem</a>
+        </li>
+    </ul>
+    <p>
+        For exploring these issues we are going to be using a simple domain of a Restaurant that wants to manage its menu,
+        They need to be able to handle menu categories such as (Starters, Main Dishes, Drinks, Desserts, etc) and each category will have many Items.
+    </p>
+    <p>
+        I'm going to greatly simplify this so that we can focus on understanding the issues so the tables I'm going to create are the ones shown on the image below
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/erd.png" class="img-thumbnail"
+                  alt="erd" />
+    </div>
+    <p>
+        Let's begin exploring these issues.
+    </p>
+    <h2 id="sqldatatypes">
+        <a href="#sqldatatypes" title="Permalink to this section">#</a> 1. Not knowing what kind of SQL data types are being generated for your tables
+    </h2>
+    <p>
+        This one is particularly dangerous when using a strongly typed language since the ORM can try and infer the SQL data types from the language types but they don't
+        always match 1 to 1. Take the following model as an example using C#:
+    </p>
+    <pre><code class="language-csharp line-numbers">
+    public class MenuCategory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Order { get; set; }
+        public string ImageUrl { get; set; }
+
+        public DateTime DateCreated { get; set; }
+    }
+</code></pre>
+    <p>
+        That is a simply C# class that has nothing special about it know as POCO, EF have the strength to use my normal POCO objects and
+        create SQL Tables using its conventions, all I need to do is add my class as a DbSet to my DBContext.
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers">
+        public class RestaurantContext : DbContext
+        {
+            public DbSet<MenuCategory> MenuCategories { get; set; }
+        }
+    </script>
+    <p>I can then run the EF tool command to create migrations and I will get a migration file and a Model Snapshot</p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/migrations-generated.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        I personally recommend inspecting the generated migrations in order to be more aware of what you are going to execute against your database.
+        especially when you are starting to use a new ORM if I open my model snapshoot I can already see a few things that are troublesome.
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers" data-line="23, 26">
+        [DbContext(typeof(RestaurantContext))]
+        partial class RestaurantContextModelSnapshot : ModelSnapshot
+        {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+            .HasAnnotation("ProductVersion", "3.0.0")
+            .HasAnnotation("Relational:MaxIdentifierLength", 128)
+            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("EFCommonPitFalls.Entities.MenuCategory", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<DateTime>("DateCreated")
+                    .HasColumnType("datetime2");
+
+                b.Property<string>("ImageUrl")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("Order")
+                    .HasColumnType("int");
+
+                b.HasKey("Id");
+
+                b.ToTable("MenuCategory");
+            });
+         }
+    }
+    </script>
+    <p>
+        If you see line 23 and 26 you can see the <code>nvarchar(max)</code> That is not what I want the good thing If I get the habit of checking the migrations file
+        is that I can stop right here before actually executing the migrations and fix any issue but I will go ahead and execute the migration and see what we get.
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/initial-table.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        You can see I end up with two <code>nvarchar(max)</code> that are nullable and that is not what I desire, I want to define a limit and for the fields to be not nullable.
+        Conventions are helpful as they help you develop faster but you need to be aware when you need to be explicit about your configurations such as in this
+        case I need to detail how I want to map to SQL Types explicitly. In EF I have two options two to this using Data annotations or Fluent API
+    </p>
+    <p class="text-center m-bottom-0">
+        <small class="sub-text">Data Annotations</small>
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="6, 11">
+        public class MenuCategory
+        {
+            public int Id { get; set; }
+
+            [Required, MaxLength(250)]
+            public string Name { get; set; }
+
+            public int Order { get; set; }
+
+            [Required, MaxLength(500)]
+            public string ImageUrl { get; set; }
+
+            public DateTime DateCreated { get; set; }
+        }
+    </script>
+    <p class="text-center m-bottom-0">
+        <small class="sub-text">Fluent API</small>
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="27, 7, 8, 11, 12">
+    public class MenuCategoryMapping : IEntityTypeConfiguration<MenuCategory>
+    {
+        public void Configure(EntityTypeBuilder<MenuCategory> builder)
+        {
+            builder.Property(c => c.Name)
+                .HasMaxLength(250)
+                .IsRequired();
+
+            builder.Property(c => c.ImageUrl)
+                .HasMaxLength(500)
+                .IsRequired();
+        }
+    }
+
+    // Then add the mapping configuration on your dbcontext
+    public class RestaurantContext : DbContext
+    {
+        public DbSet<MenuCategory>MenuCategories { get; set; }
+
+        public RestaurantContext()
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MenuCategoryMapping());
+            base.OnModelCreating(modelBuilder);
+        }
+       
+    }
+    </script>
+    <p>
+        Both will help you accomplish our goal which is taking more control on the SQL specifics such as defining a max length and not null-able if I create and execute migrations now
+        I get exactly what I want
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/correct-table.png" class="img-thumbnail"
+                  alt="youtube-playlist" />
+    </div>
+    <p>
+        Perhaps you will find it tedious to have to define this for each string field, in that case, you can override the default convention for string values and set it to
+        250 instead of Max and not-null instead of null that way you only need to define this kind of mapping for string fields that you are sure will use less or more than 250.
+    </p>
+    <p>
+        In the following example, I set all the string values to have a max length of 250 and not null-able so I only need to indicate that I want my ImageUrl field to have
+        a max length of 500.
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="22-29, 6-7">
+    public class MenuCategoryMapping : IEntityTypeConfiguration<MenuCategory>
+    {
+        public void Configure(EntityTypeBuilder<MenuCategory> builder)
+        {
+            builder.Property(c => c.ImageUrl)
+                .HasMaxLength(500);
+        }
+    }
+
+    public class RestaurantContext : DbContext
+    {
+        public DbSet<MenuCategory> MenuCategories { get; set; }
+
+        public RestaurantContext()
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Override custom convention for string fields set them with MaxLenght = 250 and IsNullable = False
+            modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetProperties())
+                .Where(p => p.PropertyInfo.PropertyType == typeof(string))
+                .ToList()
+                .ForEach(p => {
+                            p.SetMaxLength(250);
+                            p.IsNullable = false;
+                        });
+
+            modelBuilder.ApplyConfiguration(new MenuCategoryMapping());
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+    </script>
+    <p>
+        This does not only applies for string fields but also for other types, another common mistake I have seen is people using DateTime when in reality they only needed
+        Date so the code is full of <code>SomeDatetime.Date</code> and weird where clauses to remove the time part of the DateTime fields this normally happens because C# only have the DateTime
+        type it normally gets mapped to DateTime in SQL unless that you specifically specify the type as I have shown.
+    </p>
+    <p>
+        In summary:
+    </p>
+    <ul class="post-list">
+        <li>Be aware of the conventions your ORM uses</li>
+        <li>If your ORM generate the database migrations for you, get the habit of reviewing them</li>
+        <li>Try to be specific and explicit about how you map your models to a SQL Table</li>
+        <li>Use the power of your ORM to try and avoid writing to much boilerplate code, eg: Custom/Override Conventions</li>
+        <li>Check the SQL Tables that were generated for you if you are new to the ORM</li>
+    </ul>
+
+    <h2 id="queryexecution">
+        <a href="#queryexecution" title="Permalink to this section">#</a> 2. Not knowing when the SQL Query is executed
+    </h2>
+    <p>
+        Most ORM will let you prepare and add to your query anything you need before actually executing it, let's assume I want to get all the
+        <strong>Active Menu Categories</strong>. Ideally that means I want a SQL Query that will look something like <code>Select * from MenuCategories where Active=1</code>
+        using EF that is very simple
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="8-10">
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+                using var db = new RestaurantContext();
+                var menuCategories = db.MenuCategories
+                                        .Where(c => c.Active)
+                                        .ToList();
+
+                foreach (var category in menuCategories)
+                {
+                    Console.WriteLine(category.Name);
+                }
+
+            }
+        }
+    </script>
+    <p>
+        This will execute the kind of query that I want and will produce the expected results, however, If I were to invert the order in which I'm
+        calling the <code>Where</code> and <code>ToList</code> methods, I will still produce the results that I want but I will actually load all records from the
+        database and then do an in-memory filter with only a few records I will not notice any performance difference but when the amount of data grows the performance
+        issues will appear. You might think this is obvious but it is only that way if you know when your SQL query is executed. Assume we now need to order by
+        the order field we have on the table and the developer doesn't know about this and he just do a quick google search and learns about the OrderBy Linq method he might come
+        and simply do the following:
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="11">
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+            using var db = new RestaurantContext();
+            var menuCategories = db.MenuCategories
+                                    .Where(c => c.Active)
+                                    .ToList()
+                                    .OrderBy(c => c.Order);
+
+            foreach (var category in menuCategories)
+            {
+            Console.WriteLine(category.Name);
+            }
+
+            }
+        }
+    </script>
+    <p>
+        He will see the expected results and consider his work done not knowing that he is not ordering on the database but instead in memory, the same could happen when
+        filtering if you don't when your query is actually executed
+    </p>
+    <p>
+        In summary:
+    </p>
+    <ul class="post-list">
+        <li>Be sure to understand when the query is executed, ORM might have multiple instructions that will cause the query to be executed, try to know them all</li>
+        <li>Be aware you can do sorting and filtering with your programming language and produce the same results but you might pay a high-performance price</li>
+        <li>Make sure you are aware of when you are doing in Database operation vs in Memory, debug if needed to know when you have executed your query</li>
+    </ul>
+    <h3 id="projection">
+        <a href="#projection" title="Permalink to this section">#</a> 3. Not using projection
+    </h3>
+    <p>
+        Projection refers to indicate exactly what fields you want to pull from the DB take the following query as exmaple <code>Select foo, var from ...</code> the <code>[foo, var]</code> part
+        is the projection which indicates exactly what fields of the database I want to pull this translate into physical reads which can impact performance depending on the number of fields and rows the
+        table has.
+    </p>
+    <p>
+        Imagine the following scenario, we need to fill a dropdown with the active menu categories in our DB sorted by the Order field.  I can use the query
+        I already have, I need the Name and Id fields so I will simulate that by writing only those fields into the Console
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="14">
+        class Program
+        {
+             static void Main(string[] args)
+             {
+                 using var db = new RestaurantContext();
+                 var menuCategories = db.MenuCategories
+                     .Where(c => c.Active)
+                     .OrderBy(c => c.Order)
+                     .ToList();
+
+                 foreach(var category in menuCategories)
+                 {
+                     Console.WriteLine($"Category: {category.Name}, Id: {category.Id}");
+                 }
+             }
+        }
+    </script>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/results-without-projections.png" class="img-thumbnail"
+                  alt="results-without-projections" />
+    </div>
+    <p>
+        I have achieved the results that I needed, but did I only retrieve the Name and Id fields? we can find out using SQL Server Profiler which will
+        track every command executed against the database. If you haven't used SQL Server Profiler you can open it from SQL Server Management Studio
+        in <strong>Tools -> SQL Server Profiler</strong> it is available even on the express/free edition.
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/sql-without-projection.png" class="img-thumbnail"
+                  alt="sql-without-projection" />
+    </div>
+    <p>
+        You can see I'm actually pulling all of the fields, for this table that might not be that big of a deal but as the number of fields and records growth the
+        the amount of reads will also increase so be aware of that.
+    </p>
+    <p>
+        Using projection on EF is fairly simple I just need to specify what fields I want on a Select method and map to an anonymous object or a specific class on
+        my case I will use an anonymous object
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="5-9">
+        var menuCategories = db.MenuCategories
+                                    .Where(c => c.Active)
+                                    .OrderBy(c => c.Order)
+                                    .Select(c => new
+                                    {
+                                        c.Name,
+                                        c.Id
+                                    })
+                                    .ToList();
+    </script>
+    <p>
+        This will produce exactly the same output as my before but if we inspect SQL Server Profiler again
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/sql-with-projection.png" class="img-thumbnail"
+                  alt="sql-with-projection" />
+    </div>
+    <p>
+        You can see now I'm only pulling the fields that I actually need. In Summary:
+    </p>
+    <ul class="post-list">
+        <li>Be aware of the number of fields you are pulling from the DB if needed be explicit and pull just the one you need</li>
+        <li>When in doubt, use any tool that will let you see the generated SQL Query</li>
+    </ul>
+    <h2 id="transaction">
+        <a href="#transaction" title="Permalink to this section">#</a> 4. Not knowing how the ORM handle transactions Atomic/Autocommit
+    </h2>
+    <p>
+        Let's move into the Menu Items now, assume we have some sort of UI that allows the user to add the data of a Menu Category and also it's
+        children items, being atomic means that we will save everything in one go or we won't save anything. This is very common in enterprise when
+        you need to make sure everything success or else you won't save anything while auto-commit means We will be doing multiple inserts/updates in a way that if anything fails we already did some operations on the DB that were saved. Both approaches have their corresponding use but we need to understand
+        how our ORM handles it
+    </p>
+    <p>
+        EF by default it's Atomic it can handle transactions so we can save everything in one go which can help performance by avoiding multiple roundtrips to the Database,
+        however, we can forfeit this advantage if we are not sure of what we are doing, look at the following code that saves a Menu Category and it's Menu Items
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="13,24">
+        var menuCategory = new MenuCategory
+            {
+                // Asume this data come from the UI
+                Active = true,
+                DateCreated = DateTime.Today,
+                ImageUrl = "/somepath/foo.png",
+                Name = "Starters",
+                Order = 1
+            };
+
+            db.MenuCategories.Add(menuCategory);
+            db.SaveChanges();
+
+            // Asume menuItems is data coming from the UI that
+            // we mapa into our model objects
+            foreach (var menuItem in menuItems)
+            {
+                db.MenuItem.Add(new MenuItem
+                    {
+                        Name = menuItem.Name,
+                        Description = menuItem.Description
+                    });
+                db.SaveChanges();
+            }
+    </script>
+    <p>
+        The previous example will work, however, it will cause multiple roundtrips to the database one to save the Menu Category and one for each menu item and
+        if the code crash when inserting any of the items it will have already saved the menu category into the DB because of EF <code>db.SaveChanges()</code> will make EF commit those changes.
+        Sometimes that might be what you want but sometimes people make this mistake because they are not aware that EF is atomic and has the power to keep all the changes in memory
+        and then save everything in one go when you are ready, or the developer has only used auto-commit ORM before that forces you to save the parent before being able to save its corresponding children such
+        as <a href="https://docs.djangoproject.com/en/2.2/topics/db/transactions/">Django ORM</a>, some times developers are forced to use SaveChanges multiple times because they have some weird code architecture that didn't take
+        into account EF unit of work pattern and they must call SaveChanges on every Domain Service but whatever is the case you can call SaveChanges once and it will take care of everything for you, so our code
+        can be the following
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="26">
+        var menuCategory = new MenuCategory
+            {
+                // Asume this data come from the UI
+                Active = true,
+                DateCreated = DateTime.Today,
+                ImageUrl = "/somepath/foo.png",
+                Name = "Starters",
+                Order = 1
+            };
+
+            db.MenuCategories.Add(menuCategory);
+
+            // Asume menuItems is data coming from the UI that
+            // we mapa into our model objects
+            foreach (var menuItem in menuItems)
+            {
+                db.MenuItem.Add(new MenuItem
+                    {
+                        Name = menuItem.Name,
+                        Description = menuItem.Description
+                    });
+                
+            }
+      // Here it will save everything in an optimized way
+      db.SaveChanges();
+    </script>
+    <p>
+        In summary:
+    </p>
+    <ul class="post-list">
+        <li>Understand how your ORM handles transactions and take advantage of it</li>
+        <li>Check how your ORM handle batch inserts and update when dealing with big amounts of data</li>
+    </ul>
+    <h2 id="nplus1">
+        <a href="#nplus1" title="Permalink to this section">#</a> 5. Not knowing about the infamous N+1 Query problem
+    </h2>
+    <p>
+        You might not know this problem by its formal name but you might have run into it, it can easily cause major performance
+        issues it consists of querying the database in an inefficient way when you have some sort of master-detail relationship,
+        and the best way to understand it's by example. We have MenuCategory and MenuItem, a MenuCategory it's something like Starters and I will have many MenuItems
+        related that belong to that category. So let's imagine I need to create a menu that shows all the categories and menu items in that category
+    </p>
+    <p>
+        There are two main ways in which ORM will allow you to load related data, Lazy Loading and Eager Loading, This problem occurs when you
+        use Lazy Loading, which is why it was more common to find it on EF6 since it comes with Lazy Loading enabled by default in EF core is disabled by
+        default but I will <a href="https://docs.microsoft.com/en-us/ef/core/querying/related-data#lazy-loading">enable lazy loading</a> to demonstrate it.
+        I will use the same query we were using but without projection and print the all of the menu categories with its corresponding menu items
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3">
+        static void Main(string[] args)
+        {
+            using var db = new RestaurantContext();
+            var menuCategories = db.MenuCategories
+                .Where(c => c.Active)
+                .OrderBy(c => c.Order)
+                .ToList();
+
+            foreach (var category in menuCategories)
+            {
+                Console.WriteLine($"Category: {category.Name}, Id: {category.Id}");
+                foreach (var item in category.MenuItems)
+                {
+                    Console.WriteLine($"\t {item.Order}.{item.Name}\n\t {item.Description}\n");
+                }
+            }
+        }
+    </script>
+    <p>
+        The output will be exactly what I wanted as you can see in the console
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/output-menu-lazy.png" class="img-thumbnail"
+                  alt="output-menu-lazy" />
+    </div>
+    <p>
+        Now inspecting on Profiler the generated SQL for this I can see I have created an n+1 query issue
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/sql-lazyloading.png" class="img-thumbnail"
+                  alt="sql-lazyloading" />
+    </div>
+    <p>
+        You can see that 5 queries are being executed instead of 1, The first query to grab just the Menu Categories and then one query for each menu category to
+        pull it's menu items from the database hence the n(n = Number of Categories = 4)+1(The original query to grab the categories) like the other issues with just few
+        data I don't notice any performance issue and if the data in this table is not going to grow much this might be ok, but if this data grows I can easily start doing thousands of queries instead of one
+        and that is going to quickly produce serious performances issues.
+    </p>
+    <p>
+        I could simply use Eager Loading instead to grab everything from the start and just do one query on EF I simply need to use Include
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="3">
+        var menuCategories = db.MenuCategories
+            .Include(c=> c.MenuItems)
+            .Where(c => c.Active)
+            .OrderBy(c => c.Order)
+            .ToList();
+    </script>
+    <p>
+        Now the output will be the same but if I check again on SQL Server Profiler I can see I only executed one query with the corresponding join as I want to
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/sql-eagerloading.png" class="img-thumbnail"
+                  alt="sql-eagerloading" />
+    </div>
+    <p>
+        I'm still pulling more fields that I need to and I can fix that again using projection, in fact always using projection is probably the safest route since projection
+        by default will use eager loading that way you won't have to worry about remembering using include, so updating my code to use projection 
+    </p>
+    <script type="text/plain" class="language-csharp line-numbers m-top-3" data-line="5-12">
+        var menuCategories = db.MenuCategories
+            .Where(c => c.Active)
+            .OrderBy(c => c.Order)
+            .Select(c => new { 
+                        c.Id,
+                        c.Name,
+                        MenuItems = c.MenuItems
+                                        .Select(i => new { 
+                                            i.Name,
+                                            i.Description
+                                        })
+                    })
+            .ToList();
+    </script>
+    <p>
+        It's more code now because I'm being explicit about what I want to pull from the DB however I still get the same output and my SQL Query is now optimized
+    </p>
+    <div class="thumb-wrap">
+        <lazy-img src="/images/posts/dangers-using-orm-ef/sql-eagerloading.png" class="img-thumbnail"
+                  alt="sql-eagerloading-projection" />
+    </div>
+    <p>
+        In summary:
+    </p>
+    <ul class="post-list">
+        <li>Understand what kind loading your ORM use by default</li>
+        <li>Be aware when loading related data using an ORM if the table could growth make sure your query is optimized</li>
+        <li>Check the SQL being generated, don't trust the performance when developing with few data</li>
+        <li>Use projection whenever you can</li>
+    </ul>
+    <p>
+        These are some of the most common issues I have found when people start using an ORM simply knowing about them will help you be more conscious when using
+        a new ORM since most of these concepts applies to many ORM. Is there any other common danger you have seen when using an ORM? Let me know in the comments below
+    </p>
+</div>
+

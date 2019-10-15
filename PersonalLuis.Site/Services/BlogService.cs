@@ -101,6 +101,28 @@ namespace PersonalLuis.Site.Services
                 },
                 new Post(urlHelper, lang)
                 {
+                    Id = 5,
+                    Title = "The dangers of using an ORM Entity Framework Version",
+                    TitleEs= "Los peligros de usar un ORM Version Entity Framework",
+                    Introduction = @"Often I have heard from people that refuse to use an ORM that their main reason is: ""They have performance issues""
+                                     which is not entirely true, What do I mean by that? Well The ORM per se does not give you performance issues,
+                                     while is true they create a bit of an overhead when doing their magic that overhead by itself is not really that big of a deal the real performance issue comes when we use them incorrectly",
+                    IntroductionEs=@"A menudo he escuchado de personas que se niegan a usar un ORM que su razón principal es: ""Te dan problemas de rendimiento"",
+                                     lo cual no es del todo cierto. ¿Qué quiero decir con eso? Bueno, el ORM por si solo no te da problemas de rendimiento,
+                                     si bien es cierto que tiene que hacer algo de trabajo extra cuando hacen su magia, el trabajo extra en sí mismo no es realmente tan impactante, el verdadero problema de rendimiento surge cuando lo usamos incorrectamente",
+                    BanerThumbnailUrl="/images/posts/dangers-using-orm-ef/dangers-using-orm-ef-thumb.png",
+                    BannerUrl="/images/posts/dangers-using-orm-ef/dangers-using-orm-ef.png",
+                    Slug="dangers-using-orm-entity-framework-verion",
+                    SlugEs="peligros-usando-orm-version-entity-framework",
+                    Author="Luis Palacios",
+                    Category ="Development",
+                    PublishedDate=new DateTime(2019, 10, 10),
+                    Content="DangersUsingOrmEf",
+                    ContentEs="es/PeligrosUsandoOrmEf",
+                    Published = true,
+                },
+                new Post(urlHelper, lang)
+                {
                     Title = "Restoring multiple database in SQL Server from .bak files",
                     Introduction = @"Not always you get to live the dream of doing green field development, in fact most of the times you have to deal with old 
                                      legacy code and in the dotnet in the enterprise world DBAs are scared of code first approach, so instead you use database first.",
@@ -138,19 +160,21 @@ namespace PersonalLuis.Site.Services
         }
         public IEnumerable<Post> GetFeaturedPosts(string lang)
         {
-            return GetPostsData(lang).Where(p => p.Published);
+            return GetPostsData(lang).Where(p => p.Published).OrderByDescending(p => p.PublishedDate);
         }
 
         public IEnumerable<Post> GetPosts(string searchTerm, string lang)
         {
             if (string.IsNullOrEmpty(searchTerm))
             {
-                return GetPostsData(lang).Where(p => p.Published);
+                return GetPostsData(lang).Where(p => p.Published).OrderByDescending(p => p.PublishedDate);
             }
             else
             {
                 searchTerm = searchTerm.ToLower();
-                return GetPostsData(lang).Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)));
+                return GetPostsData(lang)
+                    .Where(p => p.Published && (p.Title.ToLower().Contains(searchTerm) || p.Introduction.ToLower().Contains(searchTerm)))
+                    .OrderByDescending(p => p.PublishedDate);
             }
         }
     }
