@@ -49,7 +49,7 @@
     "cross-env": "^5.0.1",
     "hammerjs": "^2.0.8",
     "isotope-layout": "^3.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "masonry-layout": "^4.2.0",
     "medium-zoom": "^1.0.4",
     "normalize.css": "^7.0.0",
